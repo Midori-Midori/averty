@@ -168,29 +168,14 @@
     box-sizing: border-box;
   }
 
-  /* Override grid — let Swiper control layout */
-  .swiper-wrapper {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    gap: 0 !important;
-    grid-template-columns: none !important;
-    align-items: stretch;
-  }
-
   .stat-card {
-    /* Each slide = exactly the container width */
-    flex: 0 0 100% !important;
-    width: 100% !important;
-    min-width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
+    box-sizing: border-box;
     margin: 0 !important;
     height: auto;
     min-height: 200px;
     padding: 28px 20px;
-    /* Override GSAP reveal animation which sets opacity:0 and y:32 */
+    /* Override GSAP reveal animation */
     opacity: 1 !important;
-    transform: translate3d(0, 0, 0) !important;
     visibility: visible !important;
     will-change: auto;
   }

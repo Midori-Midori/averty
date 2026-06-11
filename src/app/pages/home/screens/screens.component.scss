@@ -161,24 +161,11 @@
     box-sizing: border-box;
   }
 
-  .swiper-wrapper {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    gap: 0 !important;
-    grid-template-columns: none !important;
-    align-items: stretch;
-  }
-
   .screen-card {
-    flex: 0 0 100% !important;
-    width: 100% !important;
-    min-width: 100% !important;
-    max-width: 100% !important;
     height: auto;
-    box-sizing: border-box !important;
+    box-sizing: border-box;
     /* Override GSAP reveal */
     opacity: 1 !important;
-    transform: translate3d(0, 0, 0) !important;
     visibility: visible !important;
   }
 
