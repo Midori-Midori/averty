@@ -57,7 +57,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  transition: transform .25s, box-shadow .25s;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
 :host-context([data-colors-mode="dark"]) .step-card {
@@ -66,7 +66,26 @@
 
 .step-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.11);
+}
+
+.step-card.color-blue:hover {
+  border-color: rgba(51, 153, 255, 0.4);
+  box-shadow: 0 16px 48px rgba(51, 153, 255, 0.15);
+}
+
+.step-card.color-yellow:hover {
+  border-color: rgba(230, 184, 0, 0.4);
+  box-shadow: 0 16px 48px rgba(230, 184, 0, 0.15);
+}
+
+.step-card.color-orange:hover {
+  border-color: rgba(255, 153, 0, 0.4);
+  box-shadow: 0 16px 48px rgba(255, 153, 0, 0.15);
+}
+
+.step-card.color-green:hover {
+  border-color: rgba(46, 204, 113, 0.4);
+  box-shadow: 0 16px 48px rgba(46, 204, 113, 0.15);
 }
 
 .step-card:nth-child(even) {

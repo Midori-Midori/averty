@@ -9,7 +9,7 @@
 
     <div class="steps-grid">
       @for (step of steps(); track step.number) {
-        <app-card [class]="'step-card ' + step.delayClass" appReveal>
+        <app-card [class]="'step-card ' + step.colorClass + ' ' + step.delayClass" appReveal>
           <span [class]="'step-number ' + step.colorClass">{{ step.number }}</span>
           <div [class]="'step-icon-wrap ' + step.colorClass">
             @switch (step.icon) {
