@@ -50,20 +50,21 @@ export class StatsComponent implements AfterViewInit, OnDestroy {
       if (!this.swiperInstance) {
         const container = this.el.nativeElement.querySelector('.swiper');
         if (container) {
-          // Small delay so Angular finishes rendering & layout is stable
+          // Wait for GSAP reveal animations to finish before initializing Swiper
           setTimeout(() => {
             this.swiperInstance = new Swiper(container, {
               modules: [Pagination],
               slidesPerView: 1,
-              spaceBetween: 0,
-              observer: true,
-              observeParents: true,
+              centeredSlides: true,
+              spaceBetween: 30,
+              initialSlide: 0,
+              grabCursor: true,
               pagination: {
                 el: container.querySelector('.swiper-pagination'),
                 clickable: true,
               }
             });
-          }, 50);
+          }, 300);
         }
       }
     } else {

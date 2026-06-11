@@ -153,6 +153,10 @@
 }
 
 @media (max-width: 767px) {
+  .screens {
+    overflow: hidden;
+  }
+
   .screens-grid.swiper {
     overflow: hidden;
     width: 100%;
@@ -161,12 +165,35 @@
     box-sizing: border-box;
   }
 
+  /* CRITICAL: Override desktop grid so Swiper's flex layout works */
+  .swiper-wrapper {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    grid-template-columns: none !important;
+  }
+
+  /* Standard slide effect needs full width handled by Swiper */
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Card keeps its visual size, centered inside the slide */
   .screen-card {
+    width: 280px;
+    max-width: 280px;
     height: auto;
+    margin: 0 auto;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* Override GSAP reveal */
     opacity: 1 !important;
     visibility: visible !important;
+    transform: none !important;
   }
 
   .screen-mockup {
