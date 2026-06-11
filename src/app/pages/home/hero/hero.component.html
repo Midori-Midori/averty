@@ -1,0 +1,42 @@
+<!-- ══════ HERO ══════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        PREVENT<br>
+        <span class="accent">HIGHWAY</span><br>
+        PILEUPS
+      </h1>
+      <p class="hero-subtitle">
+        Drivers receive real-time warnings about sudden traffic slowdowns,
+        helping prevent rear-end collisions and multi-vehicle pileups.
+      </p>
+      <app-button variant="demo" (click)="openDemoModal()">WATCH DEMO</app-button>
+    </div>
+
+    <div class="hero-visual">
+      <img class="phone-mockup" src="assets/mockups/mockup.png" alt="Averty app on Samsung Galaxy">
+      <div class="bubble bubble-1"><p>43% of freeway crashes are rear-end collisions.</p></div>
+      <div class="bubble bubble-2"><p>Most happen because drivers don't know traffic is stopping ahead.</p></div>
+      <div class="bubble bubble-3"><p>Averty changes that.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Demo Video/Visual Modal -->
+<app-modal [(isOpen)]="isDemoModalOpen">
+  <div class="demo-modal-body">
+    <h3 class="demo-title">AVERTY APP DEMO</h3>
+    <p class="demo-subtitle">See how real-time slowdown warnings protect drivers on the road.</p>
+    <div class="video-container">
+      <div class="video-placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="play-icon">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polygon points="10 8 16 12 10 16 10 8"></polygon>
+        </svg>
+        <span>Simulating real-time alert feed...</span>
+      </div>
+    </div>
+  </div>
+</app-modal>

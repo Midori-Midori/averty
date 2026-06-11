@@ -1,0 +1,76 @@
+/* ── Global Button Component Styles ── */
+
+.btn-access {
+  padding: 11px 26px;
+  border: 1.5px solid var(--blue);
+  border-radius: 14px;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--dark);
+  transition: all .2s;
+  white-space: nowrap;
+}
+
+.btn-access:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
+.btn-demo {
+  padding: 14px 36px;
+  border: 1.5px solid var(--blue);
+  border-radius: 16px;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: var(--dark);
+  transition: all .2s;
+}
+
+.btn-demo:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
+.btn-register {
+  padding: 12px 32px;
+  border: 1.5px solid var(--blue);
+  border-radius: 14px;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 15px;
+  color: var(--dark);
+  transition: all .2s;
+  margin-top: 4px;
+}
+
+.btn-register:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
+
+
+.btn-social-outline {
+  width: 100%;
+  padding: 14px 24px;
+  background: transparent;
+  border: 1px solid var(--blue);
+  border-radius: 14px;
+  font-family: var(--font);
+  font-size: 15px;
+  color: var(--dark);
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.btn-social-outline:hover {
+  background: var(--blue);
+  color: #fff;
+}

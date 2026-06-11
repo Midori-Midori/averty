@@ -1,0 +1,67 @@
+<nav class="navbar" [class.scrolled]="isScrolled()" [class.menu-open]="isMenuOpen()" id="navbar">
+  <div class="navbar-inner">
+    <span class="logo">Averty</span>
+    
+    <div class="nav-right" [class.active]="isMenuOpen()">
+      <ul class="nav-links">
+        <li><a href="#how-it-works" (click)="closeMenu()">How It Works</a></li>
+        <li><a href="#features" (click)="closeMenu()">Features</a></li>
+        <li><a href="#alerts" (click)="closeMenu()">Alerts</a></li>
+      </ul>
+      <!-- Theme Selector (Dropdown) -->
+      <div class="theme-selector" [class.open]="isThemeMenuOpen()">
+        <button class="theme-btn" (click)="toggleThemeMenu()" aria-label="Select theme" aria-haspopup="listbox" [attr.aria-expanded]="isThemeMenuOpen()">
+          @if (themeService.theme() === 'light') {
+            <svg class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+          } @else if (themeService.theme() === 'dark') {
+            <svg class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+          } @else {
+            <svg class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          }
+        </button>
+        
+        <div class="theme-dropdown" role="listbox">
+          <button class="dropdown-item" [class.active]="themeService.theme() === 'light'" (click)="setTheme('light')" role="option" [attr.aria-selected]="themeService.theme() === 'light'">
+            <svg class="item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <span>Light</span>
+          </button>
+          <button class="dropdown-item" [class.active]="themeService.theme() === 'dark'" (click)="setTheme('dark')" role="option" [attr.aria-selected]="themeService.theme() === 'dark'">
+            <svg class="item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+            <span>Dark</span>
+          </button>
+          <button class="dropdown-item" [class.active]="themeService.theme() === 'system'" (click)="setTheme('system')" role="option" [attr.aria-selected]="themeService.theme() === 'system'">
+            <svg class="item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <span>System</span>
+          </button>
+        </div>
+      </div>
+
+      <app-button variant="access" (click)="closeMenu()">Get Early Access</app-button>
+    </div>
+
+    <!-- Hamburger menu toggle -->
+    <button class="menu-toggle" (click)="toggleMenu()" aria-label="Toggle navigation menu" [class.open]="isMenuOpen()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</nav>

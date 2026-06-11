@@ -1,0 +1,23 @@
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-social-button',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './social-button.component.html',
+  styleUrl: './social-button.component.scss'
+})
+export class SocialButtonComponent {
+  @Input() provider: 'google' | 'facebook' | 'email' | string = 'google';
+  @Input() type: 'button' | 'submit' = 'button';
+  @Input() disabled = false;
+  @Input() label = '';
+  @Output() clicked = new EventEmitter<Event>();
+
+  onButtonClick(event: Event) {
+    if (!this.disabled) {
+      this.clicked.emit(event);
+    }
+  }
+}

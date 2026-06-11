@@ -1,0 +1,168 @@
+.stats {
+  position: relative;
+  padding: 60px 0;
+  overflow: visible;
+}
+
+.stats-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-section-pattern);
+  z-index: -1;
+}
+
+.stats-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* ── Desktop: Grid layout (Swiper not active) ── */
+.swiper-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  justify-content: center;
+}
+
+.stat-card {
+  width: 100%;
+  min-height: 268px;
+  backdrop-filter: blur(6px);
+  background: var(--glass2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.12);
+}
+
+.stat-number {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.stat-value {
+  font-size: 64px;
+  font-weight: 400;
+  color: var(--dark);
+  line-height: 1;
+}
+
+.stat-unit {
+  font-size: 32px;
+  color: #869fff;
+  font-weight: 400;
+}
+
+.stat-label {
+  font-size: 20px;
+  color: var(--mid);
+  line-height: 1.45;
+  letter-spacing: .5px;
+}
+
+/* ── Large tablet ── */
+@media (max-width: 1200px) {
+  .stats-inner {
+    padding: 0 32px;
+  }
+  .swiper-wrapper {
+    gap: 20px;
+  }
+}
+
+/* ── Tablet: 2-col grid, no Swiper ── */
+@media (max-width: 991px) {
+  .swiper-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .stat-card {
+    min-height: 220px;
+    padding: 24px;
+  }
+
+  .stat-value {
+    font-size: 52px;
+  }
+
+  .stat-unit {
+    font-size: 26px;
+  }
+
+  .stat-label {
+    font-size: 17px;
+  }
+}
+
+/* ── Mobile: Swiper active — one card per slide ── */
+@media (max-width: 767px) {
+  .stats-inner.swiper {
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Override grid — let Swiper control layout */
+  .swiper-wrapper {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    grid-template-columns: none !important;
+    align-items: stretch;
+  }
+
+  .stat-card {
+    /* Each slide = exactly the container width */
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    height: auto;
+    min-height: 200px;
+    padding: 28px 20px;
+    /* Override GSAP reveal animation which sets opacity:0 and y:32 */
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) !important;
+    visibility: visible !important;
+    will-change: auto;
+  }
+
+  .stat-value {
+    font-size: 52px;
+  }
+
+  .stat-unit {
+    font-size: 26px;
+  }
+
+  .stat-label {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-card {
+    padding: 24px 16px;
+  }
+
+  .stat-value {
+    font-size: 48px;
+  }
+}

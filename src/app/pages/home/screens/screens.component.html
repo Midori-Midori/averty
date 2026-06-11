@@ -1,0 +1,26 @@
+<!-- ══════ APP SCREENS ══════ -->
+<section class="screens" id="alerts">
+  <div class="screens-bg"></div>
+  <div class="screens-inner">
+    <div class="section-header" appReveal>
+      <h2 class="section-title screens-title">APP SCREENS</h2>
+      <p class="screens-sub">4 ALERT STATES. INSTANT CLARITY.</p>
+      <p class="screens-desc">
+        The app communicates risk through color and distance —
+        a single glance tells drivers exactly what to do.
+      </p>
+    </div>
+    <div class="screens-grid swiper">
+      <div class="swiper-wrapper">
+        @for (screen of screens(); track screen.label) {
+          <div [class]="'screen-card swiper-slide ' + screen.delayClass" appReveal>
+            <p [class]="'alert-label ' + screen.colorClass">{{ screen.label }}</p>
+            <img class="screen-mockup" [src]="screen.mockup" [alt]="screen.desc">
+            <p class="alert-desc">{{ screen.desc }}</p>
+          </div>
+        }
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>

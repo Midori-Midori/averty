@@ -1,0 +1,76 @@
+// Abstracts
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+// Base
+@import "base/reset";
+@import "base/typography";
+
+// Components
+@import "components/buttons";
+@import "components/cards";
+
+// Layout
+@import "layout/navbar";
+@import "layout/footer";
+
+// Sections
+@import "sections/hero";
+@import "sections/stats";
+@import "sections/hiw";
+@import "sections/screens";
+@import "sections/register";
+
+// Swiper Libraries CSS
+@import "swiper/css";
+@import "swiper/css/pagination";
+
+/* ── Swiper Pagination Customization ── */
+.swiper-pagination {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .swiper-pagination {
+    position: relative !important;
+    margin-top: 24px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    bottom: 0 !important;
+  }
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: var(--dark) !important;
+  opacity: 0.25 !important;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer;
+  margin: 0 !important;
+
+  &:hover {
+    opacity: 0.45 !important;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--blue) !important;
+  opacity: 1 !important;
+  width: 20px !important;
+  border-radius: 4px !important;
+}
+
+[data-colors-mode="dark"] {
+  .swiper-pagination-bullet {
+    background: #ffffff !important;
+    opacity: 0.20 !important;
+  }
+  .swiper-pagination-bullet-active {
+    background: var(--blue) !important;
+    opacity: 1 !important;
+  }
+}

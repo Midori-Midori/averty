@@ -1,0 +1,17 @@
+<div class="field" [class.has-error]="isInvalid">
+  @if (label) {
+    <label [for]="id">{{ label }}</label>
+  }
+  <input 
+    [type]="type" 
+    [id]="id" 
+    [placeholder]="placeholder" 
+    [formControl]="control"
+    [class.invalid-border]="isInvalid">
+  
+  @if (isInvalid) {
+    <div class="error-msg">
+      {{ errorMessage }}
+    </div>
+  }
+</div>

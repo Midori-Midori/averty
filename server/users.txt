@@ -1,0 +1,18 @@
+Name: John
+Last Name: Smith
+Email: john@gmail.com
+Phone: 5551234567
+Registered: 06/10/2026, 05:22:06 PM
+---------------------
+Name: majito
+Last Name: aguilar guillen
+Email: majo.wera88@gmail.com
+Phone: 662 511 0481
+Registered: 06/10/2026, 05:31:59 PM
+---------------------
+Name: majo
+Last Name: aguilar
+Email: majo.wera88@gmail.com
+Phone: 6623272506
+Registered: 06/10/2026, 05:39:55 PM
+---------------------

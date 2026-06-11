@@ -1,0 +1,18 @@
+<!-- ══════ STATS ══════ -->
+<section class="stats" id="features">
+  <div class="stats-bg"></div>
+  <div class="stats-inner swiper">
+    <div class="swiper-wrapper">
+      @for (stat of stats(); track stat.label; let i = $index) {
+        <div [class]="'stat-card swiper-slide' + (i > 0 ? ' delay-' + i : '')" appReveal>
+          <div class="stat-number">
+            <span class="stat-value">{{ stat.value }}</span>
+            <span class="stat-unit">{{ stat.unit }}</span>
+          </div>
+          <p class="stat-label">{{ stat.label }}</p>
+        </div>
+      }
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>

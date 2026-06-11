@@ -1,0 +1,49 @@
+:root {
+  --blue:   #5074ff;
+  --blue-d: #3a5ce0;
+  --dark:   #1a1a1a;
+  --mid:    #2d2d2d;
+  --muted:  #555;
+  --glass:  rgba(255,255,255,0.60);
+  --glass2: rgba(255,255,255,0.78);
+  --border: rgba(255,255,255,0.80);
+  --shadow: 0 12px 40px rgba(0,0,0,0.08);
+  --font:   'DM Sans', sans-serif;
+  --display:'Bebas Neue', sans-serif;
+
+  --bg-section-pattern:
+    radial-gradient(ellipse 55% 35% at 85% 40%, rgba(80,116,255,0.16) 0%, transparent 68%),
+    radial-gradient(ellipse 45% 35% at 15% 30%, rgba(34,166,85,0.12)  0%, transparent 65%),
+    radial-gradient(ellipse 50% 30% at 50% 70%, rgba(255,136,0,0.10)  0%, transparent 60%),
+    transparent;
+
+  --colors-backgrounds-primary: rgba(255, 255, 255, 1);
+}
+
+:root[data-colors-mode="light"] {
+  --colors-backgrounds-primary: rgba(255, 255, 255, 1);
+}
+
+:root[data-colors-mode="dark"] {
+  --dark:   #f0f0f0;
+  --mid:    #cccccc;
+  --muted:  #aaaaaa;
+  --glass:  rgba(20,25,38,0.60);
+  --glass2: rgba(20,25,38,0.78);
+  --border: rgba(255,255,255,0.12);
+  --shadow: 0 12px 40px rgba(0,0,0,0.40);
+  --colors-backgrounds-primary: rgba(0, 0, 0, 1);
+  --bg-section-pattern:
+    radial-gradient(ellipse 55% 35% at 85% 40%, rgba(80,116,255,0.24) 0%, transparent 68%),
+    radial-gradient(ellipse 45% 35% at 15% 30%, rgba(34,166,85,0.16)  0%, transparent 65%),
+    radial-gradient(ellipse 50% 30% at 50% 70%, rgba(255,136,0,0.13)  0%, transparent 60%),
+    transparent;
+}
+
+[data-colors-mode="IC-light"] {
+  --colors-backgrounds-primary: rgba(255, 255, 255, 1);
+}
+
+[data-colors-mode="IC-dark"] {
+  --colors-backgrounds-primary: rgba(0, 0, 0, 1);
+}

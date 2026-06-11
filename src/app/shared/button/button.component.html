@@ -1,0 +1,6 @@
+<button [type]="type" [class]="'btn-' + variant + ' ' + customClass" [disabled]="disabled">
+  <ng-content></ng-content>
+  @if (label) {
+    {{ label }}
+  }
+</button>

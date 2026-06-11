@@ -1,0 +1,72 @@
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border-radius: 20px;
+  font-family: var(--font);
+  transition: all 0.2s ease;
+
+  &.badge-primary {
+    background: rgba(80, 116, 255, 0.12);
+    color: var(--blue);
+    border: 1px solid rgba(80, 116, 255, 0.2);
+  }
+
+  &.badge-success {
+    background: rgba(34, 166, 85, 0.12);
+    color: #22a655;
+    border: 1px solid rgba(34, 166, 85, 0.2);
+  }
+
+  &.badge-warning {
+    background: rgba(255, 136, 0, 0.12);
+    color: #ff8800;
+    border: 1px solid rgba(255, 136, 0, 0.2);
+  }
+
+  &.badge-danger {
+    background: rgba(208, 0, 0, 0.12);
+    color: #d00000;
+    border: 1px solid rgba(208, 0, 0, 0.2);
+  }
+
+  &.badge-info {
+    background: rgba(0, 180, 216, 0.12);
+    color: #00b4d8;
+    border: 1px solid rgba(0, 180, 216, 0.2);
+  }
+}
+
+:host-context([data-colors-mode="dark"]) {
+  .app-badge {
+    &.badge-primary {
+      background: rgba(80, 116, 255, 0.18);
+      color: #728fff;
+    }
+
+    &.badge-success {
+      background: rgba(34, 166, 85, 0.18);
+      color: #3dd676;
+    }
+
+    &.badge-warning {
+      background: rgba(255, 136, 0, 0.18);
+      color: #ffaa44;
+    }
+
+    &.badge-danger {
+      background: rgba(208, 0, 0, 0.18);
+      color: #ff5555;
+    }
+
+    &.badge-info {
+      background: rgba(0, 180, 216, 0.18);
+      color: #33ccff;
+    }
+  }
+}

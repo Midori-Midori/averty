@@ -1,0 +1,72 @@
+<!-- ══════ REGISTER ══════ -->
+<section class="register" id="register">
+  <div class="register-bg"></div>
+  <div class="register-inner">
+    <app-card [hoverable]="false" class="register-card" appReveal>
+
+      <div class="form-side">
+        <h2 class="register-title">Sign up in seconds</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          
+          <app-input 
+            id="name" 
+            label="Name :" 
+            placeholder="Insert your name" 
+            [control]="$any(registerForm.get('name'))">
+          </app-input>
+
+          <app-input 
+            id="lastName" 
+            label="Last name :" 
+            placeholder="Insert your last name" 
+            [control]="$any(registerForm.get('lastName'))">
+          </app-input>
+
+          <app-input 
+            id="email" 
+            label="Email :" 
+            type="email"
+            placeholder="Insert your email" 
+            [control]="$any(registerForm.get('email'))">
+          </app-input>
+
+          <app-input 
+            id="phone" 
+            label="Number Phone :" 
+            type="tel"
+            placeholder="Insert your number phone" 
+            [control]="$any(registerForm.get('phone'))">
+          </app-input>
+
+          <app-button type="submit" variant="register" [disabled]="registerForm.invalid || isSubmitting()">
+            @if (isSubmitting()) { Registering... } @else { Register }
+          </app-button>
+
+          @if (submitMessage()) {
+            <div [class]="'submit-feedback ' + (submitSuccess() ? 'success' : 'error')">
+              {{ submitMessage() }}
+            </div>
+          }
+        </form>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="social-side">
+        <p class="social-heading">Or sign up with</p>
+
+        <!-- Google -->
+        <app-social-button provider="google">Use Google</app-social-button>
+
+        <!-- Facebook -->
+        <app-social-button provider="facebook">Use Facebook</app-social-button>
+
+        <!-- Email -->
+        <app-social-button provider="email">Use my Email</app-social-button>
+
+        <app-button variant="social-outline">Continue in another way</app-button>
+      </div>
+
+    </app-card>
+  </div>
+</section>
