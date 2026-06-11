@@ -10,31 +10,31 @@
           
           <app-input 
             id="name" 
-            label="Name :" 
-            placeholder="Insert your name" 
+            label="Name:" 
+            placeholder="Enter your name" 
             [control]="$any(registerForm.get('name'))">
           </app-input>
 
           <app-input 
             id="lastName" 
-            label="Last name :" 
-            placeholder="Insert your last name" 
+            label="Last Name:" 
+            placeholder="Enter your last name" 
             [control]="$any(registerForm.get('lastName'))">
           </app-input>
 
           <app-input 
             id="email" 
-            label="Email :" 
+            label="Email:" 
             type="email"
-            placeholder="Insert your email" 
+            placeholder="Enter your email" 
             [control]="$any(registerForm.get('email'))">
           </app-input>
 
           <app-input 
             id="phone" 
-            label="Number Phone :" 
+            label="Phone Number:" 
             type="tel"
-            placeholder="Insert your number phone" 
+            placeholder="Enter your phone number" 
             [control]="$any(registerForm.get('phone'))">
           </app-input>
 
@@ -62,9 +62,9 @@
         <app-social-button provider="facebook">Use Facebook</app-social-button>
 
         <!-- Email -->
-        <app-social-button provider="email">Use my Email</app-social-button>
+        <app-social-button provider="email">Use my email</app-social-button>
 
-        <app-button variant="social-outline">Continue in another way</app-button>
+        <app-button variant="social-outline">Other options</app-button>
       </div>
 
     </app-card>
