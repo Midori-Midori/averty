@@ -13,7 +13,7 @@ const cors = require('cors');
 
 const app = express();
 const PORT = 3001;
-const USERS_FILE = path.join(__dirname, 'users.txt');
+const USERS_FILE = path.join(__dirname, 'users.json');
 
 // ── Middleware ──────────────────────────────────────────────────────────────
 app.use(cors({ origin: 'http://localhost:4200' })); // Allow Angular dev server
@@ -31,38 +31,47 @@ app.post('/api/register', (req, res) => {
     });
   }
 
-  const timestamp = new Date().toLocaleString('en-US', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit'
-  });
+  const timestamp = new Date().toISOString();
 
-  // Format entry
-  const entry =
-    `Name: ${name}\n` +
-    `Last Name: ${lastName}\n` +
-    `Email: ${email}\n` +
-    `Phone: ${phone}\n` +
-    `Registered: ${timestamp}\n` +
-    `---------------------\n`;
+  // Create new user object
+  const newUser = {
+    name,
+    lastName,
+    email,
+    phone,
+    registeredAt: timestamp
+  };
 
-  // Append to users.txt (creates file if it doesn't exist)
-  fs.appendFile(USERS_FILE, entry, 'utf8', (err) => {
-    if (err) {
-      console.error('Error writing to users.txt:', err);
-      return res.status(500).json({
-        success: false,
-        message: 'Could not save registration. Please try again.'
-      });
+  // Read existing users from users.json
+  fs.readFile(USERS_FILE, 'utf8', (err, data) => {
+    let users = [];
+
+    if (!err && data) {
+      try {
+        users = JSON.parse(data);
+      } catch (parseErr) {
+        console.error('Error parsing users.json, resetting to empty array:', parseErr);
+      }
     }
 
-    console.log(`✅ New registration saved: ${name} ${lastName} <${email}>`);
-    return res.json({
-      success: true,
-      message: 'Registration successful! Welcome to Averty.'
+    // Append new user
+    users.push(newUser);
+
+    // Save back to users.json
+    fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2), 'utf8', (writeErr) => {
+      if (writeErr) {
+        console.error('Error writing to users.json:', writeErr);
+        return res.status(500).json({
+          success: false,
+          message: 'Could not save registration. Please try again.'
+        });
+      }
+
+      console.log(`✅ New registration saved to JSON: ${name} ${lastName} <${email}>`);
+      return res.json({
+        success: true,
+        message: 'Registration successful! Welcome to Averty.'
+      });
     });
   });
 });
