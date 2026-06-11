@@ -16,7 +16,7 @@ const PORT = 3001;
 const USERS_FILE = path.join(__dirname, 'users.json');
 
 // ── Middleware ──────────────────────────────────────────────────────────────
-app.use(cors({ origin: 'http://localhost:4200' })); // Allow Angular dev server
+app.use(cors()); // Allow all origins (standard for landing page endpoints)
 app.use(express.json());
 
 // ── POST /api/register ──────────────────────────────────────────────────────

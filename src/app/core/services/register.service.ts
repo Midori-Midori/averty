@@ -8,7 +8,7 @@ import { RegisterForm } from '../models/register-form.model';
 })
 export class RegisterService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3001/api/register';
+  private apiUrl = 'https://api-averty.onrender.com/api/register';
 
   registerUser(formData: RegisterForm): Observable<{ success: boolean; message: string }> {
     return this.http.post<{ success: boolean; message: string }>(this.apiUrl, formData).pipe(
