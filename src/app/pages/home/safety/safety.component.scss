@@ -57,7 +57,7 @@
   padding: 40px 28px;
   display: flex;
   flex-direction: column;
-  transition: transform .25s, box-shadow .25s;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
 :host-context([data-colors-mode="dark"]) .safety-card {
@@ -66,7 +66,26 @@
 
 .safety-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+}
+
+.safety-card.color-red:hover {
+  border-color: rgba(255, 77, 77, 0.4);
+  box-shadow: 0 20px 48px rgba(255, 77, 77, 0.15);
+}
+
+.safety-card.color-orange:hover {
+  border-color: rgba(255, 153, 0, 0.4);
+  box-shadow: 0 20px 48px rgba(255, 153, 0, 0.15);
+}
+
+.safety-card.color-yellow:hover {
+  border-color: rgba(230, 184, 0, 0.4);
+  box-shadow: 0 20px 48px rgba(230, 184, 0, 0.15);
+}
+
+.safety-card.color-blue:hover {
+  border-color: rgba(51, 153, 255, 0.4);
+  box-shadow: 0 20px 48px rgba(51, 153, 255, 0.15);
 }
 
 .safety-card-content {

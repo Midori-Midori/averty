@@ -9,7 +9,7 @@
 
     <div class="safety-grid">
       @for (fact of facts(); track fact.title) {
-        <app-card [class]="'safety-card ' + fact.delayClass" appReveal>
+        <app-card [class]="'safety-card ' + fact.colorClass + ' ' + fact.delayClass" appReveal>
           <div class="safety-card-content">
             <span [class]="'safety-highlight ' + fact.colorClass">{{ fact.highlight }}</span>
             <h3 class="safety-title">{{ fact.title }}</h3>
