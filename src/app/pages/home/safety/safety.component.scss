@@ -68,24 +68,56 @@
   transform: translateY(-6px);
 }
 
+/* Light Mode Hovers */
 .safety-card.color-red:hover {
-  border-color: rgba(255, 77, 77, 0.4);
-  box-shadow: 0 20px 48px rgba(255, 77, 77, 0.15);
+  border-color: rgba(255, 77, 77, 0.45);
+  box-shadow: 0 20px 48px rgba(255, 77, 77, 0.18);
+  background: rgba(255, 77, 77, 0.02);
 }
 
 .safety-card.color-orange:hover {
-  border-color: rgba(255, 153, 0, 0.4);
-  box-shadow: 0 20px 48px rgba(255, 153, 0, 0.15);
+  border-color: rgba(255, 153, 0, 0.45);
+  box-shadow: 0 20px 48px rgba(255, 153, 0, 0.18);
+  background: rgba(255, 153, 0, 0.02);
 }
 
 .safety-card.color-yellow:hover {
-  border-color: rgba(230, 184, 0, 0.4);
-  box-shadow: 0 20px 48px rgba(230, 184, 0, 0.15);
+  border-color: rgba(230, 184, 0, 0.45);
+  box-shadow: 0 20px 48px rgba(230, 184, 0, 0.18);
+  background: rgba(230, 184, 0, 0.02);
 }
 
 .safety-card.color-blue:hover {
-  border-color: rgba(51, 153, 255, 0.4);
-  box-shadow: 0 20px 48px rgba(51, 153, 255, 0.15);
+  border-color: rgba(51, 153, 255, 0.45);
+  box-shadow: 0 20px 48px rgba(51, 153, 255, 0.18);
+  background: rgba(51, 153, 255, 0.02);
+}
+
+/* Dark Mode Hovers */
+:host-context([data-colors-mode="dark"]) {
+  .safety-card.color-red:hover {
+    border-color: rgba(255, 77, 77, 0.6);
+    box-shadow: 0 12px 40px rgba(255, 77, 77, 0.3);
+    background: rgba(255, 77, 77, 0.04);
+  }
+
+  .safety-card.color-orange:hover {
+    border-color: rgba(255, 153, 0, 0.6);
+    box-shadow: 0 12px 40px rgba(255, 153, 0, 0.3);
+    background: rgba(255, 153, 0, 0.04);
+  }
+
+  .safety-card.color-yellow:hover {
+    border-color: rgba(255, 214, 51, 0.6);
+    box-shadow: 0 12px 40px rgba(255, 214, 51, 0.3);
+    background: rgba(255, 214, 51, 0.04);
+  }
+
+  .safety-card.color-blue:hover {
+    border-color: rgba(51, 153, 255, 0.6);
+    box-shadow: 0 12px 40px rgba(51, 153, 255, 0.3);
+    background: rgba(51, 153, 255, 0.04);
+  }
 }
 
 .safety-card-content {

@@ -68,24 +68,56 @@
   transform: translateY(-5px);
 }
 
+/* Light Mode Hovers */
 .step-card.color-blue:hover {
-  border-color: rgba(51, 153, 255, 0.4);
-  box-shadow: 0 16px 48px rgba(51, 153, 255, 0.15);
+  border-color: rgba(51, 153, 255, 0.45);
+  box-shadow: 0 16px 48px rgba(51, 153, 255, 0.18);
+  background: rgba(51, 153, 255, 0.02);
 }
 
 .step-card.color-yellow:hover {
-  border-color: rgba(230, 184, 0, 0.4);
-  box-shadow: 0 16px 48px rgba(230, 184, 0, 0.15);
+  border-color: rgba(230, 184, 0, 0.45);
+  box-shadow: 0 16px 48px rgba(230, 184, 0, 0.18);
+  background: rgba(230, 184, 0, 0.02);
 }
 
 .step-card.color-orange:hover {
-  border-color: rgba(255, 153, 0, 0.4);
-  box-shadow: 0 16px 48px rgba(255, 153, 0, 0.15);
+  border-color: rgba(255, 153, 0, 0.45);
+  box-shadow: 0 16px 48px rgba(255, 153, 0, 0.18);
+  background: rgba(255, 153, 0, 0.02);
 }
 
 .step-card.color-green:hover {
-  border-color: rgba(46, 204, 113, 0.4);
-  box-shadow: 0 16px 48px rgba(46, 204, 113, 0.15);
+  border-color: rgba(46, 204, 113, 0.45);
+  box-shadow: 0 16px 48px rgba(46, 204, 113, 0.18);
+  background: rgba(46, 204, 113, 0.02);
+}
+
+/* Dark Mode Hovers */
+:host-context([data-colors-mode="dark"]) {
+  .step-card.color-blue:hover {
+    border-color: rgba(51, 153, 255, 0.6);
+    box-shadow: 0 12px 40px rgba(51, 153, 255, 0.3);
+    background: rgba(51, 153, 255, 0.04);
+  }
+
+  .step-card.color-yellow:hover {
+    border-color: rgba(255, 214, 51, 0.6);
+    box-shadow: 0 12px 40px rgba(255, 214, 51, 0.3);
+    background: rgba(255, 214, 51, 0.04);
+  }
+
+  .step-card.color-orange:hover {
+    border-color: rgba(255, 153, 0, 0.6);
+    box-shadow: 0 12px 40px rgba(255, 153, 0, 0.3);
+    background: rgba(255, 153, 0, 0.04);
+  }
+
+  .step-card.color-green:hover {
+    border-color: rgba(46, 204, 113, 0.6);
+    box-shadow: 0 12px 40px rgba(46, 204, 113, 0.3);
+    background: rgba(46, 204, 113, 0.04);
+  }
 }
 
 .step-card:nth-child(even) {
