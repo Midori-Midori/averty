@@ -12,7 +12,7 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const USERS_FILE = path.join(__dirname, 'users.json');
 
 // ── Middleware ──────────────────────────────────────────────────────────────
