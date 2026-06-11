@@ -39,12 +39,63 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform .25s, box-shadow .25s;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background-color .25s ease;
 }
 
 .stat-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 48px rgba(0,0,0,0.12);
+}
+
+/* Light Mode Hovers */
+.stat-card.color-red:hover {
+  border-color: rgba(255, 77, 77, 0.45);
+  box-shadow: 0 20px 48px rgba(255, 77, 77, 0.18);
+  background: rgba(255, 77, 77, 0.02);
+}
+
+.stat-card.color-blue:hover {
+  border-color: rgba(51, 153, 255, 0.45);
+  box-shadow: 0 20px 48px rgba(51, 153, 255, 0.18);
+  background: rgba(51, 153, 255, 0.02);
+}
+
+.stat-card.color-orange:hover {
+  border-color: rgba(255, 153, 0, 0.45);
+  box-shadow: 0 20px 48px rgba(255, 153, 0, 0.18);
+  background: rgba(255, 153, 0, 0.02);
+}
+
+.stat-card.color-green:hover {
+  border-color: rgba(46, 204, 113, 0.45);
+  box-shadow: 0 20px 48px rgba(46, 204, 113, 0.18);
+  background: rgba(46, 204, 113, 0.02);
+}
+
+/* Dark Mode Hovers */
+:host-context([data-colors-mode="dark"]) {
+  .stat-card.color-red:hover {
+    border-color: rgba(255, 77, 77, 0.6);
+    box-shadow: 0 12px 40px rgba(255, 77, 77, 0.3);
+    background: rgba(255, 77, 77, 0.04);
+  }
+
+  .stat-card.color-blue:hover {
+    border-color: rgba(51, 153, 255, 0.6);
+    box-shadow: 0 12px 40px rgba(51, 153, 255, 0.3);
+    background: rgba(51, 153, 255, 0.04);
+  }
+
+  .stat-card.color-orange:hover {
+    border-color: rgba(255, 153, 0, 0.6);
+    box-shadow: 0 12px 40px rgba(255, 153, 0, 0.3);
+    background: rgba(255, 153, 0, 0.04);
+  }
+
+  .stat-card.color-green:hover {
+    border-color: rgba(46, 204, 113, 0.6);
+    box-shadow: 0 12px 40px rgba(46, 204, 113, 0.3);
+    background: rgba(46, 204, 113, 0.04);
+  }
 }
 
 .stat-number {

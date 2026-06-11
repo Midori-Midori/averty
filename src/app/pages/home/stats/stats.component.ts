@@ -18,10 +18,10 @@ export class StatsComponent implements AfterViewInit, OnDestroy {
   private swiperInstance: Swiper | null = null;
 
   stats = signal<Stat[]>([
-    { value: '43', unit: '%', label: 'of freeway crashes are rear-end collisions' },
-    { value: '<2', unit: 's', label: 'average alert delivery' },
-    { value: '1.2', unit: 'mi', label: 'average warning distance' },
-    { value: '4', unit: 'x', label: 'risk levels detected' }
+    { value: '43', unit: '%', label: 'of freeway crashes are rear-end collisions', colorClass: 'color-red' },
+    { value: '<2', unit: 's', label: 'average alert delivery', colorClass: 'color-blue' },
+    { value: '1.2', unit: 'mi', label: 'average warning distance', colorClass: 'color-orange' },
+    { value: '4', unit: 'x', label: 'risk levels detected', colorClass: 'color-green' }
   ]);
 
   ngAfterViewInit() {
