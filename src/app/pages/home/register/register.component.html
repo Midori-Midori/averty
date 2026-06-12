@@ -12,14 +12,16 @@
             id="name" 
             label="Name:" 
             placeholder="Enter your name" 
-            [control]="$any(registerForm.get('name'))">
+            [control]="$any(registerForm.get('name'))"
+            [errorMessages]="{ pattern: 'Only letters are allowed' }">
           </app-input>
 
           <app-input 
             id="lastName" 
             label="Last Name:" 
             placeholder="Enter your last name" 
-            [control]="$any(registerForm.get('lastName'))">
+            [control]="$any(registerForm.get('lastName'))"
+            [errorMessages]="{ pattern: 'Only letters are allowed' }">
           </app-input>
 
           <app-input 
@@ -34,8 +36,9 @@
             id="phone" 
             label="Phone Number:" 
             type="tel"
-            placeholder="Enter your phone number" 
-            [control]="$any(registerForm.get('phone'))">
+            placeholder="e.g. +52 55 1234 5678" 
+            [control]="$any(registerForm.get('phone'))"
+            [errorMessages]="{ pattern: 'Must include country code (e.g. +52) and valid number' }">
           </app-input>
 
           <app-button type="submit" variant="register" [disabled]="registerForm.invalid || isSubmitting()">

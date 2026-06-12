@@ -36,6 +36,8 @@
   color: var(--blue);
   letter-spacing: -1px;
   flex-shrink: 0;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .nav-right {

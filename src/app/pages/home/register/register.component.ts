@@ -33,10 +33,10 @@ export class RegisterComponent {
   submitMessage = signal('');
 
   registerForm: FormGroup = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(2)]],
-    lastName: ['', [Validators.required, Validators.minLength(2)]],
+    name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$')]],
+    lastName: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$')]],
     email: ['', [Validators.required, Validators.email]],
-    phone: ['', [Validators.required, Validators.pattern('^[0-9+\\-()\\s]{7,15}$')]]
+    phone: ['', [Validators.required, Validators.pattern('^\\+\\d{1,4}[\\s\\-()]*\\d{7,15}$')]]
   });
 
   onSubmit() {
