@@ -40,6 +40,10 @@
 }
 
 .safety-grid {
+  width: 100%;
+}
+
+.swiper-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
@@ -177,13 +181,13 @@
   .safety-inner {
     padding: 0 32px;
   }
-  .safety-grid {
+  .swiper-wrapper {
     gap: 20px;
   }
 }
 
 @media (max-width: 991px) {
-  .safety-grid {
+  .swiper-wrapper {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
@@ -194,17 +198,40 @@
   }
 }
 
-@media (max-width: 576px) {
-  .safety-inner {
-    padding: 0 24px;
+@media (max-width: 767px) {
+  .safety {
+    overflow: hidden;
   }
-  
-  .safety-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+
+  .safety-grid.swiper {
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 50px;
   }
-  
+
+  /* Override grid for Swiper flex layout */
+  .swiper-wrapper {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    grid-template-columns: none !important;
+    justify-content: flex-start !important;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
   .safety-card {
-    min-height: auto;
+    width: 280px;
+    max-width: 100%;
+    margin: 0 auto;
+    /* Reset GSAP reveal on mobile so Swiper works smoothly */
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
   }
 }

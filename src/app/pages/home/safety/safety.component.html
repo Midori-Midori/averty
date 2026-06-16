@@ -7,16 +7,21 @@
       <p class="section-sub">The reality of our roads today</p>
     </div>
 
-    <div class="safety-grid">
-      @for (fact of facts(); track fact.title) {
-        <app-card [class]="'safety-card ' + fact.colorClass + ' ' + fact.delayClass" appReveal>
-          <div class="safety-card-content">
-            <span [class]="'safety-highlight ' + fact.colorClass">{{ fact.highlight }}</span>
-            <h3 class="safety-title">{{ fact.title }}</h3>
-            <p class="safety-desc">{{ fact.description }}</p>
+    <div class="safety-grid swiper">
+      <div class="swiper-wrapper">
+        @for (fact of facts(); track fact.title) {
+          <div class="swiper-slide">
+            <app-card [class]="'safety-card ' + fact.colorClass + ' ' + fact.delayClass" appReveal>
+              <div class="safety-card-content">
+                <span [class]="'safety-highlight ' + fact.colorClass">{{ fact.highlight }}</span>
+                <h3 class="safety-title">{{ fact.title }}</h3>
+                <p class="safety-desc">{{ fact.description }}</p>
+              </div>
+            </app-card>
           </div>
-        </app-card>
-      }
+        }
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
   </div>
 </section>
