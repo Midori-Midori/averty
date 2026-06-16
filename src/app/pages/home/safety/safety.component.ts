@@ -21,16 +21,16 @@ interface SafetyFact {
 export class SafetyComponent {
   facts = signal<SafetyFact[]>([
     {
-      highlight: '36,640+',
-      title: 'Fatalities',
-      description: 'Traffic crashes caused more than 36,000 deaths in the United States in 2025.',
+      highlight: '11,288',
+      title: 'Speed-Related Deaths',
+      description: 'Speeding was a contributing factor in 29% of all traffic fatalities in 2024, remaining one of the most critical safety concerns on U.S. roads.',
       delayClass: '',
       colorClass: 'color-red'
     },
     {
-      highlight: '5.9 Million',
-      title: 'Accidents',
-      description: 'Nearly 5.9 million traffic accidents are reported every year in the U.S.',
+      highlight: '1 in 4 Drivers',
+      title: 'Aggressive Driving',
+      description: 'Dangerous behaviors such as tailgating, speeding, and unsafe lane changes continue to contribute to thousands of crashes and fatalities every year.',
       delayClass: 'delay-1',
       colorClass: 'color-orange'
     },
@@ -42,9 +42,9 @@ export class SafetyComponent {
       colorClass: 'color-yellow'
     },
     {
-      highlight: 'Leading Cause',
-      title: 'Among Young People',
-      description: 'Motor vehicle crashes are one of the leading causes of death among children, teenagers, and young adults in the United States.',
+      highlight: '745,000+',
+      title: 'Weather-Related Crashes',
+      description: 'Nearly 745,000 crashes every year occur under adverse weather conditions such as rain, fog, snow, and strong winds. These conditions contribute to over 3,800 deaths annually.',
       delayClass: 'delay-2',
       colorClass: 'color-blue'
     }
