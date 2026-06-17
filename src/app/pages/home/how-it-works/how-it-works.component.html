@@ -9,42 +9,25 @@
 
     <div class="steps-grid">
       @for (step of steps(); track step.number) {
-        <app-card [class]="'step-card ' + step.colorClass + ' ' + step.delayClass" appReveal>
-          <span [class]="'step-number ' + step.colorClass">{{ step.number }}</span>
-          <div [class]="'step-icon-wrap ' + step.colorClass">
-            @switch (step.icon) {
-              @case ('data') {
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="36" height="36" aria-hidden="true">
-                  <path d="M16 2C8.268 2 2 5.686 2 10.5v11C2 26.314 8.268 30 16 30s14-3.686 14-8.5v-11C30 5.686 23.732 2 16 2zm12 11c0 3.084-4.944 6.5-12 6.5S4 16.084 4 13v-1.674C5.978 13.97 10.703 15.5 16 15.5s10.022-1.53 12-4.174V13zm0 5.5c0 3.084-4.944 6.5-12 6.5S4 21.584 4 18.5v-1.674C5.978 20.47 10.703 22 16 22s10.022-1.53 12-4.174V18.5zM16 4c7.056 0 12 3.416 12 6.5S23.056 17 16 17 4 13.584 4 10.5 8.944 4 16 4z"/>
-                </svg>
-              }
-              @case ('search') {
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="36" height="36" aria-hidden="true">
-                  <path d="M29 27.586l-7.552-7.552A11.018 11.018 0 1027 16a10.936 10.936 0 00-2.332 6.834l.027.166zM5 16a9 9 0 119 9 9.01 9.01 0 01-9-9z"/>
-                  <path d="M14 10h2v2h-2zM14 14h2v6h-2z"/>
-                </svg>
-              }
-              @case ('warning') {
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="36" height="36" aria-hidden="true">
-                  <path d="M16 2a14 14 0 100 28A14 14 0 0016 2zm-1 6h2v11h-2V8zm1 16a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/>
-                </svg>
-              }
-              @case ('shield') {
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="36" height="36" aria-hidden="true">
-                  <path d="M16 2L4 7v10c0 7.732 5.144 13.836 12 15.942C22.856 30.836 28 24.732 28 17V7L16 2zm10 15c0 6.304-4.028 11.49-10 13.78C10.028 28.49 6 23.304 6 17V8.276l10-3.942 10 3.942V17z"/>
-                  <path d="M14 21.414l-4.707-4.707 1.414-1.414L14 18.586l7.293-7.293 1.414 1.414L14 21.414z"/>
-                </svg>
-              }
-            }
+        <div [class]="'step-wrapper step-' + step.number" appReveal>
+          <div class="bubble-container">
+            <app-badge [variant]="'default'" customClass="step-bubble">
+              {{ step.bubble }}
+            </app-badge>
+            <div class="bubble-line"></div>
           </div>
-          <div>
-            <p class="step-title">{{ step.title }}</p>
-            <p class="step-desc">{{ step.description }}</p>
-          </div>
-          <app-badge [variant]="step.number === '01' ? 'primary' : step.number === '02' ? 'warning' : step.number === '03' ? 'danger' : 'success'" customClass="step-bubble">
-            {{ step.bubble }}
-          </app-badge>
-        </app-card>
+          
+          <app-card [class]="'step-card ' + step.colorClass + ' ' + step.delayClass">
+            <span [class]="'step-number ' + step.colorClass">{{ step.number }}</span>
+            <div [class]="'step-icon ' + step.colorClass">
+              <lucide-icon [img]="step.iconObj" [strokeWidth]="3" [size]="140"></lucide-icon>
+            </div>
+            <div class="step-text">
+              <p class="step-title">{{ step.title }}</p>
+              <p class="step-desc">{{ step.description }}</p>
+            </div>
+          </app-card>
+        </div>
       }
     </div>
   </div>

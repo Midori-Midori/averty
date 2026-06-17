@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './social-button.component.scss'
 })
 export class SocialButtonComponent {
-  @Input() provider: 'google' | 'facebook' | 'email' | string = 'google';
+  @Input() provider: 'google' | 'apple' | 'facebook' | 'email' | string = 'google';
   @Input() type: 'button' | 'submit' = 'button';
   @Input() disabled = false;
   @Input() label = '';
