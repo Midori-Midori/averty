@@ -133,10 +133,13 @@
   border-radius: 20px;
   box-shadow: 0 12px 40px rgba(0,0,0,0.06);
   padding: 48px 56px; /* Extra padding for spaciousness */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr;
+  gap: 56px;
+  align-items: center;
+  text-align: left;
+  
   transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .3s ease, border-color .3s ease, background-color .3s ease;
 }
 
@@ -157,52 +160,111 @@
   background: rgba(255, 255, 255, 0.92) !important;
 }
 
+/* Card Info Side */
+.card-info-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
 /* Card Header */
 .card-header {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-bottom: 20px;
   align-items: flex-start;
 }
 
 .card-title {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
 }
 
 .card-value {
-  font-size: 40px; /* Slightly larger heading value */
-  font-weight: 600;
+  font-size: 48px; /* Bigger metric display */
+  font-weight: 700;
   color: var(--dark);
   line-height: 1;
 }
 
-/* Card Content (Chart Container) */
-.card-content {
-  width: 100%;
-  height: 240px; /* Increased SVG height space */
+/* Card Body Content */
+.card-body {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-
-/* Card Footer */
-.card-footer {
-  width: 100%;
-  margin-top: auto;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .card-description {
-  font-size: 14px;
-  color: var(--mid);
-  opacity: 0.75;
-  line-height: 1.45;
+  font-size: 14.5px;
+  color: var(--dark);
+  opacity: 0.85;
+  line-height: 1.55;
+  
+  strong {
+    color: var(--dark);
+    font-weight: 600;
+  }
+}
+
+:host-context([data-colors-mode="light"]) .card-description {
+  opacity: 0.95;
+}
+
+.card-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.45;
+    
+    strong {
+      color: var(--dark);
+      font-weight: 500;
+    }
+    
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #3B82F6;
+      font-size: 15px;
+      line-height: 1;
+    }
+  }
+}
+
+.color-red .card-highlights li::before {
+  color: #ff4d4d;
+}
+
+.color-orange .card-highlights li::before {
+  color: #FF8800;
+}
+
+.color-green .card-highlights li::before {
+  color: #22A655;
+}
+
+/* Card Chart Side */
+.card-chart-side {
+  width: 100%;
+  height: 280px; /* Increased SVG height space on desktop */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ── SVG Chart Elements ── */
@@ -213,7 +275,7 @@
   
   /* Constrain charting dimensions in wide cards to keep them elegant */
   &.radial-chart {
-    max-width: 260px;
+    max-width: 280px;
   }
   &.bar-chart, &.area-chart, &.risk-chart {
     max-width: 620px;
@@ -425,12 +487,13 @@
   .stat-card {
     flex: 0 0 980px; /* Scale slightly to 980px on standard screens */
     width: 980px;
-    padding: 44px 52px;
+    padding: 40px 48px;
+    gap: 40px;
     min-height: 460px;
   }
 }
 
-/* Medium Tablets & Small Desktops (Width 768px to 1080px) */
+/* Medium Tablets & Small Desktops (Width 768px to 1080px) - Collapse to Single Column */
 @media (max-width: 1080px) {
   .stats-inner {
     padding: 0 24px;
@@ -448,20 +511,38 @@
   }
 
   .stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 32px;
     flex: 0 0 780px;
     width: 780px;
-    min-height: 430px;
-    padding: 36px 32px;
+    min-height: auto;
+    padding: 40px 36px;
+    
+    .card-chart-side {
+      height: 240px;
+    }
   }
 }
 
 /* Small Tablets / Large Mobile (Width 576px to 840px) */
 @media (max-width: 840px) {
   .stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 28px;
     flex: 0 0 600px;
     width: 600px;
-    min-height: 400px;
-    padding: 32px 28px;
+    min-height: auto;
+    padding: 36px 28px;
+    
+    .card-chart-side {
+      height: 220px;
+    }
   }
 }
 
@@ -487,12 +568,29 @@
   }
 
   .stat-card {
-    flex: 0 0 88vw; /* Takes up 88% of screen width so next is visible but inactive */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    flex: 0 0 88vw;
     width: 88vw;
     max-width: 460px;
-    min-height: 360px;
+    min-height: auto;
     padding: 28px 20px;
     
+    .card-value {
+      font-size: 36px; /* Scale value size down for mobile */
+    }
+    
+    .card-description {
+      font-size: 13.5px;
+    }
+    
+    .card-chart-side {
+      height: 200px;
+    }
+
     .chart-svg {
       max-width: 100%;
     }
@@ -509,6 +607,14 @@
     flex: 0 0 90vw;
     width: 90vw;
     padding: 24px 16px;
-    min-height: 330px;
+    gap: 20px;
+    
+    .card-value {
+      font-size: 32px;
+    }
+    
+    .card-chart-side {
+      height: 180px;
+    }
   }
 }

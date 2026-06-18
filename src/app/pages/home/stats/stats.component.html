@@ -12,7 +12,7 @@
     <!-- Section Header -->
     <div class="section-header" appReveal>
       <h2 class="section-title">Safety Metrics That Matter</h2>
-      <p class="section-desc">Real-time insights designed to help drivers react sooner and avoid collisions.</p>
+      <p class="section-desc">Real-time highway analytics designed to counteract aggressive driving behaviors and reduce response latency.</p>
     </div>
 
     <!-- Horizontal Scroll Container -->
@@ -20,12 +20,23 @@
 
       <!-- Card 1: Rear-End Collisions (Donut/Radial Chart) -->
       <div class="stat-card color-red" appReveal>
-        <div class="card-header">
-          <span class="card-title">Accident Severity</span>
-          <h3 class="card-value">43%</h3>
+        <div class="card-info-side">
+          <div class="card-header">
+            <span class="card-title">Crash Severity & Impact</span>
+            <h3 class="card-value">43%</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-description">
+              According to NHTSA, rear-end collisions represent <strong>43% of all highway crashes</strong>. Speeding exponentially increases impact energy, reducing safety system effectiveness and leaving drivers with milliseconds to respond.
+            </p>
+            <ul class="card-highlights">
+              <li><strong>NHTSA Fact:</strong> Speeding is a factor in 29% of all traffic fatalities.</li>
+              <li><strong>Aggressive Behavior:</strong> Driving too fast for road conditions is a leading cause.</li>
+            </ul>
+          </div>
         </div>
         
-        <div class="card-content">
+        <div class="card-chart-side">
           <!-- SVG Radial Chart -->
           <svg viewBox="0 0 200 200" class="chart-svg radial-chart">
             <circle cx="100" cy="100" r="70" class="chart-radial-track" />
@@ -34,20 +45,27 @@
             <text x="100" y="128" text-anchor="middle" class="chart-inner-lbl">Freeway Crashes</text>
           </svg>
         </div>
-
-        <div class="card-footer">
-          <p class="card-description">Rear-end collisions are the leading crash type on highways.</p>
-        </div>
       </div>
 
       <!-- Card 2: Alert Delivery (Bar Chart) - Highlighted -->
       <div class="stat-card color-blue highlighted" appReveal>
-        <div class="card-header">
-          <span class="card-title">System Latency</span>
-          <h3 class="card-value">&lt;2.0s</h3>
+        <div class="card-info-side">
+          <div class="card-header">
+            <span class="card-title">Alert Latency vs. Stopping Time</span>
+            <h3 class="card-value">&lt;2.0s</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-description">
+              Averty delivers warning signals in <strong>less than 2 seconds</strong>. At highway speeds, every fraction of a second saved translates directly to shorter stopping distances and lives saved.
+            </p>
+            <ul class="card-highlights">
+              <li><strong>Speed Factor:</strong> At 70 mph, a vehicle covers 103 feet every single second.</li>
+              <li><strong>Standard Latency:</strong> Traditional GPS alerts take 10+ seconds to propagate.</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="card-content">
+        <div class="card-chart-side">
           <!-- SVG Bar Chart -->
           <svg viewBox="0 0 300 200" class="chart-svg bar-chart">
             <g class="chart-gridlines">
@@ -80,20 +98,27 @@
             </g>
           </svg>
         </div>
-
-        <div class="card-footer">
-          <p class="card-description">Warnings reach nearby drivers almost instantly.</p>
-        </div>
       </div>
 
       <!-- Card 3: Warning Distance (Area Chart) -->
       <div class="stat-card color-orange" appReveal>
-        <div class="card-header">
-          <span class="card-title">Warning Range</span>
-          <h3 class="card-value">1.2 mi</h3>
+        <div class="card-info-side">
+          <div class="card-header">
+            <span class="card-title">Proactive Braking Zones</span>
+            <h3 class="card-value">1.2 mi</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-description">
+              Our safety buffer zone scales dynamically with highway speeds. A <strong>1.2-mile warning range</strong> gives drivers up to <strong>60 seconds of reaction buffer</strong> to decelerate before encountering heavy traffic.
+            </p>
+            <ul class="card-highlights">
+              <li><strong>Dynamic Buffer:</strong> Scales automatically to handle aggressive driving.</li>
+              <li><strong>Visibility Proof:</strong> Provides safety alerts far beyond physical line of sight.</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="card-content">
+        <div class="card-chart-side">
           <!-- SVG Area Chart -->
           <svg viewBox="0 0 300 200" class="chart-svg area-chart">
             <defs>
@@ -133,20 +158,27 @@
             </g>
           </svg>
         </div>
-
-        <div class="card-footer">
-          <p class="card-description">Safety buffer zone scales dynamically with highway speeds.</p>
-        </div>
       </div>
 
       <!-- Card 4: Risk Levels (Step-Block Chart) -->
       <div class="stat-card color-green" appReveal>
-        <div class="card-header">
-          <span class="card-title">Danger Classification</span>
-          <h3 class="card-value">4 Levels</h3>
+        <div class="card-info-side">
+          <div class="card-header">
+            <span class="card-title">Risk Tier Analytics</span>
+            <h3 class="card-value">4 Levels</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-description">
+              Averty classifies roadway threat levels in real-time. By tracking sudden deceleration, lane drift, and speed differentials, the system filters out noise to prioritize immediate safety warnings.
+            </p>
+            <ul class="card-highlights">
+              <li><strong>Road Rage & Aggression:</strong> Identifies sudden lane weaving and tailgating.</li>
+              <li><strong>Filtering:</strong> Escalates alerts only when a verified threat is detected.</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="card-content">
+        <div class="card-chart-side">
           <!-- SVG Risk Blocks Chart -->
           <svg viewBox="0 0 300 200" class="chart-svg risk-chart">
             <g class="risk-blocks" transform="translate(30, 45)">
@@ -180,10 +212,6 @@
             <circle cx="210" cy="100" r="4" class="chart-point red" />
             <text x="220" y="104" class="chart-risk-label">Trigger Point</text>
           </svg>
-        </div>
-
-        <div class="card-footer">
-          <p class="card-description">Immediate status updates ranging from normal flow to alert states.</p>
         </div>
       </div>
 
