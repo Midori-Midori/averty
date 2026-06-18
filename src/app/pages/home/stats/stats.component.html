@@ -2,7 +2,7 @@
 <section class="stats" id="features">
   <div class="stats-bg"></div>
 
-  <!-- Background Blobs -->
+  <!-- Background Glow Blobs -->
   <div class="stats-blob stats-blob-left"></div>
   <div class="stats-blob stats-blob-center"></div>
   <div class="stats-blob stats-blob-right"></div>
@@ -15,42 +15,178 @@
       <p class="section-desc">Real-time insights designed to help drivers react sooner and avoid collisions.</p>
     </div>
 
-    <!-- Grid / Carousel Container -->
-    <div class="stats-grid swiper">
-      <div class="swiper-wrapper">
-        @for (stat of stats(); track stat.label; let i = $index) {
-          <div class="swiper-slide">
-            <div [class]="'stat-card ' + stat.colorClass + (stat.highlighted ? ' highlighted' : '') + (i > 0 ? ' delay-' + i : '')" appReveal>
-              
-              <!-- Icon -->
-              <div class="stat-icon-wrapper">
-                <lucide-icon [img]="stat.icon" class="stat-icon"></lucide-icon>
-              </div>
+    <!-- Horizontal Scroll Container -->
+    <div class="stats-grid">
 
-              <!-- Number -->
-              <div class="stat-number">
-                <span class="stat-value">{{ stat.value }}</span>
-                <span class="stat-unit">{{ stat.unit }}</span>
-              </div>
+      <!-- Card 1: Rear-End Collisions (Donut/Radial Chart) -->
+      <div class="stat-card color-red" appReveal>
+        <div class="card-header">
+          <span class="card-title">Accident Severity</span>
+          <h3 class="card-value">43%</h3>
+        </div>
+        
+        <div class="card-content">
+          <!-- SVG Radial Chart -->
+          <svg viewBox="0 0 200 200" class="chart-svg radial-chart">
+            <circle cx="100" cy="100" r="70" class="chart-radial-track" />
+            <circle cx="100" cy="100" r="70" class="chart-radial-progress red" stroke-dasharray="439.8" stroke-dashoffset="250.7" stroke-linecap="round" transform="rotate(-90 100 100)" />
+            <text x="100" y="98" text-anchor="middle" class="chart-inner-val">43%</text>
+            <text x="100" y="128" text-anchor="middle" class="chart-inner-lbl">Freeway Crashes</text>
+          </svg>
+        </div>
 
-              <!-- Title -->
-              <h3 class="stat-title">{{ stat.label }}</h3>
-
-              <!-- Progress Bar -->
-              @if (stat.progress) {
-                <div class="stat-progress-container">
-                  <div class="stat-progress-bar" [style.width.%]="stat.progress"></div>
-                </div>
-              }
-
-              <!-- Description -->
-              <p class="stat-description">{{ stat.description }}</p>
-
-            </div>
-          </div>
-        }
+        <div class="card-footer">
+          <p class="card-description">Rear-end collisions are the leading crash type on highways.</p>
+        </div>
       </div>
-      <div class="swiper-pagination"></div>
+
+      <!-- Card 2: Alert Delivery (Bar Chart) - Highlighted -->
+      <div class="stat-card color-blue highlighted" appReveal>
+        <div class="card-header">
+          <span class="card-title">System Latency</span>
+          <h3 class="card-value">&lt;2.0s</h3>
+        </div>
+
+        <div class="card-content">
+          <!-- SVG Bar Chart -->
+          <svg viewBox="0 0 300 200" class="chart-svg bar-chart">
+            <g class="chart-gridlines">
+              <line x1="40" y1="40" x2="280" y2="40" />
+              <line x1="40" y1="90" x2="280" y2="90" />
+              <line x1="40" y1="140" x2="280" y2="140" />
+              <line x1="40" y1="170" x2="280" y2="170" class="baseline" />
+            </g>
+
+            <g class="chart-labels Y-axis">
+              <text x="30" y="45" text-anchor="end">12s</text>
+              <text x="30" y="95" text-anchor="end">6s</text>
+              <text x="30" y="145" text-anchor="end">2s</text>
+              <text x="30" y="175" text-anchor="end">0s</text>
+            </g>
+
+            <g class="chart-bars">
+              <!-- GPS Apps -->
+              <rect x="65" y="40" width="28" height="130" rx="4" class="bar-other" />
+              <!-- Cellular Broadcast -->
+              <rect x="135" y="115" width="28" height="55" rx="4" class="bar-other" />
+              <!-- Averty -->
+              <rect x="205" y="150" width="28" height="20" rx="4" class="bar-active" />
+            </g>
+
+            <g class="chart-labels X-axis">
+              <text x="79" y="192" text-anchor="middle">GPS</text>
+              <text x="149" y="192" text-anchor="middle">Cellular</text>
+              <text x="219" y="192" text-anchor="middle">Averty</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="card-footer">
+          <p class="card-description">Warnings reach nearby drivers almost instantly.</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Warning Distance (Area Chart) -->
+      <div class="stat-card color-orange" appReveal>
+        <div class="card-header">
+          <span class="card-title">Warning Range</span>
+          <h3 class="card-value">1.2 mi</h3>
+        </div>
+
+        <div class="card-content">
+          <!-- SVG Area Chart -->
+          <svg viewBox="0 0 300 200" class="chart-svg area-chart">
+            <defs>
+              <linearGradient id="areaGradStatsScroll" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FF8800" stop-opacity="0.25" />
+                <stop offset="100%" stop-color="#FF8800" stop-opacity="0.0" />
+              </linearGradient>
+            </defs>
+
+            <g class="chart-gridlines">
+              <line x1="40" y1="40" x2="280" y2="40" />
+              <line x1="40" y1="90" x2="280" y2="90" />
+              <line x1="40" y1="140" x2="280" y2="140" />
+              <line x1="40" y1="170" x2="280" y2="170" class="baseline" />
+            </g>
+
+            <g class="chart-labels Y-axis">
+              <text x="30" y="45" text-anchor="end">1.5mi</text>
+              <text x="30" y="95" text-anchor="end">1.0mi</text>
+              <text x="30" y="145" text-anchor="end">0.5mi</text>
+              <text x="30" y="175" text-anchor="end">0mi</text>
+            </g>
+
+            <!-- Area Fill -->
+            <path d="M 40 170 C 90 160, 140 115, 200 90 C 240 70, 260 50, 280 40 L 280 170 Z" fill="url(#areaGradStatsScroll)" />
+
+            <!-- Line Path -->
+            <path d="M 40 170 C 90 160, 140 115, 200 90 C 240 70, 260 50, 280 40" fill="none" class="chart-line-path orange" />
+
+            <!-- Data point dot -->
+            <circle cx="280" cy="40" r="5" class="chart-point orange" />
+
+            <g class="chart-labels X-axis">
+              <text x="40" y="192" text-anchor="middle">30mph</text>
+              <text x="160" y="192" text-anchor="middle">60mph</text>
+              <text x="280" y="192" text-anchor="middle">90mph</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="card-footer">
+          <p class="card-description">Safety buffer zone scales dynamically with highway speeds.</p>
+        </div>
+      </div>
+
+      <!-- Card 4: Risk Levels (Step-Block Chart) -->
+      <div class="stat-card color-green" appReveal>
+        <div class="card-header">
+          <span class="card-title">Danger Classification</span>
+          <h3 class="card-value">4 Levels</h3>
+        </div>
+
+        <div class="card-content">
+          <!-- SVG Risk Blocks Chart -->
+          <svg viewBox="0 0 300 200" class="chart-svg risk-chart">
+            <g class="risk-blocks" transform="translate(30, 45)">
+              <!-- Normal -->
+              <g class="risk-step step-normal">
+                <rect x="0" y="40" width="52" height="40" rx="6" />
+                <text x="26" y="98" text-anchor="middle">Normal</text>
+              </g>
+              
+              <!-- Caution -->
+              <g class="risk-step step-caution">
+                <rect x="60" y="28" width="52" height="52" rx="6" />
+                <text x="86" y="98" text-anchor="middle">Caution</text>
+              </g>
+
+              <!-- Warning -->
+              <g class="risk-step step-warning">
+                <rect x="120" y="16" width="52" height="64" rx="6" />
+                <text x="146" y="98" text-anchor="middle">Warning</text>
+              </g>
+
+              <!-- Danger -->
+              <g class="risk-step step-danger active">
+                <rect x="180" y="0" width="52" height="80" rx="6" />
+                <text x="206" y="98" text-anchor="middle">Danger</text>
+              </g>
+            </g>
+
+            <!-- Dotted Threshold Line -->
+            <path d="M 30 160 C 90 150, 150 125, 210 100" fill="none" class="chart-line-path dash" />
+            <circle cx="210" cy="100" r="4" class="chart-point red" />
+            <text x="220" y="104" class="chart-risk-label">Trigger Point</text>
+          </svg>
+        </div>
+
+        <div class="card-footer">
+          <p class="card-description">Immediate status updates ranging from normal flow to alert states.</p>
+        </div>
+      </div>
+
     </div>
 
   </div>

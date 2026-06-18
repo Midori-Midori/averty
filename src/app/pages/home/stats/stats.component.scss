@@ -1,7 +1,7 @@
 .stats {
   position: relative;
   padding: 100px 0;
-  overflow: hidden; /* Prevent blob bleed */
+  overflow: hidden; /* Clip blobs */
 }
 
 .stats-bg {
@@ -25,7 +25,7 @@
   width: 500px;
   height: 500px;
   background: #00D9FF;
-  opacity: 0.10;
+  opacity: 0.08;
   filter: blur(180px);
 }
 
@@ -35,7 +35,7 @@
   width: 600px;
   height: 600px;
   background: #6C63FF;
-  opacity: 0.15;
+  opacity: 0.12;
   filter: blur(200px);
 }
 
@@ -45,7 +45,7 @@
   width: 400px;
   height: 400px;
   background: #FF7A18;
-  opacity: 0.08;
+  opacity: 0.06;
   filter: blur(160px);
 }
 
@@ -81,27 +81,58 @@
   line-height: 1.5;
 }
 
-/* ── Desktop: Grid layout (Swiper not active) ── */
+/* ── Horizontal Scroll Container with Snap ── */
 .stats-grid {
-  width: 100%;
+  display: flex;
+  gap: 48px; /* Extra spacious gap for 1200px cards */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory; /* Snap horizontally */
+  padding: 16px 48px 24px; /* Space for hover transitions and scrollbar */
+  margin: 0 -48px; /* Bleed scroll container to edges of screen */
+  scroll-padding: 0 48px;
   
-  .swiper-wrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    justify-content: center;
+  /* Hide standard scrollbar on Firefox & IE */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 141, 255, 0.25) transparent;
+  -ms-overflow-style: none;
+ 
+  /* Custom Webkit scrollbar (Chrome, Safari, Edge) */
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 0 48px; /* Matches screen margins */
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(124, 141, 255, 0.2);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(124, 141, 255, 0.45);
   }
 }
-
+ 
+/* ── Cards Structure ── */
 .stat-card {
-  width: 100%;
-  min-height: 380px;
+  flex: 0 0 1200px; /* Massive 1200px width on desktop */
+  width: 1200px;
+  min-height: 480px; /* Slightly taller for proportional look with 1200px width */
+  scroll-snap-align: center; /* Snap element to center of container */
+  scroll-snap-stop: always;
+  
   backdrop-filter: blur(8px);
   background: var(--glass2);
   border: 1px solid var(--border);
   border-radius: 20px;
   box-shadow: 0 12px 40px rgba(0,0,0,0.06);
-  padding: 40px 32px;
+  padding: 48px 56px; /* Extra padding for spaciousness */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -113,7 +144,7 @@
   transform: translateY(-8px);
 }
 
-/* ── Highlighted Focal Card ── */
+/* Highlighted Focal Card */
 .stat-card.highlighted {
   border: 1px solid #3B82F6 !important;
   box-shadow: 0 0 25px rgba(59, 130, 246, 0.3) !important;
@@ -126,223 +157,358 @@
   background: rgba(255, 255, 255, 0.92) !important;
 }
 
-/* ── Lucide Icon Wrapper ── */
-.stat-icon-wrapper {
-  margin-bottom: 24px;
+/* Card Header */
+.card-header {
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+  align-items: flex-start;
 }
 
-.stat-icon {
-  width: 32px;
-  height: 32px;
-  color: #7C8DFF;
-  opacity: 0.7;
+.card-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* ── Number Typography ── */
-.stat-number {
-  display: flex;
-  align-items: baseline;
-  gap: 2px;
-  margin-bottom: 12px;
-}
-
-.stat-value {
-  font-size: 48px;
+.card-value {
+  font-size: 40px; /* Slightly larger heading value */
   font-weight: 600;
   color: var(--dark);
   line-height: 1;
 }
 
-.stat-unit {
-  font-size: 24px;
-  font-weight: 600;
-  color: #7C8DFF;
-}
-
-/* ── Card Title ── */
-.stat-title {
-  font-size: 24px;
-  font-weight: 500;
-  color: var(--dark);
-  margin-bottom: 16px;
-  line-height: 1.25;
-}
-
-/* ── Dashboard Progress Line ── */
-.stat-progress-container {
+/* Card Content (Chart Container) */
+.card-content {
   width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 3px;
+  height: 240px; /* Increased SVG height space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 24px;
-  overflow: hidden;
 }
 
-.stat-progress-bar {
-  height: 100%;
-  background: #7C8DFF;
-  border-radius: 3px;
-  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+/* Card Footer */
+.card-footer {
+  width: 100%;
+  margin-top: auto;
 }
 
-:host-context([data-colors-mode="light"]) {
-  .stat-progress-container {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-
-/* ── Card Description ── */
-.stat-description {
-  font-size: 16px;
+.card-description {
+  font-size: 14px;
   color: var(--mid);
-  opacity: 0.7;
+  opacity: 0.75;
   line-height: 1.45;
-  margin-top: auto; /* Push to bottom */
 }
 
-/* ── Card Color-Specific Hovers ── */
-.stat-card.color-red:not(.highlighted):hover {
-  border-color: rgba(255, 77, 77, 0.45);
-  box-shadow: 0 20px 48px rgba(255, 77, 77, 0.12);
-}
-
-.stat-card.color-blue:not(.highlighted):hover {
-  border-color: rgba(51, 153, 255, 0.45);
-  box-shadow: 0 20px 48px rgba(51, 153, 255, 0.12);
-}
-
-.stat-card.color-orange:not(.highlighted):hover {
-  border-color: rgba(255, 153, 0, 0.45);
-  box-shadow: 0 20px 48px rgba(255, 153, 0, 0.12);
-}
-
-.stat-card.color-green:not(.highlighted):hover {
-  border-color: rgba(46, 204, 113, 0.45);
-  box-shadow: 0 20px 48px rgba(46, 204, 113, 0.12);
-}
-
-:host-context([data-colors-mode="dark"]) {
-  .stat-card.color-red:not(.highlighted):hover {
-    border-color: rgba(255, 77, 77, 0.5);
-    box-shadow: 0 12px 40px rgba(255, 77, 77, 0.2);
+/* ── SVG Chart Elements ── */
+.chart-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  
+  /* Constrain charting dimensions in wide cards to keep them elegant */
+  &.radial-chart {
+    max-width: 260px;
   }
-  .stat-card.color-blue:not(.highlighted):hover {
-    border-color: rgba(51, 153, 255, 0.5);
-    box-shadow: 0 12px 40px rgba(51, 153, 255, 0.2);
-  }
-  .stat-card.color-orange:not(.highlighted):hover {
-    border-color: rgba(255, 153, 0, 0.5);
-    box-shadow: 0 12px 40px rgba(255, 153, 0, 0.2);
-  }
-  .stat-card.color-green:not(.highlighted):hover {
-    border-color: rgba(46, 204, 113, 0.5);
-    box-shadow: 0 12px 40px rgba(46, 204, 113, 0.2);
+  &.bar-chart, &.area-chart, &.risk-chart {
+    max-width: 620px;
   }
 }
 
-/* ── Large tablet ── */
-@media (max-width: 1200px) {
+/* Gridlines */
+.chart-gridlines line {
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 1;
+  
+  &.baseline {
+    stroke: rgba(255, 255, 255, 0.15);
+  }
+}
+
+:host-context([data-colors-mode="light"]) .chart-gridlines line {
+  stroke: rgba(0, 0, 0, 0.06);
+  
+  &.baseline {
+    stroke: rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Axis Labels */
+.chart-labels text {
+  font-family: var(--font);
+  font-size: 10px;
+  fill: var(--muted);
+  opacity: 0.85;
+}
+
+/* Radial Donut Progress Chart */
+.chart-radial-track {
+  fill: transparent;
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-width: 14;
+}
+
+:host-context([data-colors-mode="light"]) .chart-radial-track {
+  stroke: rgba(0, 0, 0, 0.05);
+}
+
+.chart-radial-progress {
+  fill: transparent;
+  stroke-width: 14;
+  
+  &.red {
+    stroke: #ff4d4d;
+    filter: drop-shadow(0 0 6px rgba(255, 77, 77, 0.3));
+  }
+}
+
+.chart-inner-val {
+  font-family: var(--font);
+  font-size: 32px;
+  font-weight: 600;
+  fill: var(--dark);
+}
+
+.chart-inner-lbl {
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 500;
+  fill: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Bar Chart */
+.bar-other {
+  fill: rgba(255, 255, 255, 0.08);
+  transition: fill 0.2s ease;
+  
+  &:hover {
+    fill: rgba(255, 255, 255, 0.15);
+  }
+}
+
+:host-context([data-colors-mode="light"]) .bar-other {
+  fill: rgba(0, 0, 0, 0.06);
+  
+  &:hover {
+    fill: rgba(0, 0, 0, 0.12);
+  }
+}
+
+.bar-active {
+  fill: #3B82F6;
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.45));
+}
+
+/* Area Chart */
+.chart-line-path {
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  
+  &.orange {
+    stroke: #FF8800;
+    filter: drop-shadow(0 2px 6px rgba(255, 136, 0, 0.35));
+  }
+  
+  &.dash {
+    stroke-dasharray: 4 4;
+    stroke: rgba(255, 255, 255, 0.18);
+  }
+}
+
+:host-context([data-colors-mode="light"]) .chart-line-path.dash {
+  stroke: rgba(0, 0, 0, 0.18);
+}
+
+.chart-point {
+  stroke-width: 2;
+  
+  &.orange {
+    fill: #FF8800;
+    stroke: #0b0d18;
+  }
+  
+  &.red {
+    fill: #d00000;
+    stroke: #0b0d18;
+    filter: drop-shadow(0 0 5px #d00000);
+  }
+}
+
+:host-context([data-colors-mode="light"]) .chart-point {
+  &.orange {
+    stroke: #ffffff;
+  }
+  &.red {
+    stroke: #ffffff;
+  }
+}
+
+/* Risk Steps Chart */
+.risk-step rect {
+  fill: rgba(255, 255, 255, 0.03);
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 1;
+}
+
+:host-context([data-colors-mode="light"]) .risk-step rect {
+  fill: rgba(0, 0, 0, 0.02);
+  stroke: rgba(0, 0, 0, 0.06);
+}
+
+.risk-step text {
+  font-family: var(--font);
+  font-size: 10px;
+  fill: var(--muted);
+  font-weight: 500;
+}
+
+.risk-step.step-normal rect {
+  fill: rgba(34, 166, 85, 0.04);
+  stroke: rgba(34, 166, 85, 0.18);
+}
+
+.risk-step.step-caution rect {
+  fill: rgba(245, 188, 17, 0.04);
+  stroke: rgba(245, 188, 17, 0.18);
+}
+
+.risk-step.step-warning rect {
+  fill: rgba(255, 136, 0, 0.04);
+  stroke: rgba(255, 136, 0, 0.18);
+}
+
+.risk-step.step-danger.active rect {
+  fill: rgba(208, 0, 0, 0.15);
+  stroke: #d00000;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 6px rgba(208, 0, 0, 0.35));
+}
+
+.risk-step.step-danger.active text {
+  fill: #ff4d4d;
+  font-weight: 600;
+}
+
+.chart-risk-label {
+  font-family: var(--font);
+  font-size: 10px;
+  fill: #ff4d4d;
+  font-weight: 500;
+}
+
+/* ── Responsive Viewports ── */
+
+/* Large Tablets & Standard Desktop scaling margins */
+@media (max-width: 1380px) {
   .stats-inner {
     padding: 0 32px;
   }
+  
   .stats-grid {
-    .swiper-wrapper {
-      gap: 20px;
+    padding: 16px 32px 24px;
+    margin: 0 -32px;
+    scroll-padding: 0 32px;
+    
+    &::-webkit-scrollbar-track {
+      margin: 0 32px;
     }
   }
+  
   .stat-card {
-    padding: 32px 24px;
-    min-height: 360px;
+    flex: 0 0 980px; /* Scale slightly to 980px on standard screens */
+    width: 980px;
+    padding: 44px 52px;
+    min-height: 460px;
   }
 }
 
-/* ── Tablet Layout (Grid, Swiper not active) ── */
-@media (max-width: 991px) {
+/* Medium Tablets & Small Desktops (Width 768px to 1080px) */
+@media (max-width: 1080px) {
+  .stats-inner {
+    padding: 0 24px;
+  }
+  
   .stats-grid {
-    .swiper-wrapper {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+    padding: 16px 24px 20px;
+    margin: 0 -24px;
+    scroll-padding: 0 24px;
+    gap: 24px;
+    
+    &::-webkit-scrollbar-track {
+      margin: 0 24px;
     }
   }
 
   .stat-card {
-    min-height: 320px;
-    padding: 32px 24px;
-  }
-
-  .stat-value {
-    font-size: 44px;
-  }
-
-  .stat-title {
-    font-size: 22px;
+    flex: 0 0 780px;
+    width: 780px;
+    min-height: 430px;
+    padding: 36px 32px;
   }
 }
 
-/* ── Mobile Layout (Carousel Active) ── */
-@media (max-width: 767px) {
+/* Small Tablets / Large Mobile (Width 576px to 840px) */
+@media (max-width: 840px) {
+  .stat-card {
+    flex: 0 0 600px;
+    width: 600px;
+    min-height: 400px;
+    padding: 32px 28px;
+  }
+}
+
+/* Mobile Devices (Width under 640px) */
+@media (max-width: 640px) {
   .stats {
-    overflow: hidden;
     padding: 60px 0;
   }
 
-  .stats-grid.swiper {
-    overflow: hidden;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
+  .stats-inner {
+    padding: 0 20px;
   }
 
   .stats-grid {
-    .swiper-wrapper {
-      display: flex !important;
-      flex-wrap: nowrap !important;
-      grid-template-columns: none !important;
-      gap: 0 !important;
-      align-items: stretch;
-      justify-content: flex-start !important;
+    padding: 16px 20px 16px;
+    margin: 0 -20px;
+    scroll-padding: 0 20px;
+    gap: 16px;
+    
+    &::-webkit-scrollbar-track {
+      margin: 0 20px;
     }
   }
 
-  .swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .stat-card {
-    box-sizing: border-box;
-    width: 290px;
-    max-width: 290px;
-    margin: 0 auto;
-    height: auto;
-    min-height: 340px;
-    padding: 36px 24px;
+    flex: 0 0 88vw; /* Takes up 88% of screen width so next is visible but inactive */
+    width: 88vw;
+    max-width: 460px;
+    min-height: 360px;
+    padding: 28px 20px;
     
-    /* Override GSAP animations on mobile for scroll stability */
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-  }
+    .chart-svg {
+      max-width: 100%;
+    }
 
-  .stat-value {
-    font-size: 40px;
-  }
-
-  .stat-title {
-    font-size: 20px;
+    &:hover {
+      transform: none;
+    }
   }
 }
 
-@media (max-width: 480px) {
+/* Small Mobile Screen Sizes (Width under 400px) */
+@media (max-width: 400px) {
   .stat-card {
-    width: 270px;
-    max-width: 270px;
-    padding: 32px 20px;
-    min-height: 320px;
+    flex: 0 0 90vw;
+    width: 90vw;
+    padding: 24px 16px;
+    min-height: 330px;
   }
 }
