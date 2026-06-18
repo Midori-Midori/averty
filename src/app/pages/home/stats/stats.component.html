@@ -1,20 +1,57 @@
 <!-- ══════ STATS ══════ -->
 <section class="stats" id="features">
   <div class="stats-bg"></div>
-  <div class="stats-inner swiper">
-    <div class="swiper-wrapper">
-      @for (stat of stats(); track stat.label; let i = $index) {
-        <div class="swiper-slide">
-          <div [class]="'stat-card ' + stat.colorClass + (i > 0 ? ' delay-' + i : '')" appReveal>
-            <div class="stat-number">
-              <span class="stat-value">{{ stat.value }}</span>
-              <span class="stat-unit">{{ stat.unit }}</span>
-            </div>
-            <p class="stat-label">{{ stat.label }}</p>
-          </div>
-        </div>
-      }
+
+  <!-- Background Blobs -->
+  <div class="stats-blob stats-blob-left"></div>
+  <div class="stats-blob stats-blob-center"></div>
+  <div class="stats-blob stats-blob-right"></div>
+
+  <div class="stats-inner">
+    
+    <!-- Section Header -->
+    <div class="section-header" appReveal>
+      <h2 class="section-title">Safety Metrics That Matter</h2>
+      <p class="section-desc">Real-time insights designed to help drivers react sooner and avoid collisions.</p>
     </div>
-    <div class="swiper-pagination"></div>
+
+    <!-- Grid / Carousel Container -->
+    <div class="stats-grid swiper">
+      <div class="swiper-wrapper">
+        @for (stat of stats(); track stat.label; let i = $index) {
+          <div class="swiper-slide">
+            <div [class]="'stat-card ' + stat.colorClass + (stat.highlighted ? ' highlighted' : '') + (i > 0 ? ' delay-' + i : '')" appReveal>
+              
+              <!-- Icon -->
+              <div class="stat-icon-wrapper">
+                <lucide-icon [img]="stat.icon" class="stat-icon"></lucide-icon>
+              </div>
+
+              <!-- Number -->
+              <div class="stat-number">
+                <span class="stat-value">{{ stat.value }}</span>
+                <span class="stat-unit">{{ stat.unit }}</span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="stat-title">{{ stat.label }}</h3>
+
+              <!-- Progress Bar -->
+              @if (stat.progress) {
+                <div class="stat-progress-container">
+                  <div class="stat-progress-bar" [style.width.%]="stat.progress"></div>
+                </div>
+              }
+
+              <!-- Description -->
+              <p class="stat-description">{{ stat.description }}</p>
+
+            </div>
+          </div>
+        }
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
   </div>
 </section>

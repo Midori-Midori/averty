@@ -3,5 +3,6 @@ export interface Screen {
   colorClass: string;
   mockup: string;
   desc: string;
+  icon: any; // Lucide icon type
   delayClass?: string;
 }

@@ -63,9 +63,36 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
   width: 100%;
-  max-width: 280px;
+  max-width: 300px;
+  background: rgba(20, 20, 25, 0.6); /* Dark card background */
+  border-radius: 24px;
+  padding: 40px 24px 10px; /* Added 10px padding at the bottom */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  justify-content: space-between; /* To align everything and push mockup to bottom */
+  transition: transform .3s, box-shadow .3s;
+}
+
+.screen-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Glow effect at the top of each card based on its color class */
+.screen-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: radial-gradient(circle at top, currentColor 0%, transparent 70%);
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 .alert-label {
@@ -74,6 +101,80 @@
   font-weight: 400;
   letter-spacing: 6px;
   text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.alert-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 16px;
+  height: 180px; /* Fixed height to align all cars horizontally */
+  justify-content: center;
+  width: 100%; /* Ensure it spans the card to center its children */
+}
+
+.main-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 0 20px currentColor);
+}
+
+.main-icon ::ng-deep svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.5;
+}
+
+.small-icon-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.small-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #a0a0a0;
+}
+
+.small-icon ::ng-deep svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.5;
+}
+
+.alert-desc {
+  font-size: 15px;
+  color: #ccc;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  padding: 0 16px;
+  min-height: 48px; /* So descriptions of varying lengths take same space */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the text horizontally */
+  width: 100%;
+}
+
+:host-context([data-colors-mode="dark"]) .alert-desc {
+  color: #ccc;
 }
 
 .screen-mockup {
@@ -81,29 +182,16 @@
   height: 440px;
   object-fit: contain;
   border-radius: 12px;
-  filter: drop-shadow(0 16px 40px rgba(0,0,0,0.13));
-  transition: transform .3s;
-}
-
-.screen-card:hover .screen-mockup {
-  transform: translateY(-10px) scale(1.02);
-}
-
-.alert-desc {
-  font-size: 14px;
-  color: #555;
-  text-align: center;
-  line-height: 1.5;
-}
-
-:host-context([data-colors-mode="dark"]) .alert-desc {
-  color: #999;
+  filter: drop-shadow(0 -8px 24px rgba(0,0,0,0.4));
+  margin-top: auto; /* Push it to the bottom */
+  display: block;
 }
 
 /* ── Mobile & Tablet Responsiveness ── */
 @media (max-width: 1200px) {
   .screen-card {
     width: 210px;
+    padding: 30px 16px 10px;
   }
 
   .swiper-wrapper {
@@ -174,11 +262,11 @@
     justify-content: flex-start !important;
   }
 
-  /* Standard slide effect needs full width handled by Swiper */
   .swiper-slide {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 280px !important;
   }
 
   /* Card keeps its visual size, centered inside the slide */

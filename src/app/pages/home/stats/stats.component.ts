@@ -1,14 +1,15 @@
 import { Component, signal, AfterViewInit, OnDestroy, ElementRef, inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Stat } from '../../../core/interfaces/stat.interface';
 import { RevealDirective } from '../../../shared/directives/reveal.directive';
+import { LucideAngularModule, TriangleAlert, Zap, MapPinned, Shield } from 'lucide-angular';
 import Swiper from 'swiper';
 import { Pagination } from 'swiper/modules';
 
 @Component({
   selector: 'app-stats',
   standalone: true,
-  imports: [RevealDirective],
+  imports: [CommonModule, RevealDirective, LucideAngularModule],
   templateUrl: './stats.component.html',
   styleUrl: './stats.component.scss'
 })
@@ -18,10 +19,43 @@ export class StatsComponent implements AfterViewInit, OnDestroy {
   private swiperInstance: Swiper | null = null;
 
   stats = signal<Stat[]>([
-    { value: '43', unit: '%', label: 'of freeway crashes are rear-end collisions', colorClass: 'color-red' },
-    { value: '<2', unit: 's', label: 'average alert delivery', colorClass: 'color-blue' },
-    { value: '1.2', unit: 'mi', label: 'average warning distance', colorClass: 'color-orange' },
-    { value: '4', unit: 'x', label: 'risk levels detected', colorClass: 'color-green' }
+    { 
+      value: '43', 
+      unit: '%', 
+      label: 'Rear-end collisions', 
+      description: 'Leading cause on freeways', 
+      icon: TriangleAlert, 
+      progress: 43, 
+      colorClass: 'color-red' 
+    },
+    { 
+      value: '<2', 
+      unit: 's', 
+      label: 'Alert delivery', 
+      description: 'Real-time warning system', 
+      icon: Zap, 
+      progress: 90, 
+      highlighted: true, 
+      colorClass: 'color-blue' 
+    },
+    { 
+      value: '1.2', 
+      unit: 'mi', 
+      label: 'Warning distance', 
+      description: 'Early detection range', 
+      icon: MapPinned, 
+      progress: 60, 
+      colorClass: 'color-orange' 
+    },
+    { 
+      value: '4', 
+      unit: 'x', 
+      label: 'Risk levels', 
+      description: 'Normal → Danger', 
+      icon: Shield, 
+      progress: 100, 
+      colorClass: 'color-green' 
+    }
   ]);
 
   ngAfterViewInit() {

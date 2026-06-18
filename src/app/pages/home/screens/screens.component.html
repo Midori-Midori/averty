@@ -14,10 +14,18 @@
       <div class="swiper-wrapper">
         @for (screen of screens(); track screen.label) {
           <div class="swiper-slide">
-            <div [class]="'screen-card ' + screen.delayClass" appReveal>
+            <div [class]="'screen-card ' + screen.colorClass + ' ' + screen.delayClass" appReveal>
               <p [class]="'alert-label ' + screen.colorClass">{{ screen.label }}</p>
-              <img class="screen-mockup" [src]="screen.mockup" [alt]="screen.desc">
+              
+              <div class="alert-icons">
+                <lucide-icon [img]="screen.icon" class="main-icon" [class]="screen.colorClass"></lucide-icon>
+                <div class="small-icon-wrapper">
+                  <lucide-icon [img]="carIcon" class="small-icon"></lucide-icon>
+                </div>
+              </div>
+
               <p class="alert-desc">{{ screen.desc }}</p>
+              <img class="screen-mockup" [src]="screen.mockup" [alt]="screen.desc">
             </div>
           </div>
         }

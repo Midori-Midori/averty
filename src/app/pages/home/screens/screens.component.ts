@@ -2,13 +2,14 @@ import { Component, signal, AfterViewInit, OnDestroy, ElementRef, inject, PLATFO
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Screen } from '../../../core/interfaces/screen.interface';
 import { RevealDirective } from '../../../shared/directives/reveal.directive';
+import { LucideAngularModule, Heart, TriangleAlert, Activity, CarFront } from 'lucide-angular';
 import Swiper from 'swiper';
-import { Pagination } from 'swiper/modules';
+import { Pagination, EffectCoverflow } from 'swiper/modules';
 
 @Component({
   selector: 'app-screens',
   standalone: true,
-  imports: [CommonModule, RevealDirective],
+  imports: [CommonModule, RevealDirective, LucideAngularModule],
   templateUrl: './screens.component.html',
   styleUrl: './screens.component.scss'
 })
@@ -17,10 +18,13 @@ export class ScreensComponent implements AfterViewInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   private swiperInstance: Swiper | null = null;
 
+  carIcon = CarFront;
+
   screens = signal<Screen[]>([
     {
       label: 'NORMAL',
       colorClass: 'color-green',
+      icon: Heart,
       mockup: 'assets/mockups/mockup5.png',
       desc: 'Traffic Flowing Normally',
       delayClass: 'delay-1'
@@ -28,6 +32,7 @@ export class ScreensComponent implements AfterViewInit, OnDestroy {
     {
       label: 'CAUTION',
       colorClass: 'color-caution',
+      icon: TriangleAlert,
       mockup: 'assets/mockups/mockup4.png',
       desc: 'Traffic Slowing Ahead',
       delayClass: 'delay-1'
@@ -35,6 +40,7 @@ export class ScreensComponent implements AfterViewInit, OnDestroy {
     {
       label: 'WARNING',
       colorClass: 'color-orange',
+      icon: TriangleAlert,
       mockup: 'assets/mockups/mockup3.png',
       desc: 'Sudden Speed Reduction',
       delayClass: 'delay-2'
@@ -42,6 +48,7 @@ export class ScreensComponent implements AfterViewInit, OnDestroy {
     {
       label: 'DANGER',
       colorClass: 'color-red',
+      icon: Activity,
       mockup: 'assets/mockups/mockup2.png',
       desc: 'Incident Detected — Reduce Speed Immediately',
       delayClass: 'delay-3'
@@ -77,12 +84,18 @@ export class ScreensComponent implements AfterViewInit, OnDestroy {
           // Wait for GSAP reveal animations to finish before initializing Swiper
           setTimeout(() => {
             this.swiperInstance = new Swiper(container, {
-              modules: [Pagination],
-              slidesPerView: 1,
+              modules: [Pagination, EffectCoverflow],
+              effect: 'coverflow',
+              slidesPerView: 'auto',
               centeredSlides: true,
-              spaceBetween: 30,
-              initialSlide: 0,
               grabCursor: true,
+              coverflowEffect: {
+                rotate: 25,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: false
+              },
               pagination: {
                 el: container.querySelector('.swiper-pagination'),
                 clickable: true,
