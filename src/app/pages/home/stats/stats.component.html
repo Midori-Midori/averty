@@ -39,9 +39,20 @@
         <div class="card-chart-side">
           <!-- SVG Radial Chart -->
           <svg viewBox="0 0 200 200" class="chart-svg radial-chart">
-            <circle cx="100" cy="100" r="70" class="chart-radial-track" />
-            <circle cx="100" cy="100" r="70" class="chart-radial-progress red" stroke-dasharray="439.8" stroke-dashoffset="250.7" stroke-linecap="round" transform="rotate(-90 100 100)" />
-            <text x="100" y="98" text-anchor="middle" class="chart-inner-val">43%</text>
+            <defs>
+              <linearGradient id="donutRedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FF3B30" />
+                <stop offset="100%" stop-color="#FF9500" />
+              </linearGradient>
+              <filter id="redGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#FF3B30" flood-opacity="0.5" />
+              </filter>
+            </defs>
+            <circle cx="100" cy="100" r="75" class="chart-radial-track" />
+            <!-- Radar scan dashes overlay -->
+            <circle cx="100" cy="100" r="82" class="chart-radial-dashes" />
+            <circle cx="100" cy="100" r="75" class="chart-radial-progress red" stroke="url(#donutRedGrad)" stroke-dasharray="471.2" stroke-dashoffset="268.6" stroke-linecap="round" transform="rotate(-90 100 100)" filter="url(#redGlow)" />
+            <text x="100" y="96" text-anchor="middle" class="chart-inner-val">43%</text>
             <text x="100" y="128" text-anchor="middle" class="chart-inner-lbl">Freeway Crashes</text>
           </svg>
         </div>
@@ -68,6 +79,25 @@
         <div class="card-chart-side">
           <!-- SVG Bar Chart -->
           <svg viewBox="0 0 300 200" class="chart-svg bar-chart">
+            <defs>
+              <linearGradient id="barGPSGrad" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#2a303e" />
+                <stop offset="100%" stop-color="#4a5568" />
+              </linearGradient>
+              <linearGradient id="barCellGrad" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#3b4d70" />
+                <stop offset="100%" stop-color="#5a709c" />
+              </linearGradient>
+              <linearGradient id="barAvertyGrad" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#1E3A8A" />
+                <stop offset="50%" stop-color="#3B82F6" />
+                <stop offset="100%" stop-color="#60A5FA" />
+              </linearGradient>
+              <filter id="blueGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#3B82F6" flood-opacity="0.6" />
+              </filter>
+            </defs>
+
             <g class="chart-gridlines">
               <line x1="40" y1="40" x2="280" y2="40" />
               <line x1="40" y1="90" x2="280" y2="90" />
@@ -84,11 +114,18 @@
 
             <g class="chart-bars">
               <!-- GPS Apps -->
-              <rect x="65" y="40" width="28" height="130" rx="4" class="bar-other" />
+              <rect x="65" y="40" width="28" height="130" rx="6" fill="url(#barGPSGrad)" class="bar-other" />
               <!-- Cellular Broadcast -->
-              <rect x="135" y="115" width="28" height="55" rx="4" class="bar-other" />
+              <rect x="135" y="110" width="28" height="60" rx="6" fill="url(#barCellGrad)" class="bar-other" />
               <!-- Averty -->
-              <rect x="205" y="150" width="28" height="20" rx="4" class="bar-active" />
+              <rect x="205" y="152" width="28" height="18" rx="6" fill="url(#barAvertyGrad)" class="bar-active" filter="url(#blueGlow)" />
+            </g>
+
+            <!-- Floating Values on top of bars -->
+            <g class="chart-bar-values">
+              <text x="79" y="32" text-anchor="middle" class="bar-val-lbl">12.0s</text>
+              <text x="149" y="102" text-anchor="middle" class="bar-val-lbl">6.0s</text>
+              <text x="219" y="144" text-anchor="middle" class="bar-val-lbl highlighted">1.8s</text>
             </g>
 
             <g class="chart-labels X-axis">
@@ -122,10 +159,17 @@
           <!-- SVG Area Chart -->
           <svg viewBox="0 0 300 200" class="chart-svg area-chart">
             <defs>
-              <linearGradient id="areaGradStatsScroll" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#FF8800" stop-opacity="0.25" />
+              <linearGradient id="areaGradStatsScrollUpgrade" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FF8800" stop-opacity="0.3" />
                 <stop offset="100%" stop-color="#FF8800" stop-opacity="0.0" />
               </linearGradient>
+              <linearGradient id="lineOrangeGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FF8800" />
+                <stop offset="100%" stop-color="#FF3300" />
+              </linearGradient>
+              <filter id="orangeGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#FF5500" flood-opacity="0.8" />
+              </filter>
             </defs>
 
             <g class="chart-gridlines">
@@ -143,13 +187,19 @@
             </g>
 
             <!-- Area Fill -->
-            <path d="M 40 170 C 90 160, 140 115, 200 90 C 240 70, 260 50, 280 40 L 280 170 Z" fill="url(#areaGradStatsScroll)" />
+            <path d="M 40 170 C 90 160, 140 115, 200 90 C 240 70, 260 50, 280 40 L 280 170 Z" fill="url(#areaGradStatsScrollUpgrade)" />
 
             <!-- Line Path -->
-            <path d="M 40 170 C 90 160, 140 115, 200 90 C 240 70, 260 50, 280 40" fill="none" class="chart-line-path orange" />
+            <path d="M 40 170 C 90 160, 140 115, 200 90 C 240 70, 260 50, 280 40" fill="none" stroke="url(#lineOrangeGrad)" class="chart-line-path orange" />
 
-            <!-- Data point dot -->
-            <circle cx="280" cy="40" r="5" class="chart-point orange" />
+            <!-- Sub data points -->
+            <circle cx="160" cy="105" r="4.5" class="chart-point orange-sub" />
+            <text x="160" y="93" text-anchor="middle" class="chart-pt-lbl">0.8 mi</text>
+
+            <!-- Main data point dot with double glow ring -->
+            <circle cx="280" cy="40" r="10" class="chart-point-pulse" />
+            <circle cx="280" cy="40" r="5" class="chart-point orange active-peak" filter="url(#orangeGlow)" />
+            <text x="280" y="26" text-anchor="middle" class="chart-pt-lbl active-lbl">1.2 mi</text>
 
             <g class="chart-labels X-axis">
               <text x="40" y="192" text-anchor="middle">30mph</text>
@@ -181,35 +231,77 @@
         <div class="card-chart-side">
           <!-- SVG Risk Blocks Chart -->
           <svg viewBox="0 0 300 200" class="chart-svg risk-chart">
+            <defs>
+              <linearGradient id="normalGrad" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#123d24" stop-opacity="0.2" />
+                <stop offset="100%" stop-color="#22c55e" stop-opacity="0.3" />
+              </linearGradient>
+              <linearGradient id="cautionGrad" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#3e320f" stop-opacity="0.2" />
+                <stop offset="100%" stop-color="#eab308" stop-opacity="0.3" />
+              </linearGradient>
+              <linearGradient id="warningGrad" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#4c250f" stop-opacity="0.2" />
+                <stop offset="100%" stop-color="#f97316" stop-opacity="0.3" />
+              </linearGradient>
+              <linearGradient id="dangerGrad" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#ef4444" />
+                <stop offset="100%" stop-color="#b91c1c" />
+              </linearGradient>
+              <filter id="dangerGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="5" result="blur" />
+                <feComponentTransfer in="blur" result="glow">
+                  <feFuncA type="linear" slope="1.8" />
+                </feComponentTransfer>
+                <feMerge>
+                  <feMergeNode in="glow" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
             <g class="risk-blocks" transform="translate(30, 45)">
               <!-- Normal -->
               <g class="risk-step step-normal">
-                <rect x="0" y="40" width="52" height="40" rx="6" />
+                <rect x="0" y="40" width="52" height="40" rx="8" fill="url(#normalGrad)" />
                 <text x="26" y="98" text-anchor="middle">Normal</text>
               </g>
               
+              <!-- Chevron 1 -->
+              <path d="M 54 60 L 58 60" class="risk-arrow" />
+
               <!-- Caution -->
               <g class="risk-step step-caution">
-                <rect x="60" y="28" width="52" height="52" rx="6" />
+                <rect x="60" y="28" width="52" height="52" rx="8" fill="url(#cautionGrad)" />
                 <text x="86" y="98" text-anchor="middle">Caution</text>
               </g>
 
+              <!-- Chevron 2 -->
+              <path d="M 114 54 L 118 54" class="risk-arrow" />
+
               <!-- Warning -->
               <g class="risk-step step-warning">
-                <rect x="120" y="16" width="52" height="64" rx="6" />
+                <rect x="120" y="16" width="52" height="64" rx="8" fill="url(#warningGrad)" />
                 <text x="146" y="98" text-anchor="middle">Warning</text>
               </g>
 
+              <!-- Chevron 3 -->
+              <path d="M 174 48 L 178 48" class="risk-arrow highlighted" />
+
               <!-- Danger -->
-              <g class="risk-step step-danger active">
-                <rect x="180" y="0" width="52" height="80" rx="6" />
+              <g class="risk-step step-danger active" filter="url(#dangerGlow)">
+                <rect x="180" y="0" width="52" height="80" rx="8" fill="url(#dangerGrad)" />
                 <text x="206" y="98" text-anchor="middle">Danger</text>
+                
+                <!-- Small white exclamation badge inside Danger -->
+                <circle cx="206" cy="24" r="7" fill="#ffffff" />
+                <text x="206" y="28" text-anchor="middle" font-size="11" font-weight="900" fill="#b91c1c">!</text>
               </g>
             </g>
 
             <!-- Dotted Threshold Line -->
             <path d="M 30 160 C 90 150, 150 125, 210 100" fill="none" class="chart-line-path dash" />
-            <circle cx="210" cy="100" r="4" class="chart-point red" />
+            <circle cx="210" cy="100" r="4.5" class="chart-point red" />
             <text x="220" y="104" class="chart-risk-label">Trigger Point</text>
           </svg>
         </div>

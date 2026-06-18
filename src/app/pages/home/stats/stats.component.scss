@@ -284,16 +284,18 @@
 
 /* Gridlines */
 .chart-gridlines line {
-  stroke: rgba(255, 255, 255, 0.06);
+  stroke: rgba(255, 255, 255, 0.05);
   stroke-width: 1;
+  stroke-dasharray: 2 4; /* Precision engineering grid */
   
   &.baseline {
     stroke: rgba(255, 255, 255, 0.15);
+    stroke-dasharray: none;
   }
 }
 
 :host-context([data-colors-mode="light"]) .chart-gridlines line {
-  stroke: rgba(0, 0, 0, 0.06);
+  stroke: rgba(0, 0, 0, 0.05);
   
   &.baseline {
     stroke: rgba(0, 0, 0, 0.15);
@@ -305,41 +307,58 @@
   font-family: var(--font);
   font-size: 10px;
   fill: var(--muted);
-  opacity: 0.85;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+/* Donut Scanner Radar Dots */
+.chart-radial-dashes {
+  fill: transparent;
+  stroke: rgba(124, 141, 255, 0.12);
+  stroke-width: 1px;
+  stroke-dasharray: 2 6;
+  transform-origin: 100px 100px;
+  animation: radarRotate 25s linear infinite;
+}
+
+:host-context([data-colors-mode="light"]) .chart-radial-dashes {
+  stroke: rgba(124, 141, 255, 0.25);
 }
 
 /* Radial Donut Progress Chart */
 .chart-radial-track {
   fill: transparent;
-  stroke: rgba(255, 255, 255, 0.05);
-  stroke-width: 14;
+  stroke: rgba(255, 255, 255, 0.04);
+  stroke-width: 10;
 }
 
 :host-context([data-colors-mode="light"]) .chart-radial-track {
-  stroke: rgba(0, 0, 0, 0.05);
+  stroke: rgba(0, 0, 0, 0.04);
 }
 
 .chart-radial-progress {
   fill: transparent;
-  stroke-width: 14;
+  stroke-width: 12;
+  stroke-dasharray: 471.2;
+  stroke-dashoffset: 471.2;
+  transform-origin: 100px 100px;
   
   &.red {
-    stroke: #ff4d4d;
-    filter: drop-shadow(0 0 6px rgba(255, 77, 77, 0.3));
+    animation: donutDraw 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
   }
 }
 
 .chart-inner-val {
   font-family: var(--font);
-  font-size: 32px;
-  font-weight: 600;
+  font-size: 34px;
+  font-weight: 700;
   fill: var(--dark);
 }
 
 .chart-inner-lbl {
   font-family: var(--font);
   font-size: 10px;
-  font-weight: 500;
+  font-weight: 600;
   fill: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -347,54 +366,73 @@
 
 /* Bar Chart */
 .bar-other {
-  fill: rgba(255, 255, 255, 0.08);
-  transition: fill 0.2s ease;
+  transition: fill-opacity 0.25s ease, transform 0.25s ease;
+  fill-opacity: 0.85;
+  transform-origin: bottom;
   
   &:hover {
-    fill: rgba(255, 255, 255, 0.15);
-  }
-}
-
-:host-context([data-colors-mode="light"]) .bar-other {
-  fill: rgba(0, 0, 0, 0.06);
-  
-  &:hover {
-    fill: rgba(0, 0, 0, 0.12);
+    fill-opacity: 1;
   }
 }
 
 .bar-active {
-  fill: #3B82F6;
-  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.45));
+  stroke: rgba(96, 165, 250, 0.2);
+  stroke-width: 1;
+  animation: activeBarPulse 3s infinite ease-in-out;
 }
 
-/* Area Chart */
+/* Floating labels on bars */
+.bar-val-lbl {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--muted);
+  opacity: 0;
+  animation: barLabelFadeIn 0.8s ease forwards 0.8s;
+  
+  &.highlighted {
+    fill: #60A5FA;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
+
+/* Area Chart Line & Path */
 .chart-line-path {
   stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;
   
   &.orange {
-    stroke: #FF8800;
-    filter: drop-shadow(0 2px 6px rgba(255, 136, 0, 0.35));
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    animation: drawAreaLine 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
   }
   
   &.dash {
-    stroke-dasharray: 4 4;
-    stroke: rgba(255, 255, 255, 0.18);
+    stroke-dasharray: 3 4;
+    stroke: rgba(255, 255, 255, 0.15);
   }
 }
 
 :host-context([data-colors-mode="light"]) .chart-line-path.dash {
-  stroke: rgba(0, 0, 0, 0.18);
+  stroke: rgba(0, 0, 0, 0.15);
 }
 
 .chart-point {
   stroke-width: 2;
+  transition: r 0.2s ease;
   
-  &.orange {
-    fill: #FF8800;
-    stroke: #0b0d18;
+  &.orange-sub {
+    fill: #0b0d18;
+    stroke: #FF8800;
+    opacity: 0;
+    animation: fadeInDot 0.6s ease forwards 1.2s;
+  }
+  
+  &.active-peak {
+    opacity: 0;
+    animation: fadeInDot 0.6s ease forwards 1.6s;
   }
   
   &.red {
@@ -405,7 +443,10 @@
 }
 
 :host-context([data-colors-mode="light"]) .chart-point {
-  &.orange {
+  &.orange-sub {
+    fill: #ffffff;
+  }
+  &.active-peak {
     stroke: #ffffff;
   }
   &.red {
@@ -413,16 +454,37 @@
   }
 }
 
-/* Risk Steps Chart */
-.risk-step rect {
-  fill: rgba(255, 255, 255, 0.03);
-  stroke: rgba(255, 255, 255, 0.06);
-  stroke-width: 1;
+/* Glowing Pulsing Ripple Circle */
+.chart-point-pulse {
+  fill: transparent;
+  stroke: #FF8800;
+  stroke-width: 1.5px;
+  transform-origin: 280px 40px;
+  opacity: 0;
+  animation: hazardRipple 2.5s infinite ease-out 1.8s;
 }
 
-:host-context([data-colors-mode="light"]) .risk-step rect {
-  fill: rgba(0, 0, 0, 0.02);
-  stroke: rgba(0, 0, 0, 0.06);
+/* Spline Data Point Labels */
+.chart-pt-lbl {
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 600;
+  fill: var(--muted);
+  opacity: 0;
+  animation: fadeInLabel 0.6s ease forwards 1.4s;
+  
+  &.active-lbl {
+    fill: #FF8800;
+    font-size: 11px;
+    font-weight: 700;
+    animation: fadeInLabel 0.6s ease forwards 1.8s;
+  }
+}
+
+/* Risk Steps Chart */
+.risk-step rect {
+  stroke-width: 1;
+  transition: fill-opacity 0.25s ease;
 }
 
 .risk-step text {
@@ -432,30 +494,29 @@
   font-weight: 500;
 }
 
-.risk-step.step-normal rect {
-  fill: rgba(34, 166, 85, 0.04);
-  stroke: rgba(34, 166, 85, 0.18);
+.risk-arrow {
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+  stroke-linecap: round;
+  
+  &.highlighted {
+    animation: animateArrowDashes 1.2s linear infinite;
+  }
 }
 
-.risk-step.step-caution rect {
-  fill: rgba(245, 188, 17, 0.04);
-  stroke: rgba(245, 188, 17, 0.18);
-}
-
-.risk-step.step-warning rect {
-  fill: rgba(255, 136, 0, 0.04);
-  stroke: rgba(255, 136, 0, 0.18);
+:host-context([data-colors-mode="light"]) .risk-arrow {
+  stroke: rgba(0, 0, 0, 0.08);
 }
 
 .risk-step.step-danger.active rect {
-  fill: rgba(208, 0, 0, 0.15);
-  stroke: #d00000;
+  stroke: #ef4444;
   stroke-width: 1.5;
-  filter: drop-shadow(0 0 6px rgba(208, 0, 0, 0.35));
+  animation: dangerBlockPulse 2.5s infinite ease-in-out;
 }
 
 .risk-step.step-danger.active text {
-  fill: #ff4d4d;
+  fill: #ffffff;
   font-weight: 600;
 }
 
@@ -463,7 +524,92 @@
   font-family: var(--font);
   font-size: 10px;
   fill: #ff4d4d;
-  font-weight: 500;
+  font-weight: 600;
+}
+
+/* ── Upgraded Keyframe Animations ── */
+
+@keyframes radarRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes donutDraw {
+  from {
+    stroke-dashoffset: 471.2;
+  }
+  to {
+    stroke-dashoffset: 268.6; /* 43% target */
+  }
+}
+
+@keyframes activeBarPulse {
+  0%, 100% {
+    fill-opacity: 0.95;
+    filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
+  }
+  50% {
+    fill-opacity: 0.75;
+    filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.9));
+  }
+}
+
+@keyframes barLabelFadeIn {
+  to {
+    opacity: 0.9;
+  }
+}
+
+@keyframes drawAreaLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeInDot {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInLabel {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hazardRipple {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+    stroke-width: 3px;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+    stroke-width: 0.5px;
+  }
+}
+
+@keyframes animateArrowDashes {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+
+@keyframes dangerBlockPulse {
+  0%, 100% {
+    fill-opacity: 0.9;
+    stroke-opacity: 0.6;
+  }
+  50% {
+    fill-opacity: 0.7;
+    stroke-opacity: 1;
+  }
 }
 
 /* ── Responsive Viewports ── */
