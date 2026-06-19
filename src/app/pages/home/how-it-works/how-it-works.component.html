@@ -8,6 +8,40 @@
     </div>
 
     <div class="steps-grid">
+      <!-- SVG Connector Lines (desktop only) -->
+      <svg class="grid-connector-lines" width="100%" height="100%" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrow-left" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#5B8CFF" />
+          </marker>
+          <marker id="arrow-right" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#5B8CFF" />
+          </marker>
+          <marker id="arrow-up" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#5B8CFF" />
+          </marker>
+          <marker id="arrow-down" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#5B8CFF" />
+          </marker>
+        </defs>
+        
+        <!-- Lines connecting Averty (center) to each card -->
+        <line x1="50%" y1="50%" x2="30%" y2="50%" class="connector-line line-left" marker-end="url(#arrow-left)" />
+        <line x1="50%" y1="50%" x2="50%" y2="30%" class="connector-line line-up" marker-end="url(#arrow-up)" />
+        <line x1="50%" y1="50%" x2="70%" y2="50%" class="connector-line line-right" marker-end="url(#arrow-right)" />
+        <line x1="50%" y1="50%" x2="50%" y2="70%" class="connector-line line-down" marker-end="url(#arrow-down)" />
+      </svg>
+
+      <!-- Center node: Averty Brain -->
+      <div class="averty-center" appReveal>
+        <div class="radar-ping"></div>
+        <div class="radar-core">
+          <div class="averty-logo-glow"></div>
+          <span class="averty-brand">Averty</span>
+          <span class="averty-subbrand">CORE IA</span>
+        </div>
+      </div>
+
       @for (step of steps(); track step.number) {
         <div [class]="'step-wrapper step-' + step.number" appReveal>
           <div class="bubble-container">
