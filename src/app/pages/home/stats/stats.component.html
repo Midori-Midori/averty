@@ -197,9 +197,11 @@
             <text x="160" y="93" text-anchor="middle" class="chart-pt-lbl">0.8 mi</text>
 
             <!-- Main data point dot with double glow ring -->
-            <circle cx="280" cy="40" r="10" class="chart-point-pulse" />
-            <circle cx="280" cy="40" r="5" class="chart-point orange active-peak" filter="url(#orangeGlow)" />
-            <text x="280" y="26" text-anchor="middle" class="chart-pt-lbl active-lbl">1.2 mi</text>
+            <g transform="translate(280, 40)">
+              <circle cx="0" cy="0" r="10" class="chart-point-pulse" />
+              <circle cx="0" cy="0" r="5" class="chart-point orange active-peak" filter="url(#orangeGlow)" />
+              <text x="0" y="-14" text-anchor="middle" class="chart-pt-lbl active-lbl">1.2 mi</text>
+            </g>
 
             <g class="chart-labels X-axis">
               <text x="40" y="192" text-anchor="middle">30mph</text>

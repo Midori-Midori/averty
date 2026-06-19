@@ -317,7 +317,8 @@
   stroke: rgba(124, 141, 255, 0.12);
   stroke-width: 1px;
   stroke-dasharray: 2 6;
-  transform-origin: 100px 100px;
+  transform-box: view-box;
+  transform-origin: center;
   animation: radarRotate 25s linear infinite;
 }
 
@@ -341,7 +342,8 @@
   stroke-width: 12;
   stroke-dasharray: 471.2;
   stroke-dashoffset: 471.2;
-  transform-origin: 100px 100px;
+  transform-box: view-box;
+  transform-origin: center;
   
   &.red {
     animation: donutDraw 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
@@ -459,7 +461,8 @@
   fill: transparent;
   stroke: #FF8800;
   stroke-width: 1.5px;
-  transform-origin: 280px 40px;
+  transform-box: fill-box;
+  transform-origin: center;
   opacity: 0;
   animation: hazardRipple 2.5s infinite ease-out 1.8s;
 }
