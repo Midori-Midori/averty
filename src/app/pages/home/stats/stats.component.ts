@@ -24,8 +24,8 @@ export class StatsComponent implements AfterViewInit {
     { 
       value: '1,200', 
       unit: '', 
-      label: 'Accidentes detectados', 
-      description: 'Incidentes viales identificados automáticamente.', 
+      label: 'Accidents Detected', 
+      description: 'Automatically identified road incidents.', 
       icon: MapPinned, 
       progress: 85, 
       colorClass: 'color-red' 
@@ -33,8 +33,8 @@ export class StatsComponent implements AfterViewInit {
     { 
       value: '<1.8', 
       unit: 's', 
-      label: 'Tiempo de respuesta', 
-      description: 'Alertas transmitidas en milisegundos.', 
+      label: 'Response Time', 
+      description: 'Alerts transmitted in milliseconds.', 
       icon: Zap, 
       progress: 95, 
       highlighted: true, 
@@ -43,8 +43,8 @@ export class StatsComponent implements AfterViewInit {
     { 
       value: '35,000', 
       unit: '', 
-      label: 'Conductores protegidos', 
-      description: 'Usuarios activos en autopistas y carreteras.', 
+      label: 'Protected Drivers', 
+      description: 'Active users on highways and expressways.', 
       icon: Shield, 
       progress: 100, 
       colorClass: 'color-orange' 
@@ -52,8 +52,8 @@ export class StatsComponent implements AfterViewInit {
     { 
       value: '89', 
       unit: '%', 
-      label: 'Efectividad de alertas', 
-      description: 'Precisión en la prevención de accidentes.', 
+      label: 'Alert Effectiveness', 
+      description: 'Precision in preventing road accidents.', 
       icon: TriangleAlert, 
       progress: 89, 
       colorClass: 'color-green' 
