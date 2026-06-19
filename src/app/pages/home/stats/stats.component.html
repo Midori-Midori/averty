@@ -11,27 +11,31 @@
     
     <!-- Section Header -->
     <div class="section-header" appReveal>
-      <h2 class="section-title">Safety Metrics That Matter</h2>
-      <p class="section-desc">Real-time highway analytics designed to counteract aggressive driving behaviors and reduce response latency.</p>
+      <span class="section-badge">Impacto de Averty</span>
+      <h2 class="section-title">Datos en tiempo real</h2>
+      <p class="section-desc">Datos que reflejan cómo Averty ayuda a prevenir accidentes y mejorar la seguridad vial.</p>
     </div>
 
     <!-- Horizontal Scroll Container -->
     <div class="stats-grid">
 
-      <!-- Card 1: Rear-End Collisions (Donut/Radial Chart) -->
+      <!-- Card 1: Accidentes detectados (Donut/Radial Chart) -->
       <div class="stat-card color-red" appReveal>
         <div class="card-info-side">
           <div class="card-header">
-            <span class="card-title">Crash Severity & Impact</span>
-            <h3 class="card-value">43%</h3>
+            <div class="card-header-top">
+              <span class="card-icon">📍</span>
+              <span class="card-title">Accidentes detectados</span>
+            </div>
+            <h3 class="card-value"><span class="stat-counter" data-target="1200" data-format="comma">0</span></h3>
           </div>
           <div class="card-body">
             <p class="card-description">
-              According to NHTSA, rear-end collisions represent <strong>43% of all highway crashes</strong>. Speeding exponentially increases impact energy, reducing safety system effectiveness and leaving drivers with milliseconds to respond.
+              Nuestros sensores e IA a bordo detectan frenados bruscos y colisiones al instante, notificando a los conductores de la zona en milisegundos.
             </p>
             <ul class="card-highlights">
-              <li><strong>NHTSA Fact:</strong> Speeding is a factor in 29% of all traffic fatalities.</li>
-              <li><strong>Aggressive Behavior:</strong> Driving too fast for road conditions is a leading cause.</li>
+              <li><strong>Detección instantánea:</strong> Precisión en frenados de pánico.</li>
+              <li><strong>Reporte automatizado:</strong> Sin necesidad de interacción del usuario.</li>
             </ul>
           </div>
         </div>
@@ -52,26 +56,29 @@
             <!-- Radar scan dashes overlay -->
             <circle cx="100" cy="100" r="82" class="chart-radial-dashes" />
             <circle cx="100" cy="100" r="75" class="chart-radial-progress red" stroke="url(#donutRedGrad)" stroke-dasharray="471.2" stroke-dashoffset="268.6" stroke-linecap="round" filter="url(#redGlow)" />
-            <text x="100" y="96" text-anchor="middle" class="chart-inner-val">43%</text>
-            <text x="100" y="128" text-anchor="middle" class="chart-inner-lbl">Freeway Crashes</text>
+            <text x="100" y="96" text-anchor="middle" class="chart-inner-val stat-counter" data-target="1200" data-format="comma">0</text>
+            <text x="100" y="128" text-anchor="middle" class="chart-inner-lbl">Detectados</text>
           </svg>
         </div>
       </div>
 
-      <!-- Card 2: Alert Delivery (Bar Chart) - Highlighted -->
+      <!-- Card 2: Tiempo de respuesta (Bar Chart) - Highlighted -->
       <div class="stat-card color-blue highlighted" appReveal>
         <div class="card-info-side">
           <div class="card-header">
-            <span class="card-title">Alert Latency vs. Stopping Time</span>
-            <h3 class="card-value">&lt;2.0s</h3>
+            <div class="card-header-top">
+              <span class="card-icon">🕒</span>
+              <span class="card-title">Tiempo de respuesta</span>
+            </div>
+            <h3 class="card-value"><span class="stat-counter" data-target="1.8" data-prefix="&lt;" data-suffix="s" data-decimals="1">0.0</span></h3>
           </div>
           <div class="card-body">
             <p class="card-description">
-              Averty delivers warning signals in <strong>less than 2 seconds</strong>. At highway speeds, every fraction of a second saved translates directly to shorter stopping distances and lives saved.
+              Averty transmite alertas críticas a velocidades ultra bajas. Cada fracción de segundo ahorrada reduce la distancia de frenado y salva vidas.
             </p>
             <ul class="card-highlights">
-              <li><strong>Speed Factor:</strong> At 70 mph, a vehicle covers 103 feet every single second.</li>
-              <li><strong>Standard Latency:</strong> Traditional GPS alerts take 10+ seconds to propagate.</li>
+              <li><strong>Velocidad de autopista:</strong> A 120 km/h, un auto avanza 33 metros por segundo.</li>
+              <li><strong>GPS tradicional:</strong> Suele demorar 10 segundos o más en notificar.</li>
             </ul>
           </div>
         </div>
@@ -130,27 +137,30 @@
 
             <g class="chart-labels X-axis">
               <text x="79" y="192" text-anchor="middle">GPS</text>
-              <text x="149" y="192" text-anchor="middle">Cellular</text>
+              <text x="149" y="192" text-anchor="middle">Celular</text>
               <text x="219" y="192" text-anchor="middle">Averty</text>
             </g>
           </svg>
         </div>
       </div>
 
-      <!-- Card 3: Warning Distance (Area Chart) -->
+      <!-- Card 3: Conductores protegidos (Area Chart) -->
       <div class="stat-card color-orange" appReveal>
         <div class="card-info-side">
           <div class="card-header">
-            <span class="card-title">Proactive Braking Zones</span>
-            <h3 class="card-value">1.2 mi</h3>
+            <div class="card-header-top">
+              <span class="card-icon">🚗</span>
+              <span class="card-title">Conductores protegidos</span>
+            </div>
+            <h3 class="card-value"><span class="stat-counter" data-target="35000" data-format="comma">0</span></h3>
           </div>
           <div class="card-body">
             <p class="card-description">
-              Our safety buffer zone scales dynamically with highway speeds. A <strong>1.2-mile warning range</strong> gives drivers up to <strong>60 seconds of reaction buffer</strong> to decelerate before encountering heavy traffic.
+              Miles de conductores activos confían en Averty diariamente para anticipar peligros fuera de su línea de visión y evitar colisiones por alcance.
             </p>
             <ul class="card-highlights">
-              <li><strong>Dynamic Buffer:</strong> Scales automatically to handle aggressive driving.</li>
-              <li><strong>Visibility Proof:</strong> Provides safety alerts far beyond physical line of sight.</li>
+              <li><strong>Crecimiento mensual:</strong> Más de 10,000 nuevos usuarios cada trimestre.</li>
+              <li><strong>Cobertura vial:</strong> Monitoreo en tiempo real en las principales autopistas del país.</li>
             </ul>
           </div>
         </div>
@@ -180,10 +190,10 @@
             </g>
 
             <g class="chart-labels Y-axis">
-              <text x="30" y="45" text-anchor="end">1.5mi</text>
-              <text x="30" y="95" text-anchor="end">1.0mi</text>
-              <text x="30" y="145" text-anchor="end">0.5mi</text>
-              <text x="30" y="175" text-anchor="end">0mi</text>
+              <text x="30" y="45" text-anchor="end">40k</text>
+              <text x="30" y="95" text-anchor="end">20k</text>
+              <text x="30" y="145" text-anchor="end">10k</text>
+              <text x="30" y="175" text-anchor="end">0</text>
             </g>
 
             <!-- Area Fill -->
@@ -194,38 +204,41 @@
 
             <!-- Sub data points -->
             <circle cx="160" cy="105" r="4.5" class="chart-point orange-sub" />
-            <text x="160" y="93" text-anchor="middle" class="chart-pt-lbl">0.8 mi</text>
+            <text x="160" y="93" text-anchor="middle" class="chart-pt-lbl">18k</text>
 
             <!-- Main data point dot with double glow ring -->
             <g transform="translate(280, 40)">
               <circle cx="0" cy="0" r="10" class="chart-point-pulse" />
               <circle cx="0" cy="0" r="5" class="chart-point orange active-peak" filter="url(#orangeGlow)" />
-              <text x="0" y="-14" text-anchor="middle" class="chart-pt-lbl active-lbl">1.2 mi</text>
+              <text x="0" y="-14" text-anchor="middle" class="chart-pt-lbl active-lbl">35k</text>
             </g>
 
             <g class="chart-labels X-axis">
-              <text x="40" y="192" text-anchor="middle">30mph</text>
-              <text x="160" y="192" text-anchor="middle">60mph</text>
-              <text x="280" y="192" text-anchor="middle">90mph</text>
+              <text x="40" y="192" text-anchor="middle">Mar</text>
+              <text x="160" y="192" text-anchor="middle">Abr</text>
+              <text x="280" y="192" text-anchor="middle">May</text>
             </g>
           </svg>
         </div>
       </div>
 
-      <!-- Card 4: Risk Levels (Step-Block Chart) -->
+      <!-- Card 4: Alertas enviadas (Step-Block Chart) -->
       <div class="stat-card color-green" appReveal>
         <div class="card-info-side">
           <div class="card-header">
-            <span class="card-title">Risk Tier Analytics</span>
-            <h3 class="card-value">4 Levels</h3>
+            <div class="card-header-top">
+              <span class="card-icon">⚠️</span>
+              <span class="card-title">Efectividad de alertas</span>
+            </div>
+            <h3 class="card-value"><span class="stat-counter" data-target="89" data-suffix="%">0</span></h3>
           </div>
           <div class="card-body">
             <p class="card-description">
-              Averty classifies roadway threat levels in real-time. By tracking sudden deceleration, lane drift, and speed differentials, the system filters out noise to prioritize immediate safety warnings.
+              Filtramos falsos positivos usando algoritmos avanzados. Solo enviamos alertas ante un peligro real, logrando una efectividad del 89%.
             </p>
             <ul class="card-highlights">
-              <li><strong>Road Rage & Aggression:</strong> Identifies sudden lane weaving and tailgating.</li>
-              <li><strong>Filtering:</strong> Escalates alerts only when a verified threat is detected.</li>
+              <li><strong>Reducción de riesgo:</strong> Disminución notable de frenados bruscos.</li>
+              <li><strong>Filtrado inteligente:</strong> Evita la fatiga por alertas innecesarias.</li>
             </ul>
           </div>
         </div>
@@ -275,7 +288,7 @@
               <!-- Caution -->
               <g class="risk-step step-caution">
                 <rect x="60" y="28" width="52" height="52" rx="8" fill="url(#cautionGrad)" />
-                <text x="86" y="98" text-anchor="middle">Caution</text>
+                <text x="86" y="98" text-anchor="middle">Aviso</text>
               </g>
 
               <!-- Chevron 2 -->
@@ -284,7 +297,7 @@
               <!-- Warning -->
               <g class="risk-step step-warning">
                 <rect x="120" y="16" width="52" height="64" rx="8" fill="url(#warningGrad)" />
-                <text x="146" y="98" text-anchor="middle">Warning</text>
+                <text x="146" y="98" text-anchor="middle">Alerta</text>
               </g>
 
               <!-- Chevron 3 -->
@@ -293,7 +306,7 @@
               <!-- Danger -->
               <g class="risk-step step-danger active" filter="url(#dangerGlow)">
                 <rect x="180" y="0" width="52" height="80" rx="8" fill="url(#dangerGrad)" />
-                <text x="206" y="98" text-anchor="middle">Danger</text>
+                <text x="206" y="98" text-anchor="middle">Peligro</text>
                 
                 <!-- Small white exclamation badge inside Danger -->
                 <circle cx="206" cy="24" r="7" fill="#ffffff" />
@@ -304,7 +317,7 @@
             <!-- Dotted Threshold Line -->
             <path d="M 30 160 C 90 150, 150 125, 210 100" fill="none" class="chart-line-path dash" />
             <circle cx="210" cy="100" r="4.5" class="chart-point red" />
-            <text x="220" y="104" class="chart-risk-label">Trigger Point</text>
+            <text x="220" y="104" class="chart-risk-label">Activación</text>
           </svg>
         </div>
       </div>
@@ -313,3 +326,4 @@
 
   </div>
 </section>
+

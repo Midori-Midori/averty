@@ -7,7 +7,7 @@
 .stats-bg {
   position: absolute;
   inset: 0;
-  background: var(--bg-section-pattern);
+  background: radial-gradient(circle at 50% 50%, rgba(91, 140, 255, 0.08) 0%, transparent 75%), var(--bg-section-pattern);
   z-index: -1;
 }
 
@@ -20,33 +20,33 @@
 }
 
 .stats-blob-left {
-  left: -10%;
+  left: -5%;
   top: 10%;
-  width: 500px;
-  height: 500px;
-  background: #00D9FF;
-  opacity: 0.08;
-  filter: blur(180px);
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #5b8cff, #00d9ff);
+  opacity: 0.12;
+  filter: blur(100px); /* 80-120 px */
 }
 
 .stats-blob-center {
-  left: 35%;
-  top: 30%;
-  width: 600px;
-  height: 600px;
-  background: #6C63FF;
-  opacity: 0.12;
-  filter: blur(200px);
+  left: 30%;
+  top: 25%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, #6C63FF, #ff7a18);
+  opacity: 0.14;
+  filter: blur(110px); /* 80-120 px */
 }
 
 .stats-blob-right {
-  right: -10%;
+  right: -5%;
   bottom: 10%;
   width: 400px;
   height: 400px;
-  background: #FF7A18;
-  opacity: 0.06;
-  filter: blur(160px);
+  background: radial-gradient(circle, #00D9FF, #5b8cff);
+  opacity: 0.1;
+  filter: blur(90px); /* 80-120 px */
 }
 
 .stats-inner {
@@ -61,6 +61,20 @@
 .section-header {
   text-align: center;
   margin-bottom: 64px;
+}
+
+.section-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #5B8CFF;
+  background: rgba(91, 140, 255, 0.1);
+  border: 1px solid rgba(91, 140, 255, 0.2);
+  border-radius: 100px;
+  margin-bottom: 16px;
 }
 
 .section-title {
@@ -145,6 +159,8 @@
 
 .stat-card:hover {
   transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(91, 140, 255, 0.15);
+  border-color: rgba(91, 140, 255, 0.3);
 }
 
 /* Highlighted Focal Card */
@@ -177,6 +193,24 @@
   align-items: flex-start;
 }
 
+.card-header-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(91, 140, 255, 0.1);
+  font-size: 16px;
+}
+
 .card-title {
   font-size: 13px;
   font-weight: 600;
@@ -186,9 +220,9 @@
 }
 
 .card-value {
-  font-size: 48px; /* Bigger metric display */
+  font-size: clamp(48px, 5vw, 56px); /* 48-56px dynamic sizing */
   font-weight: 700;
-  color: var(--dark);
+  color: #5B8CFF; /* Dynamic blue color */
   line-height: 1;
 }
 
@@ -200,7 +234,7 @@
 }
 
 .card-description {
-  font-size: 14.5px;
+  font-size: 16px; /* Descriptive text 16px */
   color: var(--dark);
   opacity: 0.85;
   line-height: 1.55;
