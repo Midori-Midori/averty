@@ -55,6 +55,10 @@
   width: 100%;
 }
 
+.step-wrapper:nth-child(even) {
+  margin-top: 40px;
+}
+
 /* Step Cards */
 .step-card {
   position: relative;
