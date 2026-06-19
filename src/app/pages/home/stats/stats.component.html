@@ -24,7 +24,9 @@
         <div class="card-info-side">
           <div class="card-header">
             <div class="card-header-top">
-              <span class="card-icon">📍</span>
+              <div class="card-icon">
+                <lucide-icon [img]="mapPinnedIcon" [size]="16" [strokeWidth]="2.5"></lucide-icon>
+              </div>
               <span class="card-title">Accidents Detected</span>
             </div>
             <h3 class="card-value"><span class="stat-counter" data-target="1200" data-format="comma">0</span></h3>
@@ -67,7 +69,9 @@
         <div class="card-info-side">
           <div class="card-header">
             <div class="card-header-top">
-              <span class="card-icon">🕒</span>
+              <div class="card-icon">
+                <lucide-icon [img]="clockIcon" [size]="16" [strokeWidth]="2.5"></lucide-icon>
+              </div>
               <span class="card-title">Response Time</span>
             </div>
             <h3 class="card-value"><span class="stat-counter" data-target="1.8" data-prefix="&lt;" data-suffix="s" data-decimals="1">0.0</span></h3>
@@ -149,7 +153,9 @@
         <div class="card-info-side">
           <div class="card-header">
             <div class="card-header-top">
-              <span class="card-icon">🚗</span>
+              <div class="card-icon">
+                <lucide-icon [img]="carFrontIcon" [size]="16" [strokeWidth]="2.5"></lucide-icon>
+              </div>
               <span class="card-title">Protected Drivers</span>
             </div>
             <h3 class="card-value"><span class="stat-counter" data-target="35000" data-format="comma">0</span></h3>
@@ -227,7 +233,9 @@
         <div class="card-info-side">
           <div class="card-header">
             <div class="card-header-top">
-              <span class="card-icon">⚠️</span>
+              <div class="card-icon">
+                <lucide-icon [img]="alertIcon" [size]="16" [strokeWidth]="2.5"></lucide-icon>
+              </div>
               <span class="card-title">Alert Effectiveness</span>
             </div>
             <h3 class="card-value"><span class="stat-counter" data-target="89" data-suffix="%">0</span></h3>

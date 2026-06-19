@@ -2,7 +2,7 @@ import { Component, signal, AfterViewInit, ElementRef, inject } from '@angular/c
 import { CommonModule } from '@angular/common';
 import { Stat } from '../../../core/interfaces/stat.interface';
 import { RevealDirective } from '../../../shared/directives/reveal.directive';
-import { LucideAngularModule, TriangleAlert, Zap, MapPinned, Shield } from 'lucide-angular';
+import { LucideAngularModule, TriangleAlert, Zap, MapPinned, Shield, Clock, CarFront } from 'lucide-angular';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -19,6 +19,11 @@ if (typeof window !== 'undefined') {
 })
 export class StatsComponent implements AfterViewInit {
   private el = inject(ElementRef);
+
+  readonly mapPinnedIcon = MapPinned;
+  readonly clockIcon = Clock;
+  readonly carFrontIcon = CarFront;
+  readonly alertIcon = TriangleAlert;
 
   stats = signal<Stat[]>([
     { 
