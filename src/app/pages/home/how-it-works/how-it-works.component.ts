@@ -22,7 +22,7 @@ export class HowItWorksComponent {
     {
       number: '01',
       title: 'Vehicle Data',
-      description: 'Collects real time vehicle information',
+      description: 'Collects real-time vehicle data from on-board sensors and GPS tracking.',
       bubble: 'Vehicle traveling at 75 mph',
       colorClass: 'color-blue',
       iconObj: CarFront,
@@ -31,7 +31,7 @@ export class HowItWorksComponent {
     {
       number: '02',
       title: 'Detection',
-      description: 'Collects real time vehicle information',
+      description: 'AI engine detects sudden braking, speed drops, and road hazards instantly.',
       bubble: 'Traffic slowdown detected',
       colorClass: 'color-yellow',
       iconObj: Zap,
@@ -40,7 +40,7 @@ export class HowItWorksComponent {
     {
       number: '03',
       title: 'Alert',
-      description: 'Collects real time vehicle information',
+      description: 'Warning alert is dispatched instantly to all nearby connected vehicles.',
       bubble: 'Warning issued instantly',
       colorClass: 'color-orange',
       iconObj: ShieldAlert,
@@ -49,7 +49,7 @@ export class HowItWorksComponent {
     {
       number: '04',
       title: 'Prevention',
-      description: 'Collects real time vehicle information',
+      description: 'Drivers receive the warning and slow down in advance, preventing accidents.',
       bubble: 'Collision avoided',
       colorClass: 'color-green',
       iconObj: ShieldCheck,

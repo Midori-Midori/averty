@@ -8,7 +8,7 @@
     </div>
 
     <div class="steps-grid">
-      <!-- SVG Curved Connector Line (desktop only) -->
+      <!-- SVG Curved Connector Lines (desktop only) -->
       <svg class="grid-connector-lines" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <defs>
           <linearGradient id="pathGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -18,10 +18,12 @@
             <stop offset="100%" stop-color="#4ade80" />
           </linearGradient>
         </defs>
-        <!-- Soft background path -->
-        <path d="M 125,125 C 375,125 250,375 375,375 C 625,375 500,625 625,625 C 875,625 750,875 875,875" fill="none" stroke="url(#pathGrad)" stroke-width="6" opacity="0.15" />
+        
+        <!-- Soft background curved path -->
+        <path d="M 250,200 C 500,200 500,320 750,320 C 500,320 500,680 250,680 C 500,680 500,800 750,800" fill="none" stroke="url(#pathGrad)" stroke-width="6" opacity="0.12" />
+        
         <!-- Dotted animated overlay -->
-        <path d="M 125,125 C 375,125 250,375 375,375 C 625,375 500,625 625,625 C 875,625 750,875 875,875" fill="none" stroke="url(#pathGrad)" stroke-width="3" stroke-dasharray="8 10" class="curved-path-animated" />
+        <path d="M 250,200 C 500,200 500,320 750,320 C 500,320 500,680 250,680 C 500,680 500,800 750,800" fill="none" stroke="url(#pathGrad)" stroke-width="2.5" stroke-dasharray="6 8" class="curved-path-animated" />
       </svg>
 
       @for (step of steps(); track step.number) {

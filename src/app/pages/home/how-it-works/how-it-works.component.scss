@@ -41,11 +41,10 @@
 
 .steps-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto auto auto auto;
-  gap: 40px 30px;
-  max-width: 1300px;
-  margin: 120px auto 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px 120px;
+  max-width: 1000px;
+  margin: 80px auto 0;
   position: relative;
   align-items: center;
   justify-items: center;
@@ -56,28 +55,8 @@
   width: 100%;
 }
 
-.step-01 {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.step-02 {
-  grid-column: 2;
-  grid-row: 2;
-}
-
-.step-03 {
-  grid-column: 3;
-  grid-row: 3;
-}
-
-.step-04 {
-  grid-column: 4;
-  grid-row: 4;
-}
-
 .step-wrapper:nth-child(even) {
-  transform: none;
+  margin-top: 80px;
 }
 
 /* Step Cards */
@@ -217,23 +196,28 @@
 /* Bubbles and Lines */
 .bubble-container {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: calc(100% + 14px);
-  top: auto;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
-  flex-direction: column;
   align-items: center;
   z-index: 5;
 }
 
+.step-wrapper:nth-child(odd) .bubble-container {
+  right: calc(100% + 15px);
+  flex-direction: row-reverse;
+}
+
+.step-wrapper:nth-child(even) .bubble-container {
+  left: calc(100% + 15px);
+  flex-direction: row;
+}
+
 .bubble-line {
-  width: 1px;
-  height: 14px;
+  width: 30px;
+  height: 1px;
   background: var(--border);
   position: relative;
-  order: 2; /* Line below the bubble */
-  margin-top: 4px;
 }
 
 .bubble-line::after {
@@ -243,8 +227,15 @@
   height: 4px;
   border-radius: 50%;
   background: var(--muted);
-  left: -1.5px;
-  bottom: -2px; /* Dot at bottom end of line */
+  top: -1.5px;
+}
+
+.step-wrapper:nth-child(odd) .bubble-line::after {
+  right: -2px;
+}
+
+.step-wrapper:nth-child(even) .bubble-line::after {
+  left: -2px;
 }
 
 .step-bubble {
@@ -309,21 +300,12 @@
     padding: 0 20px;
   }
 
-  .step-01, .step-02, .step-03, .step-04 {
-    grid-column: auto !important;
-    grid-row: auto !important;
-  }
-
-  .averty-center {
-    display: none !important;
-  }
-
   .grid-connector-lines {
     display: none !important;
   }
 
   .step-wrapper:nth-child(even) {
-    transform: none;
+    margin-top: 0 !important;
   }
 
   .bubble-container {
