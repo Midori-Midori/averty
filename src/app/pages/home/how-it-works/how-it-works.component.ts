@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { Step } from '../../../core/interfaces/step.interface';
 import { RevealDirective } from '../../../shared/directives/reveal.directive';
-import { BadgeComponent } from '../../../shared/badge/badge.component';
 import { CardComponent } from '../../../shared/card/card.component';
 import { LucideAngularModule, CarFront, Zap, ShieldAlert, ShieldCheck } from 'lucide-angular';
 
@@ -10,7 +9,6 @@ import { LucideAngularModule, CarFront, Zap, ShieldAlert, ShieldCheck } from 'lu
   standalone: true,
   imports: [
     RevealDirective, 
-    BadgeComponent, 
     CardComponent, 
     LucideAngularModule
   ],
@@ -22,7 +20,7 @@ export class HowItWorksComponent {
     {
       number: '01',
       title: 'Vehicle Data',
-      description: 'Collects real-time vehicle data from on-board sensors and GPS tracking.',
+      description: 'Collects real time vehicle information',
       bubble: 'Vehicle traveling at 75 mph',
       colorClass: 'color-blue',
       iconObj: CarFront,
@@ -31,8 +29,8 @@ export class HowItWorksComponent {
     {
       number: '02',
       title: 'Detection',
-      description: 'AI engine detects sudden braking, speed drops, and road hazards instantly.',
-      bubble: 'Traffic slowdown detected',
+      description: 'Collects real time vehicle information',
+      bubble: 'Traffic detected',
       colorClass: 'color-yellow',
       iconObj: Zap,
       delayClass: 'delay-1'
@@ -40,8 +38,8 @@ export class HowItWorksComponent {
     {
       number: '03',
       title: 'Alert',
-      description: 'Warning alert is dispatched instantly to all nearby connected vehicles.',
-      bubble: 'Warning issued instantly',
+      description: 'Collects real time vehicle information',
+      bubble: 'Warnings issued instantly',
       colorClass: 'color-orange',
       iconObj: ShieldAlert,
       delayClass: 'delay-15'
@@ -49,7 +47,7 @@ export class HowItWorksComponent {
     {
       number: '04',
       title: 'Prevention',
-      description: 'Drivers receive the warning and slow down in advance, preventing accidents.',
+      description: 'Collects real time vehicle information',
       bubble: 'Collision avoided',
       colorClass: 'color-green',
       iconObj: ShieldCheck,

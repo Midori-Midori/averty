@@ -20,18 +20,16 @@
         </defs>
         
         <!-- Soft background curved path -->
-        <path d="M 250,200 C 500,200 500,320 750,320 C 500,320 500,680 250,680 C 500,680 500,800 750,800" fill="none" stroke="url(#pathGrad)" stroke-width="6" opacity="0.12" />
+        <path d="M 250,250 C 450,180 550,320 750,250 C 500,250 500,750 250,750 C 450,680 550,820 750,750" fill="none" stroke="url(#pathGrad)" stroke-width="6" opacity="0.12" />
         
         <!-- Dotted animated overlay -->
-        <path d="M 250,200 C 500,200 500,320 750,320 C 500,320 500,680 250,680 C 500,680 500,800 750,800" fill="none" stroke="url(#pathGrad)" stroke-width="2.5" stroke-dasharray="6 8" class="curved-path-animated" />
+        <path d="M 250,250 C 450,180 550,320 750,250 C 500,250 500,750 250,750 C 450,680 550,820 750,750" fill="none" stroke="url(#pathGrad)" stroke-width="2.5" stroke-dasharray="6 8" class="curved-path-animated" />
       </svg>
 
       @for (step of steps(); track step.number) {
         <div [class]="'step-wrapper step-' + step.number" appReveal>
           <div class="bubble-container">
-            <app-badge [variant]="'default'" customClass="step-bubble">
-              {{ step.bubble }}
-            </app-badge>
+            <span class="step-bubble-text">{{ step.bubble }}</span>
             <div class="bubble-line"></div>
           </div>
           
