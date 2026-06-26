@@ -58,7 +58,9 @@
               </div>
 
               <p class="alert-desc">{{ screen.desc }}</p>
-              <img [class]="'screen-mockup ' + screen.colorClass" [src]="screen.mockup" [alt]="screen.desc">
+              <div class="screen-mockup-wrap">
+                <img class="screen-mockup" [src]="screen.mockup" [alt]="screen.desc">
+              </div>
             </div>
           </div>
         }
