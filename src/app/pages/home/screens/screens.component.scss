@@ -235,6 +235,8 @@
   width: 280px;
   height: 560px;
   z-index: 2;
+  overflow: hidden;
+  border-radius: 4px; /* slight radius to soften corners after clip */
   filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
 }
 
@@ -254,15 +256,16 @@
     z-index: 5;
 
     /*
-     * Scale per image to compensate different transparent padding in each PNG:
-     * - DEFAULT: large padding → phone ~80% canvas → zoom in
-     * - WARNING/DANGER: minimal padding → phone ~95% canvas → reference (scale 1)
-     * - ACCIDENT: moderate padding → phone ~90% canvas
+     * Pixel-measured canvas fill per image:
+     * DEFAULT  99.8% → reference (no scale needed)
+     * WARNING  96.7% → needs scale(1.033) to match
+     * DANGER   99.8% → same as DEFAULT
+     * ACCIDENT 97.3% → needs scale(1.026) to match
      */
-    &.color-green   { transform: scale(1.18); }
-    &.color-caution { transform: scale(1.0); }
-    &.color-red     { transform: scale(1.0); }
-    &.color-black   { transform: scale(1.06); }
+    &.color-green   { transform: scale(1.0);   }
+    &.color-caution { transform: scale(1.033); }
+    &.color-red     { transform: scale(1.0);   }
+    &.color-black   { transform: scale(1.026); }
   }
 }
 
@@ -453,14 +456,16 @@
 }
 
 /*
- * Scale per image inside the overflow:hidden wrapper to match visual phone size.
- * DEFAULT has the most transparent padding so needs the most zoom.
- * WARNING/DANGER are the reference (phone nearly fills the canvas).
+ * Pixel-measured transparent padding correction for mobile cards.
+ * DEFAULT  99.8% fill → reference
+ * WARNING  96.7% fill → scale(1.033) to match
+ * DANGER   99.8% fill → same as DEFAULT
+ * ACCIDENT 97.3% fill → scale(1.026) to match
  */
-.screen-card.color-green   .screen-mockup { transform: scale(1.18); transform-origin: center; }
-.screen-card.color-caution .screen-mockup { transform: scale(1.0);  transform-origin: center; }
-.screen-card.color-red     .screen-mockup { transform: scale(1.0);  transform-origin: center; }
-.screen-card.color-black   .screen-mockup { transform: scale(1.06); transform-origin: center; }
+.screen-card.color-green   .screen-mockup { transform: scale(1.0);   transform-origin: center; }
+.screen-card.color-caution .screen-mockup { transform: scale(1.033); transform-origin: center; }
+.screen-card.color-red     .screen-mockup { transform: scale(1.0);   transform-origin: center; }
+.screen-card.color-black   .screen-mockup { transform: scale(1.026); transform-origin: center; }
 
 /* ── Mobile & Tablet Responsiveness ── */
 @media (max-width: 1200px) {
