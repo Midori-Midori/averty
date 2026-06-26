@@ -802,3 +802,61 @@
     }
   }
 }
+
+/* ── Stats Scroll Navigation Row ── */
+.stats-scroll-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.stats-scroll-hint {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mid);
+  opacity: 0.5;
+  user-select: none;
+}
+
+.stats-scroll-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--glass2);
+  border: 1px solid var(--border);
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  flex-shrink: 0;
+
+  &:hover {
+    background: #5B8CFF;
+    color: #ffffff;
+    border-color: #5B8CFF;
+    transform: scale(1.12);
+    box-shadow: 0 10px 25px rgba(91, 140, 255, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Hide navigation row on mobile/tablet where touch swiping is natural */
+@media (max-width: 1080px) {
+  .stats-scroll-nav {
+    display: none;
+  }
+}
+

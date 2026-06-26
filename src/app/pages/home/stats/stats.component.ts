@@ -2,7 +2,7 @@ import { Component, signal, AfterViewInit, ElementRef, inject } from '@angular/c
 import { CommonModule } from '@angular/common';
 import { Stat } from '../../../core/interfaces/stat.interface';
 import { RevealDirective } from '../../../shared/directives/reveal.directive';
-import { LucideAngularModule, TriangleAlert, Zap, MapPinned, Shield, Clock, CarFront } from 'lucide-angular';
+import { LucideAngularModule, TriangleAlert, Zap, MapPinned, Shield, Clock, CarFront, ChevronLeft, ChevronRight } from 'lucide-angular';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -24,6 +24,18 @@ export class StatsComponent implements AfterViewInit {
   readonly clockIcon = Clock;
   readonly carFrontIcon = CarFront;
   readonly alertIcon = TriangleAlert;
+  readonly chevronLeftIcon = ChevronLeft;
+  readonly chevronRightIcon = ChevronRight;
+
+  scrollStats(direction: 'left' | 'right') {
+    const grid = this.el.nativeElement.querySelector('.stats-grid');
+    if (grid) {
+      const card = grid.querySelector('.stat-card');
+      const cardWidth = card ? card.clientWidth : 800;
+      const scrollAmount = direction === 'left' ? -(cardWidth + 48) : (cardWidth + 48);
+      grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }
 
   stats = signal<Stat[]>([
     { 

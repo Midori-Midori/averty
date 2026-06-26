@@ -17,7 +17,8 @@
     </div>
 
     <!-- Horizontal Scroll Container -->
-    <div class="stats-grid">
+    <div class="stats-scroll-container-wrapper">
+      <div class="stats-grid">
 
       <!-- Card 1: Accidents Detected (Donut/Radial Chart) -->
       <div class="stat-card color-red" appReveal>
@@ -330,6 +331,18 @@
         </div>
       </div>
 
+      </div>
+
+      <!-- Scroll navigation row -->
+      <div class="stats-scroll-nav">
+        <button class="stats-scroll-btn left" (click)="scrollStats('left')" aria-label="Scroll left">
+          <lucide-icon [img]="chevronLeftIcon" [size]="20" [strokeWidth]="2.5"></lucide-icon>
+        </button>
+        <span class="stats-scroll-hint">scroll cards</span>
+        <button class="stats-scroll-btn right" (click)="scrollStats('right')" aria-label="Scroll right">
+          <lucide-icon [img]="chevronRightIcon" [size]="20" [strokeWidth]="2.5"></lucide-icon>
+        </button>
+      </div>
     </div>
 
   </div>
