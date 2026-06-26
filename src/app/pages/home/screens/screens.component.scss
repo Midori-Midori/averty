@@ -243,8 +243,6 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  /* Use fill so the image fills the exact frame — all images are same canvas size (453x911)
-     so fill gives identical visual bounds. navegation.png is 487x920 but close enough. */
   object-fit: fill;
   opacity: 0;
   transform: translateY(10px) scale(0.98);
@@ -253,8 +251,18 @@
 
   &.visible {
     opacity: 1;
-    transform: none;
     z-index: 5;
+
+    /*
+     * Scale per image to compensate different transparent padding in each PNG:
+     * - DEFAULT: large padding → phone ~80% canvas → zoom in
+     * - WARNING/DANGER: minimal padding → phone ~95% canvas → reference (scale 1)
+     * - ACCIDENT: moderate padding → phone ~90% canvas
+     */
+    &.color-green   { transform: scale(1.18); }
+    &.color-caution { transform: scale(1.0); }
+    &.color-red     { transform: scale(1.0); }
+    &.color-black   { transform: scale(1.06); }
   }
 }
 
@@ -436,8 +444,6 @@
 }
 
 .screen-mockup {
-  /* Fill the fixed wrapper exactly — all source images are 453×911 (same canvas).
-     navegation.png is 487×920 but close enough to fill without distortion. */
   width: 100%;
   height: 100%;
   object-fit: fill;
@@ -445,6 +451,16 @@
   border-radius: 12px;
   filter: drop-shadow(0 -8px 24px rgba(0,0,0,0.4));
 }
+
+/*
+ * Scale per image inside the overflow:hidden wrapper to match visual phone size.
+ * DEFAULT has the most transparent padding so needs the most zoom.
+ * WARNING/DANGER are the reference (phone nearly fills the canvas).
+ */
+.screen-card.color-green   .screen-mockup { transform: scale(1.18); transform-origin: center; }
+.screen-card.color-caution .screen-mockup { transform: scale(1.0);  transform-origin: center; }
+.screen-card.color-red     .screen-mockup { transform: scale(1.0);  transform-origin: center; }
+.screen-card.color-black   .screen-mockup { transform: scale(1.06); transform-origin: center; }
 
 /* ── Mobile & Tablet Responsiveness ── */
 @media (max-width: 1200px) {
