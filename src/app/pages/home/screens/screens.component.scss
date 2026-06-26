@@ -254,18 +254,7 @@
   &.visible {
     opacity: 1;
     z-index: 5;
-
-    /*
-     * Pixel-measured canvas fill per image:
-     * DEFAULT  99.8% → reference (no scale needed)
-     * WARNING  96.7% → needs scale(1.033) to match
-     * DANGER   99.8% → same as DEFAULT
-     * ACCIDENT 97.3% → needs scale(1.026) to match
-     */
-    &.color-green   { transform: scale(1.0);   }
-    &.color-caution { transform: scale(1.033); }
-    &.color-red     { transform: scale(1.0);   }
-    &.color-black   { transform: scale(1.026); }
+    transform: translateY(0) scale(1.0);
   }
 }
 
@@ -455,17 +444,6 @@
   filter: drop-shadow(0 -8px 24px rgba(0,0,0,0.4));
 }
 
-/*
- * Pixel-measured transparent padding correction for mobile cards.
- * DEFAULT  99.8% fill → reference
- * WARNING  96.7% fill → scale(1.033) to match
- * DANGER   99.8% fill → same as DEFAULT
- * ACCIDENT 97.3% fill → scale(1.026) to match
- */
-.screen-card.color-green   .screen-mockup { transform: scale(1.0);   transform-origin: center; }
-.screen-card.color-caution .screen-mockup { transform: scale(1.033); transform-origin: center; }
-.screen-card.color-red     .screen-mockup { transform: scale(1.0);   transform-origin: center; }
-.screen-card.color-black   .screen-mockup { transform: scale(1.026); transform-origin: center; }
 
 /* ── Mobile & Tablet Responsiveness ── */
 @media (max-width: 1200px) {
