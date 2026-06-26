@@ -12,14 +12,20 @@
         Drivers receive real-time warnings about sudden traffic slowdowns,
         helping prevent rear-end collisions and multi-vehicle pileups.
       </p>
-      <app-button variant="demo" (click)="openDemoModal()">WATCH DEMO</app-button>
+      <app-button variant="demo" (click)="openDemoModal()">TRY SIMULATOR</app-button>
     </div>
 
     <div class="hero-visual">
-      <img class="phone-mockup" src="assets/mockups/mockup.png" alt="Averty app on Samsung Galaxy">
-      <div class="bubble bubble-1"><p>43% of freeway crashes are rear-end collisions.</p></div>
-      <div class="bubble bubble-2"><p>Most happen because drivers don't know traffic is stopping ahead.</p></div>
-      <div class="bubble bubble-3"><p>Averty changes that.</p></div>
+      <img class="phone-mockup" src="assets/mockups/navegation2.png" alt="Averty app mockup showing police alert">
+      <div class="bubble-float bubble-float-1">
+        <div class="bubble bubble-1"><p>43% of freeway crashes are rear-end collisions.</p></div>
+      </div>
+      <div class="bubble-float bubble-float-2">
+        <div class="bubble bubble-2"><p>Most happen because drivers don't know traffic is stopping ahead.</p></div>
+      </div>
+      <div class="bubble-float bubble-float-3">
+        <div class="bubble bubble-3"><p>Averty changes that.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -27,15 +33,132 @@
 <!-- Demo Video/Visual Modal -->
 <app-modal [(isOpen)]="isDemoModalOpen">
   <div class="demo-modal-body">
-    <h3 class="demo-title">AVERTY APP DEMO</h3>
-    <p class="demo-subtitle">See how real-time slowdown warnings protect drivers on the road.</p>
-    <div class="video-container">
-      <div class="video-placeholder">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="play-icon">
-          <circle cx="12" cy="12" r="10"></circle>
-          <polygon points="10 8 16 12 10 16 10 8"></polygon>
-        </svg>
-        <span>Simulating real-time alert feed...</span>
+    <h3 class="demo-title">AVERTY ALERT SIMULATOR</h3>
+    <p class="demo-subtitle">Experience how Averty warns you of slowing highway traffic in real time.</p>
+    
+    <div class="simulator-container">
+      <!-- Visual Road Timeline -->
+      <div [class]="'simulation-road step-' + activeSimStep">
+        <div class="road-line"></div>
+        <div class="road-car" [style.left.%]="activeSimStep * 20 + 5" [class]="'step-' + activeSimStep">
+          <!-- headlights glow -->
+          <div class="headlight-beam"></div>
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="car-svg">
+            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path>
+            <circle cx="7" cy="17" r="2"></circle>
+            <circle cx="17" cy="17" r="2"></circle>
+          </svg>
+          
+          <!-- brake lights glow -->
+          <div class="brake-glow"></div>
+          
+          <span class="car-speed">{{ activeSimStep === 0 ? '75 mph' : activeSimStep === 1 ? '62 mph' : activeSimStep === 2 ? '38 mph' : '0 mph' }}</span>
+        </div>
+        
+        <!-- Hazard element on the road -->
+        <div class="road-hazard" [class.visible]="activeSimStep > 0">
+          <div class="hazard-icon-wrapper" [class.red]="activeSimStep === 3" [class.orange]="activeSimStep === 2" [class.yellow]="activeSimStep === 1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hazard-svg">
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
+          <span class="hazard-label">{{ activeSimStep === 1 ? 'Obstruction' : activeSimStep === 2 ? 'Sudden Braking' : 'Freeway Crash' }}</span>
+        </div>
+      </div>
+
+      <!-- Phone Simulator Visual -->
+      <div class="simulation-phone-frame">
+        <div class="phone-screen" [class.normal]="activeSimStep === 0" [class.caution]="activeSimStep === 1" [class.warning]="activeSimStep === 2" [class.danger]="activeSimStep === 3">
+          <div class="phone-notch"></div>
+          
+          <!-- Screen Content -->
+          <div class="phone-content-wrap">
+            <div class="app-header">
+              <span class="app-logo-small">Averty</span>
+              <div class="signal-bars">
+                <span class="bar active"></span>
+                <span class="bar active"></span>
+                <span class="bar active"></span>
+                <span class="bar active"></span>
+              </div>
+            </div>
+
+            <div class="alert-display">
+              <!-- Default -->
+              <div class="alert-view" *ngIf="activeSimStep === 0">
+                <div class="alert-icon-wrap green">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="phone-alert-svg">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                  </svg>
+                </div>
+                <h4 class="alert-title-text">ROAD IS CLEAR</h4>
+                <p class="alert-desc-text">Traffic flowing normally. No hazards reported.</p>
+              </div>
+
+              <!-- Warning -->
+              <div class="alert-view" *ngIf="activeSimStep === 1">
+                <div class="alert-icon-wrap yellow">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="phone-alert-svg">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                </div>
+                <h4 class="alert-title-text">WARNING</h4>
+                <p class="alert-desc-text">Slowdown ahead in 1.2 miles. Prepare to reduce speed.</p>
+              </div>
+
+              <!-- Danger -->
+              <div class="alert-view" *ngIf="activeSimStep === 2">
+                <div class="alert-icon-wrap orange">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="phone-alert-svg">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                </div>
+                <h4 class="alert-title-text">DANGER</h4>
+                <p class="alert-desc-text">Sudden braking ahead! Prepare to stop quickly.</p>
+              </div>
+
+              <!-- Accident -->
+              <div class="alert-view" *ngIf="activeSimStep === 3">
+                <div class="alert-icon-wrap red pulse">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="phone-alert-svg">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                </div>
+                <h4 class="alert-title-text">ACCIDENT</h4>
+                <p class="alert-desc-text">Freeway accident detected! Stopped traffic ahead.</p>
+              </div>
+            </div>
+
+            <div class="phone-navigation-sim">
+              <span class="nav-speed-display">{{ activeSimStep === 0 ? '75' : activeSimStep === 1 ? '62' : activeSimStep === 2 ? '38' : '0' }} <small>mph</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulation Controls -->
+      <div class="simulation-controls">
+        <button [class.active]="activeSimStep === 0" (click)="setSimStep(0)">
+          <span class="bullet green"></span> Default
+        </button>
+        <button [class.active]="activeSimStep === 1" (click)="setSimStep(1)">
+          <span class="bullet yellow"></span> Warning
+        </button>
+        <button [class.active]="activeSimStep === 2" (click)="setSimStep(2)">
+          <span class="bullet orange"></span> Danger
+        </button>
+        <button [class.active]="activeSimStep === 3" (click)="setSimStep(3)">
+          <span class="bullet black"></span> Accident
+        </button>
       </div>
     </div>
   </div>

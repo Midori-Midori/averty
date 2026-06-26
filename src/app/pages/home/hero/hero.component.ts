@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, ElementRef, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, AfterViewInit, OnDestroy, ElementRef, inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ModalComponent } from '../../../shared/modal/modal.component';
 import { gsap } from 'gsap';
@@ -11,12 +11,57 @@ import { gsap } from 'gsap';
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })
-export class HeroComponent implements AfterViewInit {
+export class HeroComponent implements AfterViewInit, OnDestroy {
   private el = inject(ElementRef);
-  isDemoModalOpen = false;
+  private platformId = inject(PLATFORM_ID);
+  
+  private _isDemoModalOpen = false;
+  private mouseMoveListener: any = null;
+  private simIntervalId: any = null;
+
+  activeSimStep = 0;
+
+  get isDemoModalOpen() {
+    return this._isDemoModalOpen;
+  }
+
+  set isDemoModalOpen(val: boolean) {
+    this._isDemoModalOpen = val;
+    if (isPlatformBrowser(this.platformId)) {
+      if (val) {
+        this.startSimulation();
+      } else {
+        this.stopSimulation();
+      }
+    }
+  }
 
   openDemoModal() {
     this.isDemoModalOpen = true;
+  }
+
+  closeDemoModal() {
+    this.isDemoModalOpen = false;
+  }
+
+  startSimulation() {
+    this.activeSimStep = 0;
+    this.stopSimulation();
+    this.simIntervalId = setInterval(() => {
+      this.activeSimStep = (this.activeSimStep + 1) % 4;
+    }, 3200);
+  }
+
+  stopSimulation() {
+    if (this.simIntervalId) {
+      clearInterval(this.simIntervalId);
+      this.simIntervalId = null;
+    }
+  }
+
+  setSimStep(step: number) {
+    this.activeSimStep = step;
+    this.startSimulation(); // reset simulation timer
   }
 
   ngAfterViewInit() {
@@ -27,8 +72,9 @@ export class HeroComponent implements AfterViewInit {
       const button = container.querySelector('app-button');
       const mockup = container.querySelector('.phone-mockup');
       const bubbles = container.querySelectorAll('.bubble');
+      const heroSection = container.querySelector('.hero');
 
-      // 1. Create entrance timeline
+      // 1. Entrance timeline
       const tl = gsap.timeline({ delay: 0.1 });
 
       if (title) {
@@ -74,6 +120,51 @@ export class HeroComponent implements AfterViewInit {
             repeat: -1
           }
         );
+      }
+
+      // 3. Mouse Parallax Effect
+      if (isPlatformBrowser(this.platformId) && heroSection && (mockup || bubbles.length > 0)) {
+        this.mouseMoveListener = (e: MouseEvent) => {
+          const { clientX, clientY } = e;
+          const { innerWidth, innerHeight } = window;
+          
+          // Calculate offsets (-0.5 to 0.5)
+          const moveX = (clientX / innerWidth) - 0.5;
+          const moveY = (clientY / innerHeight) - 0.5;
+
+          if (mockup) {
+            gsap.to(mockup, {
+              x: moveX * 24,
+              y: moveY * 24,
+              duration: 0.8,
+              ease: 'power2.out',
+              overwrite: 'auto'
+            });
+          }
+
+          bubbles.forEach((bubble: any, idx: number) => {
+            const factor = (idx + 1) * 16;
+            gsap.to(bubble, {
+              x: moveX * factor,
+              y: moveY * factor,
+              duration: 1,
+              ease: 'power2.out',
+              overwrite: 'auto'
+            });
+          });
+        };
+
+        heroSection.addEventListener('mousemove', this.mouseMoveListener);
+      }
+    }
+  }
+
+  ngOnDestroy() {
+    this.stopSimulation();
+    if (isPlatformBrowser(this.platformId) && this.mouseMoveListener) {
+      const heroSection = this.el.nativeElement.querySelector('.hero');
+      if (heroSection) {
+        heroSection.removeEventListener('mousemove', this.mouseMoveListener);
       }
     }
   }

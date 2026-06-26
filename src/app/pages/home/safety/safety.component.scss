@@ -50,8 +50,14 @@
   justify-content: center;
 }
 
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+}
+
 .safety-card {
   width: 100%;
+  height: 100%;
   min-height: 320px;
   backdrop-filter: blur(6px);
   background: rgba(255, 255, 255, 0.50);
@@ -130,6 +136,80 @@
   height: 100%;
   gap: 12px;
 }
+
+.safety-badge-container {
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.safety-icon-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+  
+  &.color-red {
+    background: rgba(255, 77, 77, 0.08);
+    border: 1px solid rgba(255, 77, 77, 0.25);
+  }
+  &.color-orange {
+    background: rgba(255, 153, 0, 0.08);
+    border: 1px solid rgba(255, 153, 0, 0.25);
+  }
+  &.color-yellow {
+    background: rgba(230, 184, 0, 0.08);
+    border: 1px solid rgba(230, 184, 0, 0.25);
+  }
+  &.color-blue {
+    background: rgba(51, 153, 255, 0.08);
+    border: 1px solid rgba(51, 153, 255, 0.25);
+  }
+}
+
+:host-context([data-colors-mode="dark"]) {
+  .safety-icon-badge {
+    &.color-yellow {
+      background: rgba(255, 214, 51, 0.08);
+      border: 1px solid rgba(255, 214, 51, 0.25);
+    }
+  }
+}
+
+.safety-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  
+  &.color-red { color: var(--danger, #ff4d4d); filter: drop-shadow(0 0 8px rgba(255, 77, 77, 0.4)); }
+  &.color-orange { color: var(--warning, #ff9900); filter: drop-shadow(0 0 8px rgba(255, 153, 0, 0.4)); }
+  &.color-yellow { color: #e6b800; filter: drop-shadow(0 0 8px rgba(230, 184, 0, 0.4)); }
+  &.color-blue { color: #3399ff; filter: drop-shadow(0 0 8px rgba(51, 153, 255, 0.4)); }
+}
+
+:host-context([data-colors-mode="dark"]) {
+  .safety-card-icon {
+    &.color-yellow {
+      color: #ffd633;
+      filter: drop-shadow(0 0 8px rgba(255, 214, 51, 0.4));
+    }
+  }
+}
+
+.safety-card-icon ::ng-deep svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 2;
+}
+
+.safety-card:hover .safety-icon-badge {
+  transform: scale(1.08);
+}
+
 
 .safety-highlight {
   font-family: var(--display);

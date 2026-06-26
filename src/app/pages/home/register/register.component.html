@@ -5,6 +5,10 @@
     <app-card [hoverable]="false" class="register-card" appReveal>
 
       <div class="form-side">
+        <div class="spots-badge">
+          <span class="pulse-dot"></span>
+          <span class="spots-text">ONLY {{ spotsRemaining() }} BETA SPOTS REMAINING TODAY</span>
+        </div>
         <h2 class="register-title">Sign up in seconds</h2>
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           

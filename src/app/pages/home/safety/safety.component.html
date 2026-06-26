@@ -13,6 +13,11 @@
           <div class="swiper-slide">
             <app-card [class]="'safety-card ' + fact.colorClass + ' ' + fact.delayClass" appReveal>
               <div class="safety-card-content">
+                <div class="safety-badge-container">
+                  <div [class]="'safety-icon-badge ' + fact.colorClass">
+                    <lucide-icon [img]="fact.icon" class="safety-card-icon" [class]="fact.colorClass"></lucide-icon>
+                  </div>
+                </div>
                 <span [class]="'safety-highlight ' + fact.colorClass">{{ fact.highlight }}</span>
                 <h3 class="safety-title">{{ fact.title }}</h3>
                 <p class="safety-desc">{{ fact.description }}</p>

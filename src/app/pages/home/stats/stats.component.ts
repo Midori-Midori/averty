@@ -42,7 +42,6 @@ export class StatsComponent implements AfterViewInit {
       description: 'Alerts transmitted in milliseconds.', 
       icon: Zap, 
       progress: 95, 
-      highlighted: true, 
       colorClass: 'color-blue' 
     },
     { 

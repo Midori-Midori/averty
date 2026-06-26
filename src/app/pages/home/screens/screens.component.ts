@@ -19,38 +19,43 @@ export class ScreensComponent implements AfterViewInit, OnDestroy {
   private swiperInstance: Swiper | null = null;
 
   carIcon = CarFront;
+  activeScreenIndex = signal<number>(0);
+
+  setScreenIndex(index: number) {
+    this.activeScreenIndex.set(index);
+  }
 
   screens = signal<Screen[]>([
     {
-      label: 'NORMAL',
+      label: 'DEFAULT',
       colorClass: 'color-green',
       icon: Heart,
-      mockup: 'assets/mockups/mockup5.png',
-      desc: 'Traffic Flowing Normally',
-      delayClass: 'delay-1'
-    },
-    {
-      label: 'CAUTION',
-      colorClass: 'color-caution',
-      icon: TriangleAlert,
-      mockup: 'assets/mockups/mockup4.png',
-      desc: 'Traffic Slowing Ahead',
+      mockup: 'assets/mockups/navegationdefault.png',
+      desc: 'Route Selection — Navigation screen at 0 mph showing target destination options on map.',
       delayClass: 'delay-1'
     },
     {
       label: 'WARNING',
-      colorClass: 'color-orange',
+      colorClass: 'color-caution',
       icon: TriangleAlert,
-      mockup: 'assets/mockups/mockup3.png',
-      desc: 'Sudden Speed Reduction',
-      delayClass: 'delay-2'
+      mockup: 'assets/mockups/navegation3.png',
+      desc: 'Slow Down Warning — Orange caution banner alerting you to reduce speed from 85 mph.',
+      delayClass: 'delay-1'
     },
     {
       label: 'DANGER',
       colorClass: 'color-red',
+      icon: TriangleAlert,
+      mockup: 'assets/mockups/navegation4.png',
+      desc: 'Danger Alert — Red high-speed alert warning of vehicles traveling over 90 mph.',
+      delayClass: 'delay-2'
+    },
+    {
+      label: 'ACCIDENT',
+      colorClass: 'color-black',
       icon: Activity,
-      mockup: 'assets/mockups/mockup2.png',
-      desc: 'Incident Detected — Reduce Speed Immediately',
+      mockup: 'assets/mockups/navegation.png',
+      desc: 'Accident Alert — Black notification warning of a freeway crash detected 10 miles ahead.',
       delayClass: 'delay-3'
     }
   ]);

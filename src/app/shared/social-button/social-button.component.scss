@@ -31,12 +31,13 @@
   }
 }
 
+/* ── LOCKED: Google and Apple button styling must remain identical in both Light and Dark modes ── */
 .btn-social--google {
-  background: #4285F4;
-  color: #fff;
+  background: #4285F4 !important;
+  color: #fff !important;
   padding: 0;
   
-  &:hover { background: #357ae8; }
+  &:hover { background: #357ae8 !important; }
   
   .icon-block {
     background: #fff;
@@ -57,11 +58,11 @@
 }
 
 .btn-social--apple {
-  background: #fff;
-  color: #000;
+  background: #fff !important;
+  color: #000 !important;
   padding: 0; 
   
-  &:hover { background: #f2f2f2; }
+  &:hover { background: #f2f2f2 !important; }
   
   .icon-block {
     width: 56px;

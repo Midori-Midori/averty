@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RegisterForm } from '../../../core/models/register-form.model';
@@ -24,13 +24,15 @@ import { RegisterService } from '../../../core/services/register.service';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit, OnDestroy {
   private fb = inject(FormBuilder);
   private registerService = inject(RegisterService);
+  private spotsIntervalId: any = null;
 
   isSubmitting = signal(false);
   submitSuccess = signal(false);
   submitMessage = signal('');
+  spotsRemaining = signal<number>(142);
 
   registerForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$')]],
@@ -38,6 +40,23 @@ export class RegisterComponent {
     email: ['', [Validators.required, Validators.email]],
     phone: ['', [Validators.required, Validators.pattern('^\\+\\d{1,4}[\\s\\-()]*\\d{7,15}$')]]
   });
+
+  ngOnInit() {
+    if (typeof window !== 'undefined') {
+      this.spotsIntervalId = setInterval(() => {
+        const current = this.spotsRemaining();
+        if (current > 12 && Math.random() > 0.7) {
+          this.spotsRemaining.set(current - 1);
+        }
+      }, 7000);
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.spotsIntervalId) {
+      clearInterval(this.spotsIntervalId);
+    }
+  }
 
   onSubmit() {
     if (this.registerForm.valid) {

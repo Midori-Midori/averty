@@ -17,6 +17,13 @@
             <stop offset="66%" stop-color="#fb923c" />
             <stop offset="100%" stop-color="#4ade80" />
           </linearGradient>
+          <filter id="pulseGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
         
         <!-- Soft background curved path -->
@@ -24,6 +31,14 @@
         
         <!-- Dotted animated overlay -->
         <path d="M 250,220 C 450,160 550,320 750,260 C 500,260 500,700 250,700 C 450,640 550,800 750,740" fill="none" stroke="url(#pathGrad)" stroke-width="2.5" stroke-dasharray="6 8" class="curved-path-animated" />
+
+        <!-- Glowing dot traveling along the path -->
+        <circle r="7" fill="#60a5fa" filter="url(#pulseGlow)">
+          <animateMotion 
+            dur="9s" 
+            repeatCount="indefinite" 
+            path="M 250,220 C 450,160 550,320 750,260 C 500,260 500,700 250,700 C 450,640 550,800 750,740" />
+        </circle>
       </svg>
 
       @for (step of steps(); track step.number) {

@@ -10,11 +10,44 @@
         a single glance tells drivers exactly what to do.
       </p>
     </div>
-    <div class="screens-grid swiper">
+    <!-- Desktop Device Showcase (Hidden on Mobile) -->
+    <div class="showcase-desktop" appReveal>
+      <!-- Left: Interactive selector tabs -->
+      <div class="showcase-tabs">
+        @for (screen of screens(); track screen.label; let idx = $index) {
+          <div 
+            [class]="'showcase-tab ' + screen.colorClass + (activeScreenIndex() === idx ? ' active' : '')"
+            (mouseenter)="setScreenIndex(idx)"
+            (click)="setScreenIndex(idx)">
+            <div class="tab-header">
+              <lucide-icon [img]="screen.icon" class="tab-icon" [class]="screen.colorClass"></lucide-icon>
+              <span class="tab-label">{{ screen.label }}</span>
+            </div>
+            <p class="tab-desc">{{ screen.desc }}</p>
+          </div>
+        }
+      </div>
+
+      <!-- Right: Phone Display Mockup -->
+      <div class="showcase-device">
+        <div [class]="'device-glow-bg ' + screens()[activeScreenIndex()].colorClass"></div>
+        <div class="phone-showcase-frame">
+          @for (screen of screens(); track screen.label; let idx = $index) {
+            <img 
+              [src]="screen.mockup" 
+              [alt]="screen.desc"
+              [class]="'phone-screen-img ' + screen.colorClass + (activeScreenIndex() === idx ? ' visible' : '')">
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Swiper Grid (Hidden on Desktop) -->
+    <div class="screens-grid swiper mobile-only">
       <div class="swiper-wrapper">
         @for (screen of screens(); track screen.label) {
           <div class="swiper-slide">
-            <div [class]="'screen-card ' + screen.colorClass + ' ' + screen.delayClass" appReveal>
+            <div [class]="'screen-card ' + screen.colorClass">
               <p [class]="'alert-label ' + screen.colorClass">{{ screen.label }}</p>
               
               <div class="alert-icons">
