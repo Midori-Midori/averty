@@ -169,6 +169,30 @@
   }
 }
 
+/* Light mode overrides for tabs */
+:host-context(:not([data-colors-mode="dark"])) .showcase-tab {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.06);
+
+  .tab-desc {
+    color: #555555;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &.active {
+    background: rgba(20, 20, 25, 0.85);
+    border-color: currentColor;
+
+    .tab-desc {
+      color: #eeeeee;
+    }
+  }
+}
+
 .showcase-device {
   flex: 0 0 360px;
   position: relative;
