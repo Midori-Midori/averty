@@ -30,7 +30,7 @@ export class ScreensComponent implements AfterViewInit, OnDestroy {
       label: 'DEFAULT',
       colorClass: 'color-green',
       icon: Heart,
-      mockup: 'assets/mockups/navegationdefault.png',
+      mockup: 'assets/mockups/default.png',
       desc: 'Route Selection — Navigation screen at 0 mph showing target destination options on map.',
       delayClass: 'delay-1'
     },
@@ -38,7 +38,7 @@ export class ScreensComponent implements AfterViewInit, OnDestroy {
       label: 'WARNING',
       colorClass: 'color-caution',
       icon: TriangleAlert,
-      mockup: 'assets/mockups/navegation3.png',
+      mockup: 'assets/mockups/Warning.png',
       desc: 'Slow Down Warning — Orange caution banner alerting you to reduce speed from 85 mph.',
       delayClass: 'delay-1'
     },
@@ -46,7 +46,7 @@ export class ScreensComponent implements AfterViewInit, OnDestroy {
       label: 'DANGER',
       colorClass: 'color-red',
       icon: TriangleAlert,
-      mockup: 'assets/mockups/navegation4.png',
+      mockup: 'assets/mockups/Danger.png',
       desc: 'Danger Alert — Red high-speed alert warning of vehicles traveling over 90 mph.',
       delayClass: 'delay-2'
     },
@@ -54,7 +54,7 @@ export class ScreensComponent implements AfterViewInit, OnDestroy {
       label: 'ACCIDENT',
       colorClass: 'color-black',
       icon: Activity,
-      mockup: 'assets/mockups/navegation.png',
+      mockup: 'assets/mockups/accident.png',
       desc: 'Accident Alert — Black notification warning of a freeway crash detected 10 miles ahead.',
       delayClass: 'delay-3'
     }
