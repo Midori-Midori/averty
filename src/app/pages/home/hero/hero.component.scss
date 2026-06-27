@@ -64,7 +64,7 @@
 .hero-visual {
   position: relative;
   flex: 1 1 auto;
-  height: 500px;
+  height: 400px;
   margin-left: 100px;
 }
 
@@ -72,8 +72,8 @@
   position: absolute;
   right: 0;
   top: 0;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   object-fit: contain;
   filter: drop-shadow(0 40px 60px rgba(0,0,0,0.14));
 }
@@ -105,17 +105,17 @@
 
 .bubble-float-1 { 
   top: 40px;   
-  right: 420px; 
+  right: 320px; 
   animation: bubbleFloat1 4s ease-in-out infinite alternate;
 }
 .bubble-float-2 { 
   top: 240px;  
-  right: 420px; 
+  right: 320px; 
   animation: bubbleFloat2 5s ease-in-out infinite alternate;
 }
 .bubble-float-3 { 
   bottom: 60px; 
-  right: 20px; 
+  right: -80px; 
   animation: bubbleFloat3 4.5s ease-in-out infinite alternate;
 }
 
