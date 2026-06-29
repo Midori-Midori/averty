@@ -170,7 +170,7 @@
 }
 
 /* Light mode overrides for tabs */
-:host-context(:not([data-colors-mode="dark"])) .showcase-tab {
+:host-context([data-colors-mode="light"]) .showcase-tab {
   background: rgba(0, 0, 0, 0.03);
   border-color: rgba(0, 0, 0, 0.06);
 
@@ -245,7 +245,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
   opacity: 0;
   transform: translateY(10px) scale(0.98);
   transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
@@ -293,7 +293,7 @@
 .screen-card:hover::before { opacity: 0.25; }
 
 /* ── Light mode card styles ── */
-:host-context(:not([data-colors-mode="dark"])) .screen-card {
+:host-context([data-colors-mode="light"]) .screen-card {
   background: rgba(255, 255, 255, 0.85);
   border-color: rgba(0, 0, 0, 0.07);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
@@ -404,7 +404,7 @@
 }
 
 /* Light mode text overrides */
-:host-context(:not([data-colors-mode="dark"])) {
+:host-context([data-colors-mode="light"]) {
   .alert-desc { color: #444; }
   .alert-label { color: inherit; }
   
@@ -438,7 +438,7 @@
 .screen-mockup {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
   display: block;
   border-radius: 12px;
   filter: drop-shadow(0 -8px 24px rgba(0,0,0,0.4));
@@ -464,7 +464,7 @@
   .screen-mockup {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: contain;
   }
 
   .alert-label {
@@ -536,7 +536,7 @@
   .screen-mockup {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: contain;
   }
 
   .alert-label {
@@ -604,7 +604,7 @@
   .screen-mockup {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: contain;
   }
 }
 

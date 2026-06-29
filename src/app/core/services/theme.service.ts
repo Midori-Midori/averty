@@ -54,7 +54,7 @@ export class ThemeService {
         if (resolved === 'dark') {
           document.documentElement.setAttribute('data-colors-mode', 'dark');
         } else {
-          document.documentElement.removeAttribute('data-colors-mode');
+          document.documentElement.setAttribute('data-colors-mode', 'light');
         }
       }
     });
