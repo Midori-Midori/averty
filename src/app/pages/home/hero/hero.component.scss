@@ -64,7 +64,7 @@
 .hero-visual {
   position: relative;
   flex: 1 1 auto;
-  height: 400px;
+  height: 500px;
   margin-left: 100px;
 }
 
@@ -72,8 +72,9 @@
   position: absolute;
   right: 0;
   top: 0;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
+  max-width: 100%;
   object-fit: contain;
   filter: drop-shadow(0 40px 60px rgba(0,0,0,0.14));
 }
@@ -105,17 +106,17 @@
 
 .bubble-float-1 { 
   top: 40px;   
-  right: 320px; 
+  right: 420px; 
   animation: bubbleFloat1 4s ease-in-out infinite alternate;
 }
 .bubble-float-2 { 
   top: 240px;  
-  right: 320px; 
+  right: 420px; 
   animation: bubbleFloat2 5s ease-in-out infinite alternate;
 }
 .bubble-float-3 { 
   bottom: 60px; 
-  right: -80px; 
+  right: -100px; 
   animation: bubbleFloat3 4.5s ease-in-out infinite alternate;
 }
 
@@ -147,13 +148,13 @@
 
   .hero-visual {
     margin-left: 30px;
-    height: 520px;
+    height: 600px;
   }
 
   .phone-mockup {
     left: 90px;
-    width: 440px;
-    height: 440px;
+    width: 540px;
+    height: 540px;
     top: 40px;
   }
 
@@ -163,17 +164,17 @@
   }
 
   .bubble-float-1 {
-    right: 259px;
+    right: 359px;
     top: 50px;
   }
 
   .bubble-float-2 {
-    right: 310px;
+    right: 410px;
     top: 220px;
   }
 
   .bubble-float-3 {
-    right: 10px;
+    right: -30px;
     bottom: 40px;
   }
 }
@@ -219,7 +220,7 @@
     margin-left: 0;
     width: 100%;
     max-width: 480px;
-    height: 500px;
+    height: 600px;
     position: relative;
     margin: 0 auto;
   }
@@ -229,7 +230,8 @@
     left: 106px;
     right: 0;
     margin: 0 auto;
-    height: auto;
+    width: 500px;
+    height: 500px;
   }
 
   .bubble {
@@ -244,21 +246,21 @@
 
   .bubble-float-1 {
     top: 30px;
-    left: 10px;
+    left: -20px;
     right: auto;
     bottom: auto;
   }
 
   .bubble-float-2 {
     top: 190px;
-    left: -10px;
+    left: -35px;
     right: auto;
     bottom: auto;
   }
 
   .bubble-float-3 {
     bottom: 40px;
-    right: 10px;
+    right: -30px;
     left: auto;
     top: auto;
   }
@@ -266,12 +268,13 @@
 
 @media (max-width: 480px) {
   .hero-visual {
-    height: 400px;
+    height: 460px;
     max-width: 320px;
   }
 
   .phone-mockup {
-    width: 240px;
+    width: 340px;
+    height: 340px;
     top: 40px;
   }
 
@@ -287,21 +290,21 @@
 
   .bubble-float-1 {
     top: 41px;
-    left: 21px;
+    left: -15px;
     right: auto;
     bottom: auto;
   }
 
   .bubble-float-2 {
     top: 150px;
-    left: -26px;
+    left: -35px;
     right: auto;
     bottom: auto;
   }
 
   .bubble-float-3 {
     bottom: 91px;
-    right: -20px;
+    right: -30px;
     left: auto;
     top: auto;
   }
