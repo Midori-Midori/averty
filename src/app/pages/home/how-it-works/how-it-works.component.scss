@@ -1,6 +1,6 @@
 .hiw {
   position: relative;
-  padding: 100px 0 120px;
+  padding: 120px 0;
   overflow: visible;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .step-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
 }
 
 /* Light Mode Hovers */
@@ -151,7 +151,7 @@
 }
 
 .step-icon {
-  margin: 10px 0 20px;
+  margin: 10px 0 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -164,7 +164,7 @@
 }
 
 .step-text {
-  margin-top: 10px;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -178,7 +178,7 @@
   font-weight: 600;
   color: var(--dark);
   letter-spacing: .5px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   text-align: center;
 }
 

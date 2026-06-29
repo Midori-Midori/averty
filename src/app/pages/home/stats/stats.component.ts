@@ -39,39 +39,39 @@ export class StatsComponent implements AfterViewInit {
 
   stats = signal<Stat[]>([
     { 
-      value: '1,200', 
+      value: '500+', 
       unit: '', 
-      label: 'Accidents Detected', 
-      description: 'Automatically identified road incidents.', 
+      label: 'Alerts Processed', 
+      description: 'Real-time notifications sent to drivers.', 
       icon: MapPinned, 
-      progress: 85, 
+      progress: 100, 
       colorClass: 'color-red' 
     },
     { 
-      value: '<1.8', 
-      unit: 's', 
-      label: 'Response Time', 
-      description: 'Alerts transmitted in milliseconds.', 
+      value: '24/7', 
+      unit: '', 
+      label: 'Monitoring', 
+      description: 'Continuous roadway safety scanning.', 
       icon: Zap, 
-      progress: 95, 
+      progress: 100, 
       colorClass: 'color-blue' 
     },
     { 
-      value: '35,000', 
+      value: '50+', 
       unit: '', 
-      label: 'Protected Drivers', 
-      description: 'Active users on highways and expressways.', 
+      label: 'Road Incidents Tracked', 
+      description: 'Freeway accidents and sudden slow-downs detected.', 
       icon: Shield, 
       progress: 100, 
       colorClass: 'color-orange' 
     },
     { 
-      value: '89', 
+      value: '98', 
       unit: '%', 
-      label: 'Alert Effectiveness', 
-      description: 'Precision in preventing road accidents.', 
+      label: 'Detection Accuracy', 
+      description: 'Precision in identifying dangerous highway hazards.', 
       icon: TriangleAlert, 
-      progress: 89, 
+      progress: 98, 
       colorClass: 'color-green' 
     }
   ]);

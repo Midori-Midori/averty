@@ -1,6 +1,6 @@
 .screens {
   position: relative;
-  padding: 100px 0 120px;
+  padding: 120px 0;
   overflow: visible;
 }
 
@@ -286,7 +286,7 @@
 
 /* ── Dark mode hover (default — only for dark bg shadow) ── */
 .screen-card:hover {
-  transform: translateY(-8px) !important;
+  transform: translateY(-6px) !important;
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45) !important;
 }
 

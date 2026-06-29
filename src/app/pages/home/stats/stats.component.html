@@ -20,7 +20,7 @@
     <div class="stats-scroll-container-wrapper">
       <div class="stats-grid">
 
-      <!-- Card 1: Accidents Detected (Donut/Radial Chart) -->
+      <!-- Card 1: Alerts Processed (Donut/Radial Chart) -->
       <div class="stat-card color-red" appReveal>
         <div class="card-info-side">
           <div class="card-header">
@@ -28,17 +28,17 @@
               <div class="card-icon">
                 <lucide-icon [img]="mapPinnedIcon" [size]="16" [strokeWidth]="2.5"></lucide-icon>
               </div>
-              <span class="card-title">Accidents Detected</span>
+              <span class="card-title">Alerts Processed</span>
             </div>
-            <h3 class="card-value"><span class="stat-counter" data-target="1200" data-format="comma">0</span></h3>
+            <h3 class="card-value"><span class="stat-counter" data-target="500" data-suffix="+">0</span></h3>
           </div>
           <div class="card-body">
             <p class="card-description">
-              Our on-board sensors and AI detect sudden braking and collision events instantly. According to the NSC, improper driving behaviors are the leading factor in road crashes.
+              Our cloud system processes and broadcasts sudden braking warnings to nearby motorists instantly. Keeping drivers informed prevents chain-reaction pileups.
             </p>
             <ul class="card-highlights">
-              <li><strong>NSC Fact:</strong> Improper driving behaviors contribute to the majority of motor vehicle accidents.</li>
-              <li><strong>Automated Alerts:</strong> Zero manual interaction required from drivers.</li>
+              <li><strong>Smart Routing:</strong> Broadcasts alerts instantly within a 1.2-mile radius.</li>
+              <li><strong>High Reliability:</strong> Designed for immediate, zero-latency safety messaging.</li>
             </ul>
           </div>
         </div>
@@ -58,14 +58,14 @@
             <circle cx="100" cy="100" r="75" class="chart-radial-track" />
             <!-- Radar scan dashes overlay -->
             <circle cx="100" cy="100" r="82" class="chart-radial-dashes" />
-            <circle cx="100" cy="100" r="75" class="chart-radial-progress red" stroke="url(#donutRedGrad)" stroke-dasharray="471.2" stroke-dashoffset="268.6" stroke-linecap="round" filter="url(#redGlow)" />
-            <text x="100" y="96" text-anchor="middle" class="chart-inner-val stat-counter" data-target="1200" data-format="comma">0</text>
-            <text x="100" y="128" text-anchor="middle" class="chart-inner-lbl">Detected</text>
+            <circle cx="100" cy="100" r="75" class="chart-radial-progress red" stroke="url(#donutRedGrad)" stroke-dasharray="471.2" stroke-dashoffset="0" stroke-linecap="round" filter="url(#redGlow)" />
+            <text x="100" y="96" text-anchor="middle" class="chart-inner-val stat-counter" data-target="500" data-suffix="+">0</text>
+            <text x="100" y="128" text-anchor="middle" class="chart-inner-lbl">Processed</text>
           </svg>
         </div>
       </div>
 
-      <!-- Card 2: Response Time (Bar Chart) -->
+      <!-- Card 2: Monitoring (Bar Chart) -->
       <div class="stat-card color-blue" appReveal>
         <div class="card-info-side">
           <div class="card-header">
@@ -73,17 +73,17 @@
               <div class="card-icon">
                 <lucide-icon [img]="clockIcon" [size]="16" [strokeWidth]="2.5"></lucide-icon>
               </div>
-              <span class="card-title">Response Time</span>
+              <span class="card-title">Monitoring</span>
             </div>
-            <h3 class="card-value"><span class="stat-counter" data-target="1.8" data-prefix="&lt;" data-suffix="s" data-decimals="1">0.0</span></h3>
+            <h3 class="card-value"><span class="stat-counter" data-target="24" data-suffix="/7">0</span></h3>
           </div>
           <div class="card-body">
             <p class="card-description">
-              Averty transmits critical alerts at ultra-low latency. With speeding contributing to 29% of all traffic fatalities (NHTSA), saving milliseconds is vital.
+              Averty runs continuous, automated monitoring across highway networks. Speeding and Aggressive Driving contribute heavily to freeway fatalities, so we keep watch round-the-clock.
             </p>
             <ul class="card-highlights">
-              <li><strong>Highway Speeds:</strong> At 70 mph, a vehicle covers 103 feet per second, leaving little time to react.</li>
-              <li><strong>Traditional GPS:</strong> Typically takes 10+ seconds to propagate warnings.</li>
+              <li><strong>Always Active:</strong> 24 hours a day, 7 days a week, with no downtime.</li>
+              <li><strong>Autonomous:</strong> Detection engine runs fully in the background.</li>
             </ul>
           </div>
         </div>
@@ -118,38 +118,38 @@
             </g>
 
             <g class="chart-labels Y-axis">
-              <text x="30" y="45" text-anchor="end">12s</text>
-              <text x="30" y="95" text-anchor="end">6s</text>
-              <text x="30" y="145" text-anchor="end">2s</text>
-              <text x="30" y="175" text-anchor="end">0s</text>
+              <text x="30" y="45" text-anchor="end">24h</text>
+              <text x="30" y="95" text-anchor="end">12h</text>
+              <text x="30" y="145" text-anchor="end">4h</text>
+              <text x="30" y="175" text-anchor="end">0</text>
             </g>
 
             <g class="chart-bars">
-              <!-- GPS Apps -->
-              <rect x="65" y="40" width="28" height="130" rx="6" fill="url(#barGPSGrad)" class="bar-other" />
-              <!-- Cellular Broadcast -->
-              <rect x="135" y="110" width="28" height="60" rx="6" fill="url(#barCellGrad)" class="bar-other" />
+              <!-- Other Apps -->
+              <rect x="65" y="110" width="28" height="60" rx="6" fill="url(#barGPSGrad)" class="bar-other" />
+              <!-- Manual Reports -->
+              <rect x="135" y="90" width="28" height="80" rx="6" fill="url(#barCellGrad)" class="bar-other" />
               <!-- Averty -->
-              <rect x="205" y="152" width="28" height="18" rx="6" fill="url(#barAvertyGrad)" class="bar-active" filter="url(#blueGlow)" />
+              <rect x="205" y="40" width="28" height="130" rx="6" fill="url(#barAvertyGrad)" class="bar-active" filter="url(#blueGlow)" />
             </g>
 
             <!-- Floating Values on top of bars -->
             <g class="chart-bar-values">
-              <text x="79" y="32" text-anchor="middle" class="bar-val-lbl">12.0s</text>
-              <text x="149" y="102" text-anchor="middle" class="bar-val-lbl">6.0s</text>
-              <text x="219" y="144" text-anchor="middle" class="bar-val-lbl highlighted">1.8s</text>
+              <text x="79" y="102" text-anchor="middle" class="bar-val-lbl">8h/5</text>
+              <text x="149" y="82" text-anchor="middle" class="bar-val-lbl">12h/7</text>
+              <text x="219" y="32" text-anchor="middle" class="bar-val-lbl highlighted">24/7</text>
             </g>
 
             <g class="chart-labels X-axis">
-              <text x="79" y="192" text-anchor="middle">GPS</text>
-              <text x="149" y="192" text-anchor="middle">Cellular</text>
+              <text x="79" y="192" text-anchor="middle">Manual</text>
+              <text x="149" y="192" text-anchor="middle">Standard</text>
               <text x="219" y="192" text-anchor="middle">Averty</text>
             </g>
           </svg>
         </div>
       </div>
 
-      <!-- Card 3: Protected Drivers (Area Chart) -->
+      <!-- Card 3: Road Incidents Tracked (Area Chart) -->
       <div class="stat-card color-orange" appReveal>
         <div class="card-info-side">
           <div class="card-header">
@@ -157,17 +157,17 @@
               <div class="card-icon">
                 <lucide-icon [img]="carFrontIcon" [size]="16" [strokeWidth]="2.5"></lucide-icon>
               </div>
-              <span class="card-title">Protected Drivers</span>
+              <span class="card-title">Road Incidents Tracked</span>
             </div>
-            <h3 class="card-value"><span class="stat-counter" data-target="35000" data-format="comma">0</span></h3>
+            <h3 class="card-value"><span class="stat-counter" data-target="50" data-suffix="+">0</span></h3>
           </div>
           <div class="card-body">
             <p class="card-description">
-              Thousands of active drivers trust Averty daily to anticipate road hazards. GHSA reports that speeding and aggressive driving remain critical safety challenges.
+              Averty tracks and logs highway accidents, construction blockages, and sudden back-ups in real time. We warn you about obstacles before they are in your line of sight.
             </p>
             <ul class="card-highlights">
-              <li><strong>US Highways:</strong> Proactive safety coverage across major interstate routes.</li>
-              <li><strong>Monthly Growth:</strong> Over 10,000 new active users every quarter.</li>
+              <li><strong>Accident Tracking:</strong> Immediate logging of collisions and sudden decelerations.</li>
+              <li><strong>Highway Safety:</strong> Avoid pileups by receiving notifications way ahead.</li>
             </ul>
           </div>
         </div>
@@ -197,9 +197,9 @@
             </g>
 
             <g class="chart-labels Y-axis">
-              <text x="30" y="45" text-anchor="end">40k</text>
-              <text x="30" y="95" text-anchor="end">20k</text>
-              <text x="30" y="145" text-anchor="end">10k</text>
+              <text x="30" y="45" text-anchor="end">60</text>
+              <text x="30" y="95" text-anchor="end">30</text>
+              <text x="30" y="145" text-anchor="end">15</text>
               <text x="30" y="175" text-anchor="end">0</text>
             </g>
 
@@ -211,13 +211,13 @@
 
             <!-- Sub data points -->
             <circle cx="160" cy="105" r="4.5" class="chart-point orange-sub" />
-            <text x="160" y="93" text-anchor="middle" class="chart-pt-lbl">18k</text>
+            <text x="160" y="93" text-anchor="middle" class="chart-pt-lbl">25</text>
 
             <!-- Main data point dot with double glow ring -->
             <g transform="translate(280, 40)">
               <circle cx="0" cy="0" r="10" class="chart-point-pulse" />
               <circle cx="0" cy="0" r="5" class="chart-point orange active-peak" filter="url(#orangeGlow)" />
-              <text x="0" y="-14" text-anchor="middle" class="chart-pt-lbl active-lbl">35k</text>
+              <text x="0" y="-14" text-anchor="middle" class="chart-pt-lbl active-lbl">50+</text>
             </g>
 
             <g class="chart-labels X-axis">
@@ -229,7 +229,7 @@
         </div>
       </div>
 
-      <!-- Card 4: Alert Effectiveness (Step-Block Chart) -->
+      <!-- Card 4: Detection Accuracy (Step-Block Chart) -->
       <div class="stat-card color-green" appReveal>
         <div class="card-info-side">
           <div class="card-header">
@@ -237,17 +237,17 @@
               <div class="card-icon">
                 <lucide-icon [img]="alertIcon" [size]="16" [strokeWidth]="2.5"></lucide-icon>
               </div>
-              <span class="card-title">Alert Effectiveness</span>
+              <span class="card-title">Detection Accuracy</span>
             </div>
-            <h3 class="card-value"><span class="stat-counter" data-target="89" data-suffix="%">0</span></h3>
+            <h3 class="card-value"><span class="stat-counter" data-target="98" data-suffix="%">0</span></h3>
           </div>
           <div class="card-body">
             <p class="card-description">
-              We filter out false alerts to ensure drivers only receive critical warning signals, reducing aggressive braking and panic responses by 89%.
+              We achieve high precision in safety detection, filtering out false alerts. Ensuring drivers receive warnings early helps prevent severe highway hazards.
             </p>
             <ul class="card-highlights">
-              <li><strong>Smart Filtering:</strong> Prevents driver alert fatigue and panic braking.</li>
-              <li><strong>Risk Mitigation:</strong> Prioritizes warnings only during high-danger scenarios.</li>
+              <li><strong>High Precision:</strong> 98% detection success rate on active expressways.</li>
+              <li><strong>Smart Filtering:</strong> Filters out non-critical vehicle decelerations.</li>
             </ul>
           </div>
         </div>
