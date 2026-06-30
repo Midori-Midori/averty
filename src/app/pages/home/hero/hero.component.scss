@@ -81,7 +81,7 @@
 
 .phone-mockup {
   position: absolute;
-  right: 0;
+  right: 80px;
   top: 0;
   width: 500px;
   height: 500px;
@@ -117,17 +117,17 @@
 
 .bubble-float-1 { 
   top: 40px;   
-  right: 420px; 
+  right: 500px; 
   animation: bubbleFloat1 4s ease-in-out infinite alternate;
 }
 .bubble-float-2 { 
   top: 240px;  
-  right: 420px; 
+  right: 500px; 
   animation: bubbleFloat2 5s ease-in-out infinite alternate;
 }
 .bubble-float-3 { 
   bottom: 60px; 
-  right: -100px; 
+  right: -20px; 
   animation: bubbleFloat3 4.5s ease-in-out infinite alternate;
 }
 
