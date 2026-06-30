@@ -1,6 +1,6 @@
 .stats {
   position: relative;
-  padding: 120px 0;
+  padding: 160px 0;
   overflow: hidden; /* Clip blobs */
 }
 
@@ -153,7 +153,7 @@
   border: 1px solid var(--border);
   border-radius: 20px;
   box-shadow: 0 12px 40px rgba(0,0,0,0.06);
-  padding: 48px 56px; /* Extra padding for spaciousness */
+  padding: 32px;
   
   display: grid;
   grid-template-columns: 1.1fr 1.3fr;
