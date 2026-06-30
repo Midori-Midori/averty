@@ -7,6 +7,7 @@ import { ScreensComponent } from './screens/screens.component';
 import { RegisterComponent } from './register/register.component';
 import { SafetyComponent } from './safety/safety.component';
 import { FooterComponent } from '../../shared/footer/footer.component';
+import { TechnologiesComponent } from './technologies/technologies.component';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -24,6 +25,7 @@ if (typeof window !== 'undefined') {
     HowItWorksComponent,
     ScreensComponent,
     SafetyComponent,
+    TechnologiesComponent,
     RegisterComponent,
     FooterComponent
   ],

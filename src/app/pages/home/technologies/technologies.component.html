@@ -1,0 +1,21 @@
+﻿<section class="tech-section">
+  <div class="tech-bg"></div>
+  <div class="tech-inner" appReveal>
+    <div class="section-label">TECH STACK</div>
+    <h2 class="tech-title">Built with best-in-class technologies</h2>
+    <p class="tech-subtitle">Every layer of Averty is powered by proven, production-ready tools.</p>
+
+    <div class="tech-grid">
+      @for (tech of techs; track tech.name) {
+        <div class="tech-card">
+          <div class="tech-logo-wrap">
+            <img [src]="tech.logo" [alt]="tech.name + ' logo'" class="tech-logo" />
+          </div>
+          <h3 class="tech-name">{{ tech.name }}</h3>
+          <p class="tech-desc">{{ tech.description }}</p>
+          <div class="tech-accent" [style.background]="tech.color"></div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
