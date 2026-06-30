@@ -2,7 +2,15 @@
 <section class="register" id="register">
   <div class="register-bg"></div>
   <div class="register-inner">
-    <app-card [hoverable]="false" class="register-card" appReveal>
+    <!-- Final CTA Banner -->
+    <div class="register-cta-banner" appReveal>
+      <div class="cta-glow-blob"></div>
+      <h2 class="register-cta-title">Ready to make highways safer?</h2>
+      <p class="register-cta-subtitle">Start using Averty today.</p>
+      <a href="#register-card-anchor" class="register-cta-action-btn">Get Early Access</a>
+    </div>
+
+    <app-card [hoverable]="false" class="register-card" appReveal id="register-card-anchor">
 
       <div class="form-side">
         <div class="spots-badge">

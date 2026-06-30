@@ -7,7 +7,7 @@
 .stats-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(91, 140, 255, 0.08) 0%, transparent 75%), var(--bg-section-pattern);
+  background: radial-gradient(circle at 50% 50%, rgba(91, 140, 255, 0.08) 0%, transparent 50%), var(--bg-section-pattern);
   z-index: -1;
 }
 
