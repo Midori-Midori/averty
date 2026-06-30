@@ -38,7 +38,7 @@ export class HomeComponent implements AfterViewInit {
   ngAfterViewInit() {
     if (typeof window !== 'undefined') {
       const container = this.el.nativeElement;
-      const bgs = container.querySelectorAll('.hero-bg, .stats-bg, .hiw-bg, .screens-bg, .register-bg, .footer-bg, .safety-bg');
+      const bgs = container.querySelectorAll('.hero-bg, .stats-bg, .hiw-bg, .screens-bg, .tech-bg, .register-bg, .footer-bg, .safety-bg');
 
       bgs.forEach((bg: HTMLElement) => {
         const parent = bg.parentElement;
