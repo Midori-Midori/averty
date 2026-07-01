@@ -9,6 +9,8 @@
   inset: 0;
   background: var(--bg-section-pattern);
   z-index: -1;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .safety-inner {
