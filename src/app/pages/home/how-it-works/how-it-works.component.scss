@@ -1,6 +1,6 @@
 .hiw {
   position: relative;
-  padding: 160px 0;
+  padding: 180px 0;
   overflow: visible;
 }
 
@@ -28,15 +28,15 @@
 
 .section-title {
   font-family: var(--font);
-  font-size: clamp(40px, 5vw, 60px);
-  font-weight: 400;
+  font-size: clamp(32px, 4vw, 48px); /* Section Title: 48px */
+  font-weight: 500;
   color: var(--dark);
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   margin-bottom: 12px;
 }
 
 .section-sub {
-  font-size: 22px;
+  font-size: clamp(18px, 2vw, 22px); /* Subtitle: 22px */
   color: var(--muted);
   letter-spacing: 1px;
 }
@@ -69,11 +69,11 @@
   -webkit-backdrop-filter: blur(12px);
   background: var(--glass2);
   border: 1px solid var(--border);
-  border-radius: 20px;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.07);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   padding: 32px;
   text-align: center;
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  transition: var(--transition-premium);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -186,10 +186,10 @@
 }
 
 .step-desc {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--muted);
   line-height: 1.5;
-  max-width: 220px;
+  max-width: 240px;
   margin: 0 auto;
   text-align: center;
 }

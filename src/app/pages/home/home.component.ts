@@ -7,7 +7,8 @@ import { ScreensComponent } from './screens/screens.component';
 import { RegisterComponent } from './register/register.component';
 import { SafetyComponent } from './safety/safety.component';
 import { FooterComponent } from '../../shared/footer/footer.component';
-import { TechnologiesComponent } from './technologies/technologies.component';
+import { MapComponent } from './map/map.component';
+import { ResearchComponent } from './research/research.component';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -25,7 +26,8 @@ if (typeof window !== 'undefined') {
     HowItWorksComponent,
     ScreensComponent,
     SafetyComponent,
-    TechnologiesComponent,
+    MapComponent,
+    ResearchComponent,
     RegisterComponent,
     FooterComponent
   ],
@@ -38,7 +40,7 @@ export class HomeComponent implements AfterViewInit {
   ngAfterViewInit() {
     if (typeof window !== 'undefined') {
       const container = this.el.nativeElement;
-      const bgs = container.querySelectorAll('.hero-bg, .stats-bg, .hiw-bg, .screens-bg, .tech-bg, .register-bg, .footer-bg, .safety-bg');
+      const bgs = container.querySelectorAll('.hero-bg, .stats-bg, .hiw-bg, .screens-bg, .tech-bg, .register-bg, .footer-bg, .safety-bg, .map-bg-glow, .research-bg-glow');
 
       bgs.forEach((bg: HTMLElement) => {
         const parent = bg.parentElement;

@@ -29,16 +29,18 @@ export class RevealDirective implements OnInit {
       // Initial state
       gsap.set(element, {
         opacity: 0,
-        y: 32
+        y: 24,
+        scale: 0.98
       });
 
       // Animate when entering viewport
       gsap.to(element, {
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        scale: 1,
+        duration: 1.0,
         delay: delay,
-        ease: 'power2.out',
+        ease: 'power3.out',
         scrollTrigger: {
           trigger: element,
           start: 'top 88%',

@@ -3,78 +3,101 @@
   <div class="register-bg"></div>
   <div class="register-inner">
 
-    <app-card [hoverable]="false" class="register-card" appReveal id="register-card-anchor">
+    <div class="register-unified-card" appReveal>
+      <div class="cta-glow-blob"></div>
 
-      <div class="form-side">
-        <div class="spots-badge">
-          <span class="pulse-dot"></span>
-          <span class="spots-text">ONLY {{ spotsRemaining() }} BETA SPOTS REMAINING TODAY</span>
-        </div>
-        <h2 class="register-title">Sign up in seconds</h2>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          
-          <app-input 
-            id="name" 
-            label="Name:" 
-            placeholder="Enter your name" 
-            [control]="$any(registerForm.get('name'))"
-            [errorMessages]="{ pattern: 'Only letters are allowed' }">
-          </app-input>
+      <!-- Close button (X) — visible only when form is open -->
+      @if (showForm()) {
+        <button class="form-close-btn" (click)="toggleForm()" aria-label="Close form">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      }
 
-          <app-input 
-            id="lastName" 
-            label="Last Name:" 
-            placeholder="Enter your last name" 
-            [control]="$any(registerForm.get('lastName'))"
-            [errorMessages]="{ pattern: 'Only letters are allowed' }">
-          </app-input>
+      <!-- CTA Header — always visible -->
+      <div class="cta-header" [class.compact]="showForm()">
+        <h2 class="register-cta-title">Join the Future of Safer Driving</h2>
+        <p class="register-cta-subtitle">Get early access to road-safety intelligence today.</p>
 
-          <app-input 
-            id="email" 
-            label="Email:" 
-            type="email"
-            placeholder="Enter your email" 
-            [control]="$any(registerForm.get('email'))">
-          </app-input>
+        @if (!showForm()) {
+          <button class="register-cta-action-btn" (click)="toggleForm()">Get Started Free</button>
+        }
+      </div>
 
-          <app-input 
-            id="phone" 
-            label="Phone Number:" 
-            type="tel"
-            placeholder="e.g. +52 55 1234 5678" 
-            [control]="$any(registerForm.get('phone'))"
-            [errorMessages]="{ pattern: 'Must include country code (e.g. +52) and valid number' }">
-          </app-input>
+      <!-- Form content — revealed on click -->
+      @if (showForm()) {
+        <div class="register-form-reveal">
+          <div class="form-divider"></div>
 
-          <app-button type="submit" variant="register" [disabled]="registerForm.invalid || isSubmitting()">
-            @if (isSubmitting()) { Registering... } @else { Register }
-          </app-button>
+          <div class="register-form-layout">
+            <div class="form-side">
+              <div class="spots-badge">
+                <span class="pulse-dot"></span>
+                <span class="spots-text">ONLY {{ spotsRemaining() }} BETA SPOTS REMAINING TODAY</span>
+              </div>
+              <h3 class="register-title">Sign up in seconds</h3>
+              <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                
+                <app-input 
+                  id="name" 
+                  label="Name:" 
+                  placeholder="Enter your name" 
+                  [control]="$any(registerForm.get('name'))"
+                  [errorMessages]="{ pattern: 'Only letters are allowed' }">
+                </app-input>
 
-          @if (submitMessage()) {
-            <div [class]="'submit-feedback ' + (submitSuccess() ? 'success' : 'error')">
-              {{ submitMessage() }}
+                <app-input 
+                  id="lastName" 
+                  label="Last Name:" 
+                  placeholder="Enter your last name" 
+                  [control]="$any(registerForm.get('lastName'))"
+                  [errorMessages]="{ pattern: 'Only letters are allowed' }">
+                </app-input>
+
+                <app-input 
+                  id="email" 
+                  label="Email:" 
+                  type="email"
+                  placeholder="Enter your email" 
+                  [control]="$any(registerForm.get('email'))">
+                </app-input>
+
+                <app-input 
+                  id="phone" 
+                  label="Phone Number:" 
+                  type="tel"
+                  placeholder="e.g. +52 55 1234 5678" 
+                  [control]="$any(registerForm.get('phone'))"
+                  [errorMessages]="{ pattern: 'Must include country code (e.g. +52) and valid number' }">
+                </app-input>
+
+                <app-button type="submit" variant="register" [disabled]="registerForm.invalid || isSubmitting()">
+                  @if (isSubmitting()) { Registering... } @else { Register }
+                </app-button>
+
+                @if (submitMessage()) {
+                  <div [class]="'submit-feedback ' + (submitSuccess() ? 'success' : 'error')">
+                    {{ submitMessage() }}
+                  </div>
+                }
+              </form>
             </div>
-          }
-        </form>
-      </div>
 
-      <div class="divider"></div>
+            <div class="divider"></div>
 
-      <div class="social-side">
-        <p class="social-heading">Or sign up with</p>
+            <div class="social-side">
+              <p class="social-heading">Or sign up with</p>
+              <app-social-button provider="google">sign in with Google</app-social-button>
+              <app-social-button provider="apple">sign in with Apple</app-social-button>
+              <app-social-button provider="email">Use my email</app-social-button>
+              <app-button variant="social-outline">Other options</app-button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
 
-        <!-- Google -->
-        <app-social-button provider="google">sign in with Google</app-social-button>
-
-        <!-- Apple -->
-        <app-social-button provider="apple">sign in with Apple</app-social-button>
-
-        <!-- Email -->
-        <app-social-button provider="email">Use my email</app-social-button>
-
-        <app-button variant="social-outline">Other options</app-button>
-      </div>
-
-    </app-card>
   </div>
 </section>

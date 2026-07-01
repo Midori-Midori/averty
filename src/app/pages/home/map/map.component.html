@@ -1,0 +1,118 @@
+<section class="road-map-section" id="road-map" appReveal>
+  <div class="map-bg-glow"></div>
+  
+  <div class="map-inner">
+    <div class="section-header">
+      <span class="section-badge">Live Safety View</span>
+      <h2 class="section-title">Interactive Road Map</h2>
+      <p class="section-sub">Safer roads start with real-time driving intelligence</p>
+      <p class="map-section-desc">
+        Click on the active nodes along the highway segment below to see how the Averty network detects risks and coordinates instant safety zones.
+      </p>
+    </div>
+
+    <div class="map-showcase-card">
+      <!-- Left: Interactive Visual Map (Freeway SVG Segment) -->
+      <div class="map-visual-container">
+        <!-- SVG Freeway Path -->
+        <svg viewBox="0 0 600 400" class="highway-svg" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Highway lines and gradients -->
+            <linearGradient id="roadGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#141926" />
+              <stop offset="100%" stop-color="#1b2336" />
+            </linearGradient>
+            
+            <!-- Traffic glow lines -->
+            <linearGradient id="flowGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#4ade80" stop-opacity="0.8" />
+              <stop offset="50%" stop-color="#f87171" stop-opacity="0.8" />
+              <stop offset="100%" stop-color="#4ade80" stop-opacity="0.8" />
+            </linearGradient>
+
+            <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#5074ff" flood-opacity="0.8" />
+            </filter>
+          </defs>
+
+          <!-- The Highway road path -->
+          <path d="M -50 250 C 150 150, 450 300, 650 150" fill="none" stroke="url(#roadGrad)" stroke-width="80" stroke-linecap="round" />
+          
+          <!-- Lane dashes -->
+          <path d="M -50 250 C 150 150, 450 300, 650 150" fill="none" stroke="#2a334a" stroke-width="4" stroke-dasharray="12,15" />
+          
+          <!-- Active Warning Wave Rings -->
+          @if (activeNode() === 1) {
+            <circle cx="280" cy="225" r="30" class="wave-ring red-ring" />
+            <circle cx="280" cy="225" r="60" class="wave-ring red-ring delay-1" />
+          } @else if (activeNode() === 2) {
+            <circle cx="460" cy="235" r="30" class="wave-ring yellow-ring" />
+            <circle cx="460" cy="235" r="60" class="wave-ring yellow-ring delay-1" />
+          } @else if (activeNode() === 3) {
+            <circle cx="100" cy="210" r="30" class="wave-ring green-ring" />
+            <circle cx="100" cy="210" r="60" class="wave-ring green-ring delay-1" />
+          }
+
+          <!-- Pulsing Map Nodes (Pins) -->
+          <!-- Node 3: Safe Zone -->
+          <g class="map-node node-green" [class.active]="activeNode() === 3" (click)="setActiveNode(3)">
+            <circle cx="100" cy="210" r="14" class="node-pulse green" />
+            <circle cx="100" cy="210" r="8" class="node-core green" />
+          </g>
+
+          <!-- Node 1: Stopped Vehicle Alert -->
+          <g class="map-node node-red" [class.active]="activeNode() === 1" (click)="setActiveNode(1)">
+            <circle cx="280" cy="225" r="14" class="node-pulse red" />
+            <circle cx="280" cy="225" r="8" class="node-core red" />
+          </g>
+
+          <!-- Node 2: Heavy Deceleration Warning -->
+          <g class="map-node node-yellow" [class.active]="activeNode() === 2" (click)="setActiveNode(2)">
+            <circle cx="460" cy="235" r="14" class="node-pulse yellow" />
+            <circle cx="460" cy="235" r="8" class="node-core yellow" />
+          </g>
+        </svg>
+
+        <!-- Floating UI badges on Map -->
+        <span class="map-float-badge flow-badge" style="top: 25%; left: 8%;">Flowing Traffic</span>
+        <span class="map-float-badge hazard-badge" style="top: 75%; left: 45%;">Collision Risk</span>
+        <span class="map-float-badge slow-badge" style="top: 38%; left: 75%;">Slowdown Area</span>
+      </div>
+
+      <!-- Right: Detailed Risk/Alert Info Panel -->
+      <div class="map-info-panel">
+        <div class="panel-header">
+          <div [class]="'panel-status-tag ' + getActiveNodeData().colorClass">
+            <span class="pulse-dot"></span>
+            {{ getActiveNodeData().status }}
+          </div>
+          <h3 class="panel-node-title">{{ getActiveNodeData().title }}</h3>
+        </div>
+
+        <p class="panel-desc">
+          {{ getActiveNodeData().description }}
+        </p>
+
+        <div class="panel-metrics-grid">
+          <div class="metric-item">
+            <span class="metric-label">Alert Radius</span>
+            <span class="metric-val">{{ getActiveNodeData().radius }}</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Network Latency</span>
+            <span class="metric-val">{{ getActiveNodeData().latency }}</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Confidence Score</span>
+            <span class="metric-val">{{ getActiveNodeData().confidence }}</span>
+          </div>
+        </div>
+
+        <div class="panel-insight-block">
+          <h4 class="insight-title">Safety Action Protocol:</h4>
+          <p class="insight-text">{{ getActiveNodeData().protocol }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

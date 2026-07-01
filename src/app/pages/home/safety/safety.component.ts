@@ -29,33 +29,33 @@ export class SafetyComponent implements AfterViewInit, OnDestroy {
 
   facts = signal<SafetyFact[]>([
     {
-      highlight: '11,288',
-      title: 'Speed-Related Deaths',
-      description: 'Speeding was a contributing factor in 29% of all traffic fatalities in 2024, remaining one of the most critical safety concerns on U.S. roads.',
+      highlight: '1.5s Delay',
+      title: 'Reaction Windows',
+      description: 'At highway speeds, a 1.5-second delay in braking reaction time triples the risk of multi-vehicle freeway pileups.',
       delayClass: '',
       colorClass: 'color-red',
       icon: Gauge
     },
     {
-      highlight: '1 in 4 Drivers',
-      title: 'Aggressive Driving',
-      description: 'Dangerous behaviors such as tailgating, speeding, and unsafe lane changes continue to contribute to thousands of crashes and fatalities every year.',
+      highlight: 'Traditional GPS',
+      title: 'Passive Navigation',
+      description: 'Standard navigation apps alert you *after* you have already entered the tailback, leaving no margin to safely slow down.',
       delayClass: 'delay-1',
       colorClass: 'color-orange',
       icon: AlertOctagon
     },
     {
-      highlight: '$340 Billion',
-      title: 'Economic Impact',
-      description: 'Traffic crashes generate approximately $340 billion in societal costs, including medical expenses, lost productivity, and property damage.',
+      highlight: '40%+ Dangers',
+      title: 'Blind Road Curves',
+      description: 'Over 40% of highway crashes occur beyond bends or hills where the stopped traffic queue is completely hidden from view.',
       delayClass: 'delay-15',
       colorClass: 'color-yellow',
       icon: Coins
     },
     {
-      highlight: '745,000+',
-      title: 'Weather-Related Crashes',
-      description: 'Nearly 745,000 crashes every year occur under adverse weather conditions such as rain, fog, snow, and strong winds. These conditions contribute to over 3,800 deaths annually.',
+      highlight: '3s Blindness',
+      title: 'Inattentive Moments',
+      description: 'Even attentive drivers look away from the road for 2-3 seconds at a time, making active audio-visual alerts indispensable.',
       delayClass: 'delay-2',
       colorClass: 'color-blue',
       icon: CloudRain

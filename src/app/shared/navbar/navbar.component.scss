@@ -7,8 +7,8 @@
   backdrop-filter: blur(14px);
   background: var(--glass);
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.05);
-  transition: background .3s;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-premium);
 }
 
 .navbar.scrolled {
@@ -43,20 +43,20 @@
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 48px; /* More breathing room */
 }
 
 .nav-links {
   display: flex;
-  gap: 40px;
+  gap: 48px; /* More breathing room */
   list-style: none;
 }
 
 .nav-links a {
-  font-size: 15px;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: 500;
   color: var(--dark);
-  transition: color .2s;
+  transition: var(--transition-premium);
 }
 
 .nav-links a:hover {

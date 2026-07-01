@@ -1,6 +1,6 @@
 .register {
   position: relative;
-  padding: 160px 0;
+  padding: 180px 0;
   overflow: visible;
 }
 
@@ -19,23 +19,20 @@
   padding: 0 48px;
 }
 
-.register-cta-banner {
+/* ══════ Unified Card ══════ */
+.register-unified-card {
   position: relative;
   max-width: 1200px;
-  margin: 0 auto 80px;
+  margin: 0 auto;
   padding: 80px 48px;
   text-align: center;
   background: radial-gradient(circle at top right, rgba(80, 116, 255, 0.12), transparent), var(--glass2);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  box-shadow: var(--shadow);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
 }
 
 .cta-glow-blob {
@@ -52,6 +49,67 @@
   filter: blur(40px);
 }
 
+/* ── Close Button (X) ── */
+.form-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--muted);
+  cursor: pointer;
+  transition: var(--transition-premium);
+  animation: closeBtnAppear 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  &:hover {
+    background: rgba(255, 77, 77, 0.1);
+    border-color: rgba(255, 77, 77, 0.3);
+    color: #ff4d4d;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 16px rgba(255, 77, 77, 0.15);
+  }
+
+  &:active {
+    transform: rotate(90deg) scale(0.95);
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+@keyframes closeBtnAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* ── CTA Header ── */
+.cta-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.compact {
+    gap: 12px;
+    margin-bottom: 0;
+  }
+}
+
 .register-cta-title {
   font-family: var(--font);
   font-size: clamp(32px, 4vw, 44px);
@@ -66,7 +124,7 @@
   font-size: clamp(16px, 1.8vw, 18px);
   color: var(--mid);
   opacity: 0.85;
-  margin: 0 0 12px;
+  margin: 0;
 }
 
 .register-cta-action-btn {
@@ -75,26 +133,84 @@
   padding: 14px 36px;
   background: var(--blue);
   color: #fff;
-  border-radius: 14px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font);
   font-size: 15px;
   font-weight: 600;
-  text-decoration: none;
-  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 14px rgba(80, 116, 255, 0.25);
+  cursor: pointer;
+  transition: var(--transition-premium);
+  box-shadow: var(--shadow-md);
+  margin-top: 4px;
 
   &:hover {
     background: var(--blue-d);
-    transform: scale(1.03);
-    box-shadow: 0 8px 24px rgba(80, 116, 255, 0.35);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: var(--shadow-lg);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
   }
 }
 
-.register-card {
-  padding: 32px;
+/* ── Form Reveal Animation ── */
+.register-form-reveal {
+  animation: formSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes formSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 1200px;
+  }
+}
+
+/* ── Form Divider Line ── */
+.form-divider {
+  width: 80px;
+  height: 1px;
+  background: var(--border);
+  margin: 40px auto;
+  animation: dividerExpand 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+@keyframes dividerExpand {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 80px;
+    opacity: 1;
+  }
+}
+
+/* ── Form Layout ── */
+.register-form-layout {
   display: flex;
   gap: 60px;
   align-items: center;
   justify-content: center;
+  text-align: left;
+  animation: formContentFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+@keyframes formContentFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .form-side {
@@ -137,7 +253,7 @@
   font-size: 26px;
   font-weight: 400;
   color: var(--dark);
-  margin-bottom: 16px; /* Reduced from 32px to look tighter with the badge */
+  margin-bottom: 16px;
 }
 
 .submit-feedback {
@@ -166,6 +282,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Vertical Divider ── */
 .divider {
   width: 1px;
   background: rgba(0, 0, 0, 0.1);
@@ -200,11 +317,9 @@
     padding: 0 24px;
   }
 
-  .register-cta-banner {
-    margin: 0 auto 48px;
+  .register-unified-card {
     padding: 48px 24px;
     border-radius: 20px;
-    gap: 16px;
   }
 
   .register-cta-title {
@@ -220,9 +335,8 @@
     font-size: 14px;
   }
 
-  .register-card {
+  .register-form-layout {
     flex-direction: column;
-    padding: 32px 24px;
     gap: 40px;
     align-items: stretch;
   }

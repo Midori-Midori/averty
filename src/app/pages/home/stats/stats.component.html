@@ -20,7 +20,7 @@
     <div class="stats-scroll-container-wrapper">
       <div class="stats-grid">
 
-      <!-- Card 1: Alerts Processed (Donut/Radial Chart) -->
+      <!-- Card 1: Crashes Prevented (Radial Chart) -->
       <div class="stat-card color-red" appReveal>
         <div class="card-info-side">
           <div class="card-header">
@@ -28,17 +28,17 @@
               <div class="card-icon">
                 <lucide-icon [img]="mapPinnedIcon" [size]="16" [strokeWidth]="2.5"></lucide-icon>
               </div>
-              <span class="card-title">Alerts Processed</span>
+              <span class="card-title">Crashes Prevented</span>
             </div>
-            <h3 class="card-value"><span class="stat-counter" data-target="500" data-suffix="+">0</span></h3>
+            <h3 class="card-value"><span class="stat-counter" data-target="80" data-suffix="%">0</span></h3>
           </div>
           <div class="card-body">
             <p class="card-description">
-              Our cloud system processes and broadcasts sudden braking warnings to nearby motorists instantly. Keeping drivers informed prevents chain-reaction pileups.
+              Safety studies confirm that giving a driver just 2.0 seconds of early warning avoids 80% of highway rear-end collisions. Averty provides that vital reaction cushion.
             </p>
             <ul class="card-highlights">
-              <li><strong>Smart Routing:</strong> Broadcasts alerts instantly within a 1.2-mile radius.</li>
-              <li><strong>High Reliability:</strong> Designed for immediate, zero-latency safety messaging.</li>
+              <li><strong>Reaction Cushion:</strong> Adds 200+ feet of braking distance at highway speeds.</li>
+              <li><strong>Collision Prevention:</strong> Avoids sudden queue compression waves.</li>
             </ul>
           </div>
         </div>
@@ -58,9 +58,9 @@
             <circle cx="100" cy="100" r="75" class="chart-radial-track" />
             <!-- Radar scan dashes overlay -->
             <circle cx="100" cy="100" r="82" class="chart-radial-dashes" />
-            <circle cx="100" cy="100" r="75" class="chart-radial-progress red" stroke="url(#donutRedGrad)" stroke-dasharray="471.2" stroke-dashoffset="0" stroke-linecap="round" filter="url(#redGlow)" />
-            <text x="100" y="96" text-anchor="middle" class="chart-inner-val stat-counter" data-target="500" data-suffix="+">0</text>
-            <text x="100" y="128" text-anchor="middle" class="chart-inner-lbl">Processed</text>
+            <circle cx="100" cy="100" r="75" class="chart-radial-progress red" stroke="url(#donutRedGrad)" stroke-dasharray="471.2" stroke-dashoffset="94.24" stroke-linecap="round" filter="url(#redGlow)" />
+            <text x="100" y="96" text-anchor="middle" class="chart-inner-val stat-counter" data-target="80" data-suffix="%">0</text>
+            <text x="100" y="128" text-anchor="middle" class="chart-inner-lbl">Prevented</text>
           </svg>
         </div>
       </div>

@@ -1,26 +1,26 @@
 .btn-social {
   width: 100%;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   font-family: var(--font);
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  transition: var(--transition-premium);
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-md);
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+    box-shadow: var(--shadow-lg);
   }
 
   &:active {
     transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-md);
   }
 
   &:disabled {
@@ -46,7 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px 0 0 6px;
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
     margin-right: 16px;
   }
   

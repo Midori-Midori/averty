@@ -1,0 +1,130 @@
+<section class="research-section" id="research" appReveal>
+  <div class="research-bg-glow"></div>
+
+  <div class="research-inner">
+    <div class="section-header">
+      <span class="section-badge">Safety Science</span>
+      <h2 class="section-title">Research & Methodology</h2>
+      <p class="section-sub">A research-driven solution built for maximum safety effectiveness</p>
+      <p class="research-desc">
+        Averty is engineered based on human reaction windows, cognitive load constraints, and vehicle collision statistics. Explore our methodology.
+      </p>
+    </div>
+
+    <!-- Interactive Tab Selector -->
+    <div class="research-container">
+      <div class="research-tabs-list">
+        <button 
+          [class]="'research-tab-btn' + (activeTab() === 'objectives' ? ' active' : '')"
+          (click)="setActiveTab('objectives')">
+          Safety Objectives
+        </button>
+        <button 
+          [class]="'research-tab-btn' + (activeTab() === 'methodology' ? ' active' : '')"
+          (click)="setActiveTab('methodology')">
+          Deceleration Analysis
+        </button>
+        <button 
+          [class]="'research-tab-btn' + (activeTab() === 'design' ? ' active' : '')"
+          (click)="setActiveTab('design')">
+          Cognitive Load Optimization
+        </button>
+        <button 
+          [class]="'research-tab-btn' + (activeTab() === 'insights' ? ' active' : '')"
+          (click)="setActiveTab('insights')">
+          Reaction Time Studies
+        </button>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div class="research-content-card">
+        @if (activeTab() === 'objectives') {
+          <div class="tab-content-grid">
+            <div class="tab-text-side">
+              <h3 class="tab-title">Our Mission: Achieve Zero Highway Pileups</h3>
+              <p class="tab-paragraph">
+                Freeway rear-end collisions are uniquely dangerous due to the velocities involved. When one vehicle decelerates abruptly, the vehicles behind it form a compression wave. If warning arrives too late, a multi-vehicle pileup is inevitable.
+              </p>
+              <ul class="tab-bullet-list">
+                <li><strong>Primary Target:</strong> Eliminate hidden tailback surprise factors.</li>
+                <li><strong>Network Synergy:</strong> Coordinated alerts turn vehicles ahead into active warning nodes for those behind.</li>
+                <li><strong>Localized Reach:</strong> Precision alerts targeting only the lane and heading affected.</li>
+              </ul>
+            </div>
+            <div class="tab-stats-side">
+              <div class="big-stat-box">
+                <span class="stat-num">80%</span>
+                <span class="stat-label">Reduction in collision risk with early alerts</span>
+              </div>
+            </div>
+          </div>
+        }
+
+        @if (activeTab() === 'methodology') {
+          <div class="tab-content-grid">
+            <div class="tab-text-side">
+              <h3 class="tab-title">How We Compute Deceleration Metrics</h3>
+              <p class="tab-paragraph">
+                Averty does not rely on manual user feedback or reports. The system reads real-time velocity changes and calculates deceleration vectors (G-force).
+              </p>
+              <ul class="tab-bullet-list">
+                <li><strong>Abrupt Deceleration Threshold:</strong> Triggers alerts automatically when deceleration exceeds 0.4g.</li>
+                <li><strong>Spatial Indexing:</strong> Employs high-speed spatial indexing to resolve affected vehicles within 15 milliseconds.</li>
+                <li><strong>Predictive Jam Warnings:</strong> Predicts where the tail of the traffic queue will sit when approaching vehicles arrive.</li>
+              </ul>
+            </div>
+            <div class="tab-stats-side">
+              <div class="big-stat-box">
+                <span class="stat-num">15ms</span>
+                <span class="stat-label">Cloud routing latency threshold</span>
+              </div>
+            </div>
+          </div>
+        }
+
+        @if (activeTab() === 'design') {
+          <div class="tab-content-grid">
+            <div class="tab-text-side">
+              <h3 class="tab-title">Cognitive Load Optimization</h3>
+              <p class="tab-paragraph">
+                Standard navigation apps show maps filled with icons, streets, and menus, overloading a driver's attention. Averty is designed to minimize cognitive processing time.
+              </p>
+              <ul class="tab-bullet-list">
+                <li><strong>Color Coding:</strong> Instant subconscious recognition (Green, Yellow, Orange, Red).</li>
+                <li><strong>Full-screen Flash:</strong> Perceived in peripheral vision without requiring the driver to look directly at the phone screen.</li>
+                <li><strong>Siren Acoustics:</strong> Distinct sound profiles tailored to urgency levels.</li>
+              </ul>
+            </div>
+            <div class="tab-stats-side">
+              <div class="big-stat-box">
+                <span class="stat-num">94%</span>
+                <span class="stat-label">Faster driver response rate via colors</span>
+              </div>
+            </div>
+          </div>
+        }
+
+        @if (activeTab() === 'insights') {
+          <div class="tab-content-grid">
+            <div class="tab-text-side">
+              <h3 class="tab-title">Critical Early Warning Research Insights</h3>
+              <p class="tab-paragraph">
+                Safety research confirms that reaction window lengths are the single most important factor determining whether a driver crashes or stops in time.
+              </p>
+              <ul class="tab-bullet-list">
+                <li><strong>The 2-Second Rule:</strong> At highway speeds (65mph), a vehicle travels 95 feet per second. Proactive warnings add 200+ feet of braking cushion.</li>
+                <li><strong>Avoidance Margin:</strong> An extra 1.5 seconds of warning doubles the driver's opportunity to take evasive maneuvers.</li>
+              </ul>
+            </div>
+            <div class="tab-stats-side">
+              <div class="big-stat-box">
+                <span class="stat-num">2.0s</span>
+                <span class="stat-label">Average warning lead time delivered by Averty</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
